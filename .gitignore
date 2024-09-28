@@ -50,3 +50,13 @@ modules.order
 Module.symvers
 Mkfile.old
 dkms.conf
+
+*.cycdx
+*.cyfit
+*.cyprj*
+*.cywrk*
+*.rtp
+*.rpt
+*.svd
+*.html
+*.log
