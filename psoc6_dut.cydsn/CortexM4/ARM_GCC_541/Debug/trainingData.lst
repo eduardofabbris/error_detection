@@ -1,0 +1,4176 @@
+ARM GAS  C:\Users\eduar\AppData\Local\Temp\ccN7CLzG.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m4
+   3              		.eabi_attribute 27, 1
+   4              		.fpu fpv4-sp-d16
+   5              		.eabi_attribute 20, 1
+   6              		.eabi_attribute 21, 1
+   7              		.eabi_attribute 23, 3
+   8              		.eabi_attribute 24, 1
+   9              		.eabi_attribute 25, 1
+  10              		.eabi_attribute 26, 1
+  11              		.eabi_attribute 30, 1
+  12              		.eabi_attribute 34, 1
+  13              		.eabi_attribute 18, 4
+  14              		.thumb
+  15              		.syntax unified
+  16              		.file	"trainingData.c"
+  17              		.text
+  18              	.Ltext0:
+  19              		.cfi_sections	.debug_frame
+  20              		.global	triangularWaveLUT
+  21              		.section	.rodata
+  22              		.align	2
+  23              		.type	triangularWaveLUT, %object
+  24              		.size	triangularWaveLUT, 2000
+  25              	triangularWaveLUT:
+  26 0000 10000000 		.word	16
+  27 0004 20000000 		.word	32
+  28 0008 31000000 		.word	49
+  29 000c 41000000 		.word	65
+  30 0010 52000000 		.word	82
+  31 0014 62000000 		.word	98
+  32 0018 72000000 		.word	114
+  33 001c 83000000 		.word	131
+  34 0020 93000000 		.word	147
+  35 0024 A3000000 		.word	163
+  36 0028 B4000000 		.word	180
+  37 002c C4000000 		.word	196
+  38 0030 D5000000 		.word	213
+  39 0034 E5000000 		.word	229
+  40 0038 F5000000 		.word	245
+  41 003c 06010000 		.word	262
+  42 0040 16010000 		.word	278
+  43 0044 27010000 		.word	295
+  44 0048 37010000 		.word	311
+  45 004c 47010000 		.word	327
+  46 0050 58010000 		.word	344
+  47 0054 68010000 		.word	360
+  48 0058 79010000 		.word	377
+  49 005c 89010000 		.word	393
+  50 0060 99010000 		.word	409
+  51 0064 AA010000 		.word	426
+  52 0068 BA010000 		.word	442
+  53 006c CB010000 		.word	459
+  54 0070 DB010000 		.word	475
+  55 0074 EB010000 		.word	491
+  56 0078 FC010000 		.word	508
+  57 007c 0C020000 		.word	524
+ARM GAS  C:\Users\eduar\AppData\Local\Temp\ccN7CLzG.s 			page 2
+
+
+  58 0080 1D020000 		.word	541
+  59 0084 2D020000 		.word	557
+  60 0088 3D020000 		.word	573
+  61 008c 4E020000 		.word	590
+  62 0090 5E020000 		.word	606
+  63 0094 6F020000 		.word	623
+  64 0098 7F020000 		.word	639
+  65 009c 90020000 		.word	656
+  66 00a0 A0020000 		.word	672
+  67 00a4 B0020000 		.word	688
+  68 00a8 C1020000 		.word	705
+  69 00ac D1020000 		.word	721
+  70 00b0 E2020000 		.word	738
+  71 00b4 F2020000 		.word	754
+  72 00b8 02030000 		.word	770
+  73 00bc 13030000 		.word	787
+  74 00c0 23030000 		.word	803
+  75 00c4 34030000 		.word	820
+  76 00c8 44030000 		.word	836
+  77 00cc 54030000 		.word	852
+  78 00d0 65030000 		.word	869
+  79 00d4 75030000 		.word	885
+  80 00d8 86030000 		.word	902
+  81 00dc 96030000 		.word	918
+  82 00e0 A6030000 		.word	934
+  83 00e4 B7030000 		.word	951
+  84 00e8 C7030000 		.word	967
+  85 00ec D8030000 		.word	984
+  86 00f0 E8030000 		.word	1000
+  87 00f4 F8030000 		.word	1016
+  88 00f8 09040000 		.word	1033
+  89 00fc 19040000 		.word	1049
+  90 0100 2A040000 		.word	1066
+  91 0104 3A040000 		.word	1082
+  92 0108 4A040000 		.word	1098
+  93 010c 5B040000 		.word	1115
+  94 0110 6B040000 		.word	1131
+  95 0114 7C040000 		.word	1148
+  96 0118 8C040000 		.word	1164
+  97 011c 9C040000 		.word	1180
+  98 0120 AD040000 		.word	1197
+  99 0124 BD040000 		.word	1213
+ 100 0128 CE040000 		.word	1230
+ 101 012c DE040000 		.word	1246
+ 102 0130 EE040000 		.word	1262
+ 103 0134 FF040000 		.word	1279
+ 104 0138 0F050000 		.word	1295
+ 105 013c 20050000 		.word	1312
+ 106 0140 30050000 		.word	1328
+ 107 0144 40050000 		.word	1344
+ 108 0148 51050000 		.word	1361
+ 109 014c 61050000 		.word	1377
+ 110 0150 72050000 		.word	1394
+ 111 0154 82050000 		.word	1410
+ 112 0158 92050000 		.word	1426
+ 113 015c A3050000 		.word	1443
+ 114 0160 B3050000 		.word	1459
+ARM GAS  C:\Users\eduar\AppData\Local\Temp\ccN7CLzG.s 			page 3
+
+
+ 115 0164 C4050000 		.word	1476
+ 116 0168 D4050000 		.word	1492
+ 117 016c E4050000 		.word	1508
+ 118 0170 F5050000 		.word	1525
+ 119 0174 05060000 		.word	1541
+ 120 0178 16060000 		.word	1558
+ 121 017c 26060000 		.word	1574
+ 122 0180 36060000 		.word	1590
+ 123 0184 47060000 		.word	1607
+ 124 0188 57060000 		.word	1623
+ 125 018c 68060000 		.word	1640
+ 126 0190 78060000 		.word	1656
+ 127 0194 88060000 		.word	1672
+ 128 0198 99060000 		.word	1689
+ 129 019c A9060000 		.word	1705
+ 130 01a0 BA060000 		.word	1722
+ 131 01a4 CA060000 		.word	1738
+ 132 01a8 DA060000 		.word	1754
+ 133 01ac EB060000 		.word	1771
+ 134 01b0 FB060000 		.word	1787
+ 135 01b4 0C070000 		.word	1804
+ 136 01b8 1C070000 		.word	1820
+ 137 01bc 2C070000 		.word	1836
+ 138 01c0 3D070000 		.word	1853
+ 139 01c4 4D070000 		.word	1869
+ 140 01c8 5E070000 		.word	1886
+ 141 01cc 6E070000 		.word	1902
+ 142 01d0 7E070000 		.word	1918
+ 143 01d4 8F070000 		.word	1935
+ 144 01d8 9F070000 		.word	1951
+ 145 01dc B0070000 		.word	1968
+ 146 01e0 C0070000 		.word	1984
+ 147 01e4 D0070000 		.word	2000
+ 148 01e8 E1070000 		.word	2017
+ 149 01ec F1070000 		.word	2033
+ 150 01f0 02080000 		.word	2050
+ 151 01f4 12080000 		.word	2066
+ 152 01f8 22080000 		.word	2082
+ 153 01fc 33080000 		.word	2099
+ 154 0200 43080000 		.word	2115
+ 155 0204 54080000 		.word	2132
+ 156 0208 64080000 		.word	2148
+ 157 020c 74080000 		.word	2164
+ 158 0210 85080000 		.word	2181
+ 159 0214 95080000 		.word	2197
+ 160 0218 A6080000 		.word	2214
+ 161 021c B6080000 		.word	2230
+ 162 0220 C6080000 		.word	2246
+ 163 0224 D7080000 		.word	2263
+ 164 0228 E7080000 		.word	2279
+ 165 022c F8080000 		.word	2296
+ 166 0230 08090000 		.word	2312
+ 167 0234 18090000 		.word	2328
+ 168 0238 29090000 		.word	2345
+ 169 023c 39090000 		.word	2361
+ 170 0240 4A090000 		.word	2378
+ 171 0244 5A090000 		.word	2394
+ARM GAS  C:\Users\eduar\AppData\Local\Temp\ccN7CLzG.s 			page 4
+
+
+ 172 0248 6A090000 		.word	2410
+ 173 024c 7B090000 		.word	2427
+ 174 0250 8B090000 		.word	2443
+ 175 0254 9B090000 		.word	2459
+ 176 0258 AC090000 		.word	2476
+ 177 025c BC090000 		.word	2492
+ 178 0260 CD090000 		.word	2509
+ 179 0264 DD090000 		.word	2525
+ 180 0268 ED090000 		.word	2541
+ 181 026c FE090000 		.word	2558
+ 182 0270 0E0A0000 		.word	2574
+ 183 0274 1F0A0000 		.word	2591
+ 184 0278 2F0A0000 		.word	2607
+ 185 027c 3F0A0000 		.word	2623
+ 186 0280 500A0000 		.word	2640
+ 187 0284 600A0000 		.word	2656
+ 188 0288 710A0000 		.word	2673
+ 189 028c 810A0000 		.word	2689
+ 190 0290 910A0000 		.word	2705
+ 191 0294 A20A0000 		.word	2722
+ 192 0298 B20A0000 		.word	2738
+ 193 029c C30A0000 		.word	2755
+ 194 02a0 D30A0000 		.word	2771
+ 195 02a4 E30A0000 		.word	2787
+ 196 02a8 F40A0000 		.word	2804
+ 197 02ac 040B0000 		.word	2820
+ 198 02b0 150B0000 		.word	2837
+ 199 02b4 250B0000 		.word	2853
+ 200 02b8 350B0000 		.word	2869
+ 201 02bc 460B0000 		.word	2886
+ 202 02c0 560B0000 		.word	2902
+ 203 02c4 670B0000 		.word	2919
+ 204 02c8 770B0000 		.word	2935
+ 205 02cc 870B0000 		.word	2951
+ 206 02d0 980B0000 		.word	2968
+ 207 02d4 A80B0000 		.word	2984
+ 208 02d8 B90B0000 		.word	3001
+ 209 02dc C90B0000 		.word	3017
+ 210 02e0 D90B0000 		.word	3033
+ 211 02e4 EA0B0000 		.word	3050
+ 212 02e8 FA0B0000 		.word	3066
+ 213 02ec 0B0C0000 		.word	3083
+ 214 02f0 1B0C0000 		.word	3099
+ 215 02f4 2B0C0000 		.word	3115
+ 216 02f8 3C0C0000 		.word	3132
+ 217 02fc 4C0C0000 		.word	3148
+ 218 0300 5D0C0000 		.word	3165
+ 219 0304 6D0C0000 		.word	3181
+ 220 0308 7D0C0000 		.word	3197
+ 221 030c 8E0C0000 		.word	3214
+ 222 0310 9E0C0000 		.word	3230
+ 223 0314 AF0C0000 		.word	3247
+ 224 0318 BF0C0000 		.word	3263
+ 225 031c CF0C0000 		.word	3279
+ 226 0320 E00C0000 		.word	3296
+ 227 0324 F00C0000 		.word	3312
+ 228 0328 010D0000 		.word	3329
+ARM GAS  C:\Users\eduar\AppData\Local\Temp\ccN7CLzG.s 			page 5
+
+
+ 229 032c 110D0000 		.word	3345
+ 230 0330 210D0000 		.word	3361
+ 231 0334 320D0000 		.word	3378
+ 232 0338 420D0000 		.word	3394
+ 233 033c 530D0000 		.word	3411
+ 234 0340 630D0000 		.word	3427
+ 235 0344 730D0000 		.word	3443
+ 236 0348 840D0000 		.word	3460
+ 237 034c 940D0000 		.word	3476
+ 238 0350 A50D0000 		.word	3493
+ 239 0354 B50D0000 		.word	3509
+ 240 0358 C50D0000 		.word	3525
+ 241 035c D60D0000 		.word	3542
+ 242 0360 E60D0000 		.word	3558
+ 243 0364 F70D0000 		.word	3575
+ 244 0368 070E0000 		.word	3591
+ 245 036c 170E0000 		.word	3607
+ 246 0370 280E0000 		.word	3624
+ 247 0374 380E0000 		.word	3640
+ 248 0378 490E0000 		.word	3657
+ 249 037c 590E0000 		.word	3673
+ 250 0380 690E0000 		.word	3689
+ 251 0384 7A0E0000 		.word	3706
+ 252 0388 8A0E0000 		.word	3722
+ 253 038c 9B0E0000 		.word	3739
+ 254 0390 AB0E0000 		.word	3755
+ 255 0394 BB0E0000 		.word	3771
+ 256 0398 CC0E0000 		.word	3788
+ 257 039c DC0E0000 		.word	3804
+ 258 03a0 ED0E0000 		.word	3821
+ 259 03a4 FD0E0000 		.word	3837
+ 260 03a8 0D0F0000 		.word	3853
+ 261 03ac 1E0F0000 		.word	3870
+ 262 03b0 2E0F0000 		.word	3886
+ 263 03b4 3F0F0000 		.word	3903
+ 264 03b8 4F0F0000 		.word	3919
+ 265 03bc 5F0F0000 		.word	3935
+ 266 03c0 700F0000 		.word	3952
+ 267 03c4 800F0000 		.word	3968
+ 268 03c8 910F0000 		.word	3985
+ 269 03cc A10F0000 		.word	4001
+ 270 03d0 B10F0000 		.word	4017
+ 271 03d4 C20F0000 		.word	4034
+ 272 03d8 D20F0000 		.word	4050
+ 273 03dc E30F0000 		.word	4067
+ 274 03e0 F30F0000 		.word	4083
+ 275 03e4 FF0F0000 		.word	4095
+ 276 03e8 F30F0000 		.word	4083
+ 277 03ec E30F0000 		.word	4067
+ 278 03f0 D20F0000 		.word	4050
+ 279 03f4 C20F0000 		.word	4034
+ 280 03f8 B10F0000 		.word	4017
+ 281 03fc A10F0000 		.word	4001
+ 282 0400 910F0000 		.word	3985
+ 283 0404 800F0000 		.word	3968
+ 284 0408 700F0000 		.word	3952
+ 285 040c 5F0F0000 		.word	3935
+ARM GAS  C:\Users\eduar\AppData\Local\Temp\ccN7CLzG.s 			page 6
+
+
+ 286 0410 4F0F0000 		.word	3919
+ 287 0414 3F0F0000 		.word	3903
+ 288 0418 2E0F0000 		.word	3886
+ 289 041c 1E0F0000 		.word	3870
+ 290 0420 0D0F0000 		.word	3853
+ 291 0424 FD0E0000 		.word	3837
+ 292 0428 ED0E0000 		.word	3821
+ 293 042c DC0E0000 		.word	3804
+ 294 0430 CC0E0000 		.word	3788
+ 295 0434 BB0E0000 		.word	3771
+ 296 0438 AB0E0000 		.word	3755
+ 297 043c 9B0E0000 		.word	3739
+ 298 0440 8A0E0000 		.word	3722
+ 299 0444 7A0E0000 		.word	3706
+ 300 0448 690E0000 		.word	3689
+ 301 044c 590E0000 		.word	3673
+ 302 0450 490E0000 		.word	3657
+ 303 0454 380E0000 		.word	3640
+ 304 0458 280E0000 		.word	3624
+ 305 045c 170E0000 		.word	3607
+ 306 0460 070E0000 		.word	3591
+ 307 0464 F70D0000 		.word	3575
+ 308 0468 E60D0000 		.word	3558
+ 309 046c D60D0000 		.word	3542
+ 310 0470 C50D0000 		.word	3525
+ 311 0474 B50D0000 		.word	3509
+ 312 0478 A50D0000 		.word	3493
+ 313 047c 940D0000 		.word	3476
+ 314 0480 840D0000 		.word	3460
+ 315 0484 730D0000 		.word	3443
+ 316 0488 630D0000 		.word	3427
+ 317 048c 530D0000 		.word	3411
+ 318 0490 420D0000 		.word	3394
+ 319 0494 320D0000 		.word	3378
+ 320 0498 210D0000 		.word	3361
+ 321 049c 110D0000 		.word	3345
+ 322 04a0 010D0000 		.word	3329
+ 323 04a4 F00C0000 		.word	3312
+ 324 04a8 E00C0000 		.word	3296
+ 325 04ac CF0C0000 		.word	3279
+ 326 04b0 BF0C0000 		.word	3263
+ 327 04b4 AF0C0000 		.word	3247
+ 328 04b8 9E0C0000 		.word	3230
+ 329 04bc 8E0C0000 		.word	3214
+ 330 04c0 7D0C0000 		.word	3197
+ 331 04c4 6D0C0000 		.word	3181
+ 332 04c8 5D0C0000 		.word	3165
+ 333 04cc 4C0C0000 		.word	3148
+ 334 04d0 3C0C0000 		.word	3132
+ 335 04d4 2B0C0000 		.word	3115
+ 336 04d8 1B0C0000 		.word	3099
+ 337 04dc 0B0C0000 		.word	3083
+ 338 04e0 FA0B0000 		.word	3066
+ 339 04e4 EA0B0000 		.word	3050
+ 340 04e8 D90B0000 		.word	3033
+ 341 04ec C90B0000 		.word	3017
+ 342 04f0 B90B0000 		.word	3001
+ARM GAS  C:\Users\eduar\AppData\Local\Temp\ccN7CLzG.s 			page 7
+
+
+ 343 04f4 A80B0000 		.word	2984
+ 344 04f8 980B0000 		.word	2968
+ 345 04fc 870B0000 		.word	2951
+ 346 0500 770B0000 		.word	2935
+ 347 0504 670B0000 		.word	2919
+ 348 0508 560B0000 		.word	2902
+ 349 050c 460B0000 		.word	2886
+ 350 0510 350B0000 		.word	2869
+ 351 0514 250B0000 		.word	2853
+ 352 0518 150B0000 		.word	2837
+ 353 051c 040B0000 		.word	2820
+ 354 0520 F40A0000 		.word	2804
+ 355 0524 E30A0000 		.word	2787
+ 356 0528 D30A0000 		.word	2771
+ 357 052c C30A0000 		.word	2755
+ 358 0530 B20A0000 		.word	2738
+ 359 0534 A20A0000 		.word	2722
+ 360 0538 910A0000 		.word	2705
+ 361 053c 810A0000 		.word	2689
+ 362 0540 710A0000 		.word	2673
+ 363 0544 600A0000 		.word	2656
+ 364 0548 500A0000 		.word	2640
+ 365 054c 3F0A0000 		.word	2623
+ 366 0550 2F0A0000 		.word	2607
+ 367 0554 1F0A0000 		.word	2591
+ 368 0558 0E0A0000 		.word	2574
+ 369 055c FE090000 		.word	2558
+ 370 0560 ED090000 		.word	2541
+ 371 0564 DD090000 		.word	2525
+ 372 0568 CD090000 		.word	2509
+ 373 056c BC090000 		.word	2492
+ 374 0570 AC090000 		.word	2476
+ 375 0574 9B090000 		.word	2459
+ 376 0578 8B090000 		.word	2443
+ 377 057c 7B090000 		.word	2427
+ 378 0580 6A090000 		.word	2410
+ 379 0584 5A090000 		.word	2394
+ 380 0588 4A090000 		.word	2378
+ 381 058c 39090000 		.word	2361
+ 382 0590 29090000 		.word	2345
+ 383 0594 18090000 		.word	2328
+ 384 0598 08090000 		.word	2312
+ 385 059c F8080000 		.word	2296
+ 386 05a0 E7080000 		.word	2279
+ 387 05a4 D7080000 		.word	2263
+ 388 05a8 C6080000 		.word	2246
+ 389 05ac B6080000 		.word	2230
+ 390 05b0 A6080000 		.word	2214
+ 391 05b4 95080000 		.word	2197
+ 392 05b8 85080000 		.word	2181
+ 393 05bc 74080000 		.word	2164
+ 394 05c0 64080000 		.word	2148
+ 395 05c4 54080000 		.word	2132
+ 396 05c8 43080000 		.word	2115
+ 397 05cc 33080000 		.word	2099
+ 398 05d0 22080000 		.word	2082
+ 399 05d4 12080000 		.word	2066
+ARM GAS  C:\Users\eduar\AppData\Local\Temp\ccN7CLzG.s 			page 8
+
+
+ 400 05d8 02080000 		.word	2050
+ 401 05dc F1070000 		.word	2033
+ 402 05e0 E1070000 		.word	2017
+ 403 05e4 D0070000 		.word	2000
+ 404 05e8 C0070000 		.word	1984
+ 405 05ec B0070000 		.word	1968
+ 406 05f0 9F070000 		.word	1951
+ 407 05f4 8F070000 		.word	1935
+ 408 05f8 7E070000 		.word	1918
+ 409 05fc 6E070000 		.word	1902
+ 410 0600 5E070000 		.word	1886
+ 411 0604 4D070000 		.word	1869
+ 412 0608 3D070000 		.word	1853
+ 413 060c 2C070000 		.word	1836
+ 414 0610 1C070000 		.word	1820
+ 415 0614 0C070000 		.word	1804
+ 416 0618 FB060000 		.word	1787
+ 417 061c EB060000 		.word	1771
+ 418 0620 DA060000 		.word	1754
+ 419 0624 CA060000 		.word	1738
+ 420 0628 BA060000 		.word	1722
+ 421 062c A9060000 		.word	1705
+ 422 0630 99060000 		.word	1689
+ 423 0634 88060000 		.word	1672
+ 424 0638 78060000 		.word	1656
+ 425 063c 68060000 		.word	1640
+ 426 0640 57060000 		.word	1623
+ 427 0644 47060000 		.word	1607
+ 428 0648 36060000 		.word	1590
+ 429 064c 26060000 		.word	1574
+ 430 0650 16060000 		.word	1558
+ 431 0654 05060000 		.word	1541
+ 432 0658 F5050000 		.word	1525
+ 433 065c E4050000 		.word	1508
+ 434 0660 D4050000 		.word	1492
+ 435 0664 C4050000 		.word	1476
+ 436 0668 B3050000 		.word	1459
+ 437 066c A3050000 		.word	1443
+ 438 0670 92050000 		.word	1426
+ 439 0674 82050000 		.word	1410
+ 440 0678 72050000 		.word	1394
+ 441 067c 61050000 		.word	1377
+ 442 0680 51050000 		.word	1361
+ 443 0684 40050000 		.word	1344
+ 444 0688 30050000 		.word	1328
+ 445 068c 20050000 		.word	1312
+ 446 0690 0F050000 		.word	1295
+ 447 0694 FF040000 		.word	1279
+ 448 0698 EE040000 		.word	1262
+ 449 069c DE040000 		.word	1246
+ 450 06a0 CE040000 		.word	1230
+ 451 06a4 BD040000 		.word	1213
+ 452 06a8 AD040000 		.word	1197
+ 453 06ac 9C040000 		.word	1180
+ 454 06b0 8C040000 		.word	1164
+ 455 06b4 7C040000 		.word	1148
+ 456 06b8 6B040000 		.word	1131
+ARM GAS  C:\Users\eduar\AppData\Local\Temp\ccN7CLzG.s 			page 9
+
+
+ 457 06bc 5B040000 		.word	1115
+ 458 06c0 4A040000 		.word	1098
+ 459 06c4 3A040000 		.word	1082
+ 460 06c8 2A040000 		.word	1066
+ 461 06cc 19040000 		.word	1049
+ 462 06d0 09040000 		.word	1033
+ 463 06d4 F8030000 		.word	1016
+ 464 06d8 E8030000 		.word	1000
+ 465 06dc D8030000 		.word	984
+ 466 06e0 C7030000 		.word	967
+ 467 06e4 B7030000 		.word	951
+ 468 06e8 A6030000 		.word	934
+ 469 06ec 96030000 		.word	918
+ 470 06f0 86030000 		.word	902
+ 471 06f4 75030000 		.word	885
+ 472 06f8 65030000 		.word	869
+ 473 06fc 54030000 		.word	852
+ 474 0700 44030000 		.word	836
+ 475 0704 34030000 		.word	820
+ 476 0708 23030000 		.word	803
+ 477 070c 13030000 		.word	787
+ 478 0710 02030000 		.word	770
+ 479 0714 F2020000 		.word	754
+ 480 0718 E2020000 		.word	738
+ 481 071c D1020000 		.word	721
+ 482 0720 C1020000 		.word	705
+ 483 0724 B0020000 		.word	688
+ 484 0728 A0020000 		.word	672
+ 485 072c 8F020000 		.word	655
+ 486 0730 7F020000 		.word	639
+ 487 0734 6F020000 		.word	623
+ 488 0738 5E020000 		.word	606
+ 489 073c 4E020000 		.word	590
+ 490 0740 3D020000 		.word	573
+ 491 0744 2D020000 		.word	557
+ 492 0748 1D020000 		.word	541
+ 493 074c 0C020000 		.word	524
+ 494 0750 FC010000 		.word	508
+ 495 0754 EB010000 		.word	491
+ 496 0758 DB010000 		.word	475
+ 497 075c CB010000 		.word	459
+ 498 0760 BA010000 		.word	442
+ 499 0764 AA010000 		.word	426
+ 500 0768 99010000 		.word	409
+ 501 076c 89010000 		.word	393
+ 502 0770 79010000 		.word	377
+ 503 0774 68010000 		.word	360
+ 504 0778 58010000 		.word	344
+ 505 077c 47010000 		.word	327
+ 506 0780 37010000 		.word	311
+ 507 0784 27010000 		.word	295
+ 508 0788 16010000 		.word	278
+ 509 078c 06010000 		.word	262
+ 510 0790 F5000000 		.word	245
+ 511 0794 E5000000 		.word	229
+ 512 0798 D5000000 		.word	213
+ 513 079c C4000000 		.word	196
+ARM GAS  C:\Users\eduar\AppData\Local\Temp\ccN7CLzG.s 			page 10
+
+
+ 514 07a0 B4000000 		.word	180
+ 515 07a4 A3000000 		.word	163
+ 516 07a8 93000000 		.word	147
+ 517 07ac 83000000 		.word	131
+ 518 07b0 72000000 		.word	114
+ 519 07b4 62000000 		.word	98
+ 520 07b8 51000000 		.word	81
+ 521 07bc 41000000 		.word	65
+ 522 07c0 31000000 		.word	49
+ 523 07c4 20000000 		.word	32
+ 524 07c8 10000000 		.word	16
+ 525 07cc 00000000 		.word	0
+ 526              		.text
+ 527              	.Letext0:
+ 528              		.file 1 "c:\\program files (x86)\\cypress\\psoc creator\\4.4\\psoc creator\\import\\gnu\\arm\\5.4.
+ 529              		.file 2 "c:\\program files (x86)\\cypress\\psoc creator\\4.4\\psoc creator\\import\\gnu\\arm\\5.4.
+ 530              		.file 3 "Generated_Source\\PSoC6\\pdl\\drivers/peripheral/device/cy_device.h"
+ 531              		.file 4 "Generated_Source\\PSoC6\\pdl\\drivers/peripheral/ctb/cy_ctb.h"
+ 532              		.file 5 "Generated_Source\\PSoC6\\pdl\\drivers/peripheral/sysclk/cy_sysclk.h"
+ 533              		.file 6 "Generated_Source\\PSoC6\\pdl\\drivers/peripheral/ctdac/cy_ctdac.h"
+ 534              		.file 7 "Generated_Source\\PSoC6\\pdl\\drivers/peripheral/sar/cy_sar.h"
+ 535              		.file 8 "Generated_Source\\PSoC6\\pdl\\drivers/peripheral/scb/cy_scb_uart.h"
+ 536              		.file 9 "Generated_Source\\PSoC6\\pdl\\drivers/peripheral/tcpwm/cy_tcpwm_counter.h"
+ 537              		.file 10 "Generated_Source\\PSoC6/ADC.h"
+ 538              		.file 11 "Generated_Source\\PSoC6\\pdl\\cmsis/include/core_cm4.h"
+ 539              		.file 12 "Generated_Source\\PSoC6/UART.h"
+ 540              		.file 13 "Generated_Source\\PSoC6/DAC.h"
+ 541              		.file 14 "Generated_Source\\PSoC6/Stopwatch.h"
+ 542              		.file 15 "psoc6_dut_src\\trainingData.c"
+ 543              		.section	.debug_info,"",%progbits
+ 544              	.Ldebug_info0:
+ 545 0000 810D0000 		.4byte	0xd81
+ 546 0004 0400     		.2byte	0x4
+ 547 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 548 000a 04       		.byte	0x4
+ 549 000b 01       		.uleb128 0x1
+ 550 000c 8E020000 		.4byte	.LASF275
+ 551 0010 0C       		.byte	0xc
+ 552 0011 7D0A0000 		.4byte	.LASF276
+ 553 0015 3D100000 		.4byte	.LASF277
+ 554 0019 00000000 		.4byte	.Ldebug_line0
+ 555 001d 02       		.uleb128 0x2
+ 556 001e 02       		.byte	0x2
+ 557 001f 05       		.byte	0x5
+ 558 0020 A60C0000 		.4byte	.LASF0
+ 559 0024 02       		.uleb128 0x2
+ 560 0025 01       		.byte	0x1
+ 561 0026 06       		.byte	0x6
+ 562 0027 46110000 		.4byte	.LASF1
+ 563 002b 03       		.uleb128 0x3
+ 564 002c EE0D0000 		.4byte	.LASF3
+ 565 0030 01       		.byte	0x1
+ 566 0031 1D       		.byte	0x1d
+ 567 0032 36000000 		.4byte	0x36
+ 568 0036 02       		.uleb128 0x2
+ 569 0037 01       		.byte	0x1
+ 570 0038 08       		.byte	0x8
+ARM GAS  C:\Users\eduar\AppData\Local\Temp\ccN7CLzG.s 			page 11
+
+
+ 571 0039 600F0000 		.4byte	.LASF2
+ 572 003d 03       		.uleb128 0x3
+ 573 003e 0A0A0000 		.4byte	.LASF4
+ 574 0042 01       		.byte	0x1
+ 575 0043 29       		.byte	0x29
+ 576 0044 1D000000 		.4byte	0x1d
+ 577 0048 03       		.uleb128 0x3
+ 578 0049 CC050000 		.4byte	.LASF5
+ 579 004d 01       		.byte	0x1
+ 580 004e 2B       		.byte	0x2b
+ 581 004f 53000000 		.4byte	0x53
+ 582 0053 02       		.uleb128 0x2
+ 583 0054 02       		.byte	0x2
+ 584 0055 07       		.byte	0x7
+ 585 0056 790B0000 		.4byte	.LASF6
+ 586 005a 03       		.uleb128 0x3
+ 587 005b 60010000 		.4byte	.LASF7
+ 588 005f 01       		.byte	0x1
+ 589 0060 3F       		.byte	0x3f
+ 590 0061 65000000 		.4byte	0x65
+ 591 0065 02       		.uleb128 0x2
+ 592 0066 04       		.byte	0x4
+ 593 0067 05       		.byte	0x5
+ 594 0068 250D0000 		.4byte	.LASF8
+ 595 006c 03       		.uleb128 0x3
+ 596 006d EB0B0000 		.4byte	.LASF9
+ 597 0071 01       		.byte	0x1
+ 598 0072 41       		.byte	0x41
+ 599 0073 77000000 		.4byte	0x77
+ 600 0077 02       		.uleb128 0x2
+ 601 0078 04       		.byte	0x4
+ 602 0079 07       		.byte	0x7
+ 603 007a E00E0000 		.4byte	.LASF10
+ 604 007e 02       		.uleb128 0x2
+ 605 007f 08       		.byte	0x8
+ 606 0080 05       		.byte	0x5
+ 607 0081 A0090000 		.4byte	.LASF11
+ 608 0085 02       		.uleb128 0x2
+ 609 0086 08       		.byte	0x8
+ 610 0087 07       		.byte	0x7
+ 611 0088 2A050000 		.4byte	.LASF12
+ 612 008c 04       		.uleb128 0x4
+ 613 008d 04       		.byte	0x4
+ 614 008e 05       		.byte	0x5
+ 615 008f 696E7400 		.ascii	"int\000"
+ 616 0093 02       		.uleb128 0x2
+ 617 0094 04       		.byte	0x4
+ 618 0095 07       		.byte	0x7
+ 619 0096 BC080000 		.4byte	.LASF13
+ 620 009a 03       		.uleb128 0x3
+ 621 009b EC080000 		.4byte	.LASF14
+ 622 009f 02       		.byte	0x2
+ 623 00a0 18       		.byte	0x18
+ 624 00a1 2B000000 		.4byte	0x2b
+ 625 00a5 03       		.uleb128 0x3
+ 626 00a6 E2040000 		.4byte	.LASF15
+ 627 00aa 02       		.byte	0x2
+ARM GAS  C:\Users\eduar\AppData\Local\Temp\ccN7CLzG.s 			page 12
+
+
+ 628 00ab 20       		.byte	0x20
+ 629 00ac 3D000000 		.4byte	0x3d
+ 630 00b0 03       		.uleb128 0x3
+ 631 00b1 570F0000 		.4byte	.LASF16
+ 632 00b5 02       		.byte	0x2
+ 633 00b6 24       		.byte	0x24
+ 634 00b7 48000000 		.4byte	0x48
+ 635 00bb 03       		.uleb128 0x3
+ 636 00bc FE0E0000 		.4byte	.LASF17
+ 637 00c0 02       		.byte	0x2
+ 638 00c1 2C       		.byte	0x2c
+ 639 00c2 5A000000 		.4byte	0x5a
+ 640 00c6 03       		.uleb128 0x3
+ 641 00c7 13040000 		.4byte	.LASF18
+ 642 00cb 02       		.byte	0x2
+ 643 00cc 30       		.byte	0x30
+ 644 00cd 6C000000 		.4byte	0x6c
+ 645 00d1 02       		.uleb128 0x2
+ 646 00d2 04       		.byte	0x4
+ 647 00d3 07       		.byte	0x7
+ 648 00d4 650C0000 		.4byte	.LASF19
+ 649 00d8 05       		.uleb128 0x5
+ 650 00d9 C6000000 		.4byte	0xc6
+ 651 00dd 02       		.uleb128 0x2
+ 652 00de 08       		.byte	0x8
+ 653 00df 04       		.byte	0x4
+ 654 00e0 960B0000 		.4byte	.LASF20
+ 655 00e4 06       		.uleb128 0x6
+ 656 00e5 B8       		.byte	0xb8
+ 657 00e6 03       		.byte	0x3
+ 658 00e7 34       		.byte	0x34
+ 659 00e8 F5040000 		.4byte	0x4f5
+ 660 00ec 07       		.uleb128 0x7
+ 661 00ed 6A010000 		.4byte	.LASF21
+ 662 00f1 03       		.byte	0x3
+ 663 00f2 37       		.byte	0x37
+ 664 00f3 C6000000 		.4byte	0xc6
+ 665 00f7 00       		.byte	0
+ 666 00f8 07       		.uleb128 0x7
+ 667 00f9 D7040000 		.4byte	.LASF22
+ 668 00fd 03       		.byte	0x3
+ 669 00fe 38       		.byte	0x38
+ 670 00ff C6000000 		.4byte	0xc6
+ 671 0103 04       		.byte	0x4
+ 672 0104 07       		.uleb128 0x7
+ 673 0105 CD000000 		.4byte	.LASF23
+ 674 0109 03       		.byte	0x3
+ 675 010a 39       		.byte	0x39
+ 676 010b C6000000 		.4byte	0xc6
+ 677 010f 08       		.byte	0x8
+ 678 0110 07       		.uleb128 0x7
+ 679 0111 A8000000 		.4byte	.LASF24
+ 680 0115 03       		.byte	0x3
+ 681 0116 3A       		.byte	0x3a
+ 682 0117 C6000000 		.4byte	0xc6
+ 683 011b 0C       		.byte	0xc
+ 684 011c 07       		.uleb128 0x7
+ARM GAS  C:\Users\eduar\AppData\Local\Temp\ccN7CLzG.s 			page 13
+
+
+ 685 011d BB0B0000 		.4byte	.LASF25
+ 686 0121 03       		.byte	0x3
+ 687 0122 3B       		.byte	0x3b
+ 688 0123 C6000000 		.4byte	0xc6
+ 689 0127 10       		.byte	0x10
+ 690 0128 07       		.uleb128 0x7
+ 691 0129 140A0000 		.4byte	.LASF26
+ 692 012d 03       		.byte	0x3
+ 693 012e 3C       		.byte	0x3c
+ 694 012f C6000000 		.4byte	0xc6
+ 695 0133 14       		.byte	0x14
+ 696 0134 07       		.uleb128 0x7
+ 697 0135 4B070000 		.4byte	.LASF27
+ 698 0139 03       		.byte	0x3
+ 699 013a 3D       		.byte	0x3d
+ 700 013b C6000000 		.4byte	0xc6
+ 701 013f 18       		.byte	0x18
+ 702 0140 07       		.uleb128 0x7
+ 703 0141 28120000 		.4byte	.LASF28
+ 704 0145 03       		.byte	0x3
+ 705 0146 3E       		.byte	0x3e
+ 706 0147 C6000000 		.4byte	0xc6
+ 707 014b 1C       		.byte	0x1c
+ 708 014c 07       		.uleb128 0x7
+ 709 014d AE090000 		.4byte	.LASF29
+ 710 0151 03       		.byte	0x3
+ 711 0152 3F       		.byte	0x3f
+ 712 0153 C6000000 		.4byte	0xc6
+ 713 0157 20       		.byte	0x20
+ 714 0158 07       		.uleb128 0x7
+ 715 0159 C5090000 		.4byte	.LASF30
+ 716 015d 03       		.byte	0x3
+ 717 015e 40       		.byte	0x40
+ 718 015f C6000000 		.4byte	0xc6
+ 719 0163 24       		.byte	0x24
+ 720 0164 07       		.uleb128 0x7
+ 721 0165 2E0D0000 		.4byte	.LASF31
+ 722 0169 03       		.byte	0x3
+ 723 016a 43       		.byte	0x43
+ 724 016b 9A000000 		.4byte	0x9a
+ 725 016f 28       		.byte	0x28
+ 726 0170 07       		.uleb128 0x7
+ 727 0171 52040000 		.4byte	.LASF32
+ 728 0175 03       		.byte	0x3
+ 729 0176 44       		.byte	0x44
+ 730 0177 9A000000 		.4byte	0x9a
+ 731 017b 29       		.byte	0x29
+ 732 017c 07       		.uleb128 0x7
+ 733 017d 370C0000 		.4byte	.LASF33
+ 734 0181 03       		.byte	0x3
+ 735 0182 45       		.byte	0x45
+ 736 0183 9A000000 		.4byte	0x9a
+ 737 0187 2A       		.byte	0x2a
+ 738 0188 07       		.uleb128 0x7
+ 739 0189 6A0D0000 		.4byte	.LASF34
+ 740 018d 03       		.byte	0x3
+ 741 018e 46       		.byte	0x46
+ARM GAS  C:\Users\eduar\AppData\Local\Temp\ccN7CLzG.s 			page 14
+
+
+ 742 018f 9A000000 		.4byte	0x9a
+ 743 0193 2B       		.byte	0x2b
+ 744 0194 07       		.uleb128 0x7
+ 745 0195 570D0000 		.4byte	.LASF35
+ 746 0199 03       		.byte	0x3
+ 747 019a 47       		.byte	0x47
+ 748 019b 9A000000 		.4byte	0x9a
+ 749 019f 2C       		.byte	0x2c
+ 750 01a0 07       		.uleb128 0x7
+ 751 01a1 B60E0000 		.4byte	.LASF36
+ 752 01a5 03       		.byte	0x3
+ 753 01a6 48       		.byte	0x48
+ 754 01a7 9A000000 		.4byte	0x9a
+ 755 01ab 2D       		.byte	0x2d
+ 756 01ac 07       		.uleb128 0x7
+ 757 01ad A2120000 		.4byte	.LASF37
+ 758 01b1 03       		.byte	0x3
+ 759 01b2 49       		.byte	0x49
+ 760 01b3 9A000000 		.4byte	0x9a
+ 761 01b7 2E       		.byte	0x2e
+ 762 01b8 07       		.uleb128 0x7
+ 763 01b9 F5110000 		.4byte	.LASF38
+ 764 01bd 03       		.byte	0x3
+ 765 01be 4A       		.byte	0x4a
+ 766 01bf 9A000000 		.4byte	0x9a
+ 767 01c3 2F       		.byte	0x2f
+ 768 01c4 07       		.uleb128 0x7
+ 769 01c5 41030000 		.4byte	.LASF39
+ 770 01c9 03       		.byte	0x3
+ 771 01ca 4B       		.byte	0x4b
+ 772 01cb 9A000000 		.4byte	0x9a
+ 773 01cf 30       		.byte	0x30
+ 774 01d0 07       		.uleb128 0x7
+ 775 01d1 A40A0000 		.4byte	.LASF40
+ 776 01d5 03       		.byte	0x3
+ 777 01d6 4E       		.byte	0x4e
+ 778 01d7 9A000000 		.4byte	0x9a
+ 779 01db 31       		.byte	0x31
+ 780 01dc 07       		.uleb128 0x7
+ 781 01dd 64110000 		.4byte	.LASF41
+ 782 01e1 03       		.byte	0x3
+ 783 01e2 4F       		.byte	0x4f
+ 784 01e3 9A000000 		.4byte	0x9a
+ 785 01e7 32       		.byte	0x32
+ 786 01e8 07       		.uleb128 0x7
+ 787 01e9 500A0000 		.4byte	.LASF42
+ 788 01ed 03       		.byte	0x3
+ 789 01ee 50       		.byte	0x50
+ 790 01ef 9A000000 		.4byte	0x9a
+ 791 01f3 33       		.byte	0x33
+ 792 01f4 07       		.uleb128 0x7
+ 793 01f5 FB070000 		.4byte	.LASF43
+ 794 01f9 03       		.byte	0x3
+ 795 01fa 51       		.byte	0x51
+ 796 01fb 9A000000 		.4byte	0x9a
+ 797 01ff 34       		.byte	0x34
+ 798 0200 07       		.uleb128 0x7
+ARM GAS  C:\Users\eduar\AppData\Local\Temp\ccN7CLzG.s 			page 15
+
+
+ 799 0201 6A050000 		.4byte	.LASF44
+ 800 0205 03       		.byte	0x3
+ 801 0206 52       		.byte	0x52
+ 802 0207 A5000000 		.4byte	0xa5
+ 803 020b 36       		.byte	0x36
+ 804 020c 07       		.uleb128 0x7
+ 805 020d 80010000 		.4byte	.LASF45
+ 806 0211 03       		.byte	0x3
+ 807 0212 53       		.byte	0x53
+ 808 0213 A5000000 		.4byte	0xa5
+ 809 0217 38       		.byte	0x38
+ 810 0218 07       		.uleb128 0x7
+ 811 0219 2D0A0000 		.4byte	.LASF46
+ 812 021d 03       		.byte	0x3
+ 813 021e 54       		.byte	0x54
+ 814 021f A5000000 		.4byte	0xa5
+ 815 0223 3A       		.byte	0x3a
+ 816 0224 07       		.uleb128 0x7
+ 817 0225 47120000 		.4byte	.LASF47
+ 818 0229 03       		.byte	0x3
+ 819 022a 55       		.byte	0x55
+ 820 022b 9A000000 		.4byte	0x9a
+ 821 022f 3C       		.byte	0x3c
+ 822 0230 07       		.uleb128 0x7
+ 823 0231 9F060000 		.4byte	.LASF48
+ 824 0235 03       		.byte	0x3
+ 825 0236 56       		.byte	0x56
+ 826 0237 9A000000 		.4byte	0x9a
+ 827 023b 3D       		.byte	0x3d
+ 828 023c 07       		.uleb128 0x7
+ 829 023d F60B0000 		.4byte	.LASF49
+ 830 0241 03       		.byte	0x3
+ 831 0242 57       		.byte	0x57
+ 832 0243 9A000000 		.4byte	0x9a
+ 833 0247 3E       		.byte	0x3e
+ 834 0248 07       		.uleb128 0x7
+ 835 0249 6B000000 		.4byte	.LASF50
+ 836 024d 03       		.byte	0x3
+ 837 024e 58       		.byte	0x58
+ 838 024f 9A000000 		.4byte	0x9a
+ 839 0253 3F       		.byte	0x3f
+ 840 0254 07       		.uleb128 0x7
+ 841 0255 00010000 		.4byte	.LASF51
+ 842 0259 03       		.byte	0x3
+ 843 025a 59       		.byte	0x59
+ 844 025b 9A000000 		.4byte	0x9a
+ 845 025f 40       		.byte	0x40
+ 846 0260 07       		.uleb128 0x7
+ 847 0261 180E0000 		.4byte	.LASF52
+ 848 0265 03       		.byte	0x3
+ 849 0266 5A       		.byte	0x5a
+ 850 0267 9A000000 		.4byte	0x9a
+ 851 026b 41       		.byte	0x41
+ 852 026c 07       		.uleb128 0x7
+ 853 026d 12110000 		.4byte	.LASF53
+ 854 0271 03       		.byte	0x3
+ 855 0272 5B       		.byte	0x5b
+ARM GAS  C:\Users\eduar\AppData\Local\Temp\ccN7CLzG.s 			page 16
+
+
+ 856 0273 9A000000 		.4byte	0x9a
+ 857 0277 42       		.byte	0x42
+ 858 0278 07       		.uleb128 0x7
+ 859 0279 C3070000 		.4byte	.LASF54
+ 860 027d 03       		.byte	0x3
+ 861 027e 5C       		.byte	0x5c
+ 862 027f 9A000000 		.4byte	0x9a
+ 863 0283 43       		.byte	0x43
+ 864 0284 07       		.uleb128 0x7
+ 865 0285 83080000 		.4byte	.LASF55
+ 866 0289 03       		.byte	0x3
+ 867 028a 5D       		.byte	0x5d
+ 868 028b 9A000000 		.4byte	0x9a
+ 869 028f 44       		.byte	0x44
+ 870 0290 07       		.uleb128 0x7
+ 871 0291 780D0000 		.4byte	.LASF56
+ 872 0295 03       		.byte	0x3
+ 873 0296 5E       		.byte	0x5e
+ 874 0297 C6000000 		.4byte	0xc6
+ 875 029b 48       		.byte	0x48
+ 876 029c 07       		.uleb128 0x7
+ 877 029d 37020000 		.4byte	.LASF57
+ 878 02a1 03       		.byte	0x3
+ 879 02a2 5F       		.byte	0x5f
+ 880 02a3 C6000000 		.4byte	0xc6
+ 881 02a7 4C       		.byte	0x4c
+ 882 02a8 07       		.uleb128 0x7
+ 883 02a9 CF100000 		.4byte	.LASF58
+ 884 02ad 03       		.byte	0x3
+ 885 02ae 60       		.byte	0x60
+ 886 02af 9A000000 		.4byte	0x9a
+ 887 02b3 50       		.byte	0x50
+ 888 02b4 07       		.uleb128 0x7
+ 889 02b5 AA060000 		.4byte	.LASF59
+ 890 02b9 03       		.byte	0x3
+ 891 02ba 61       		.byte	0x61
+ 892 02bb 9A000000 		.4byte	0x9a
+ 893 02bf 51       		.byte	0x51
+ 894 02c0 07       		.uleb128 0x7
+ 895 02c1 DF090000 		.4byte	.LASF60
+ 896 02c5 03       		.byte	0x3
+ 897 02c6 62       		.byte	0x62
+ 898 02c7 9A000000 		.4byte	0x9a
+ 899 02cb 52       		.byte	0x52
+ 900 02cc 07       		.uleb128 0x7
+ 901 02cd 7A040000 		.4byte	.LASF61
+ 902 02d1 03       		.byte	0x3
+ 903 02d2 63       		.byte	0x63
+ 904 02d3 9A000000 		.4byte	0x9a
+ 905 02d7 53       		.byte	0x53
+ 906 02d8 07       		.uleb128 0x7
+ 907 02d9 0D100000 		.4byte	.LASF62
+ 908 02dd 03       		.byte	0x3
+ 909 02de 64       		.byte	0x64
+ 910 02df 9A000000 		.4byte	0x9a
+ 911 02e3 54       		.byte	0x54
+ 912 02e4 07       		.uleb128 0x7
+ARM GAS  C:\Users\eduar\AppData\Local\Temp\ccN7CLzG.s 			page 17
+
+
+ 913 02e5 26070000 		.4byte	.LASF63
+ 914 02e9 03       		.byte	0x3
+ 915 02ea 65       		.byte	0x65
+ 916 02eb 9A000000 		.4byte	0x9a
+ 917 02ef 55       		.byte	0x55
+ 918 02f0 07       		.uleb128 0x7
+ 919 02f1 00000000 		.4byte	.LASF64
+ 920 02f5 03       		.byte	0x3
+ 921 02f6 66       		.byte	0x66
+ 922 02f7 9A000000 		.4byte	0x9a
+ 923 02fb 56       		.byte	0x56
+ 924 02fc 07       		.uleb128 0x7
+ 925 02fd 410C0000 		.4byte	.LASF65
+ 926 0301 03       		.byte	0x3
+ 927 0302 67       		.byte	0x67
+ 928 0303 9A000000 		.4byte	0x9a
+ 929 0307 57       		.byte	0x57
+ 930 0308 07       		.uleb128 0x7
+ 931 0309 6F060000 		.4byte	.LASF66
+ 932 030d 03       		.byte	0x3
+ 933 030e 68       		.byte	0x68
+ 934 030f 9A000000 		.4byte	0x9a
+ 935 0313 58       		.byte	0x58
+ 936 0314 07       		.uleb128 0x7
+ 937 0315 56120000 		.4byte	.LASF67
+ 938 0319 03       		.byte	0x3
+ 939 031a 69       		.byte	0x69
+ 940 031b 9A000000 		.4byte	0x9a
+ 941 031f 59       		.byte	0x59
+ 942 0320 07       		.uleb128 0x7
+ 943 0321 59110000 		.4byte	.LASF68
+ 944 0325 03       		.byte	0x3
+ 945 0326 6E       		.byte	0x6e
+ 946 0327 B0000000 		.4byte	0xb0
+ 947 032b 5A       		.byte	0x5a
+ 948 032c 07       		.uleb128 0x7
+ 949 032d EB000000 		.4byte	.LASF69
+ 950 0331 03       		.byte	0x3
+ 951 0332 6F       		.byte	0x6f
+ 952 0333 B0000000 		.4byte	0xb0
+ 953 0337 5C       		.byte	0x5c
+ 954 0338 07       		.uleb128 0x7
+ 955 0339 B6090000 		.4byte	.LASF70
+ 956 033d 03       		.byte	0x3
+ 957 033e 70       		.byte	0x70
+ 958 033f 9A000000 		.4byte	0x9a
+ 959 0343 5E       		.byte	0x5e
+ 960 0344 07       		.uleb128 0x7
+ 961 0345 8E110000 		.4byte	.LASF71
+ 962 0349 03       		.byte	0x3
+ 963 034a 71       		.byte	0x71
+ 964 034b 9A000000 		.4byte	0x9a
+ 965 034f 5F       		.byte	0x5f
+ 966 0350 07       		.uleb128 0x7
+ 967 0351 CE070000 		.4byte	.LASF72
+ 968 0355 03       		.byte	0x3
+ 969 0356 72       		.byte	0x72
+ARM GAS  C:\Users\eduar\AppData\Local\Temp\ccN7CLzG.s 			page 18
+
+
+ 970 0357 9A000000 		.4byte	0x9a
+ 971 035b 60       		.byte	0x60
+ 972 035c 07       		.uleb128 0x7
+ 973 035d 3A070000 		.4byte	.LASF73
+ 974 0361 03       		.byte	0x3
+ 975 0362 73       		.byte	0x73
+ 976 0363 C6000000 		.4byte	0xc6
+ 977 0367 64       		.byte	0x64
+ 978 0368 07       		.uleb128 0x7
+ 979 0369 550C0000 		.4byte	.LASF74
+ 980 036d 03       		.byte	0x3
+ 981 036e 76       		.byte	0x76
+ 982 036f B0000000 		.4byte	0xb0
+ 983 0373 68       		.byte	0x68
+ 984 0374 07       		.uleb128 0x7
+ 985 0375 CC0B0000 		.4byte	.LASF75
+ 986 0379 03       		.byte	0x3
+ 987 037a 77       		.byte	0x77
+ 988 037b B0000000 		.4byte	0xb0
+ 989 037f 6A       		.byte	0x6a
+ 990 0380 07       		.uleb128 0x7
+ 991 0381 1E0A0000 		.4byte	.LASF76
+ 992 0385 03       		.byte	0x3
+ 993 0386 78       		.byte	0x78
+ 994 0387 B0000000 		.4byte	0xb0
+ 995 038b 6C       		.byte	0x6c
+ 996 038c 07       		.uleb128 0x7
+ 997 038d 0A020000 		.4byte	.LASF77
+ 998 0391 03       		.byte	0x3
+ 999 0392 79       		.byte	0x79
+ 1000 0393 B0000000 		.4byte	0xb0
+ 1001 0397 6E       		.byte	0x6e
+ 1002 0398 07       		.uleb128 0x7
+ 1003 0399 0D090000 		.4byte	.LASF78
+ 1004 039d 03       		.byte	0x3
+ 1005 039e 7B       		.byte	0x7b
+ 1006 039f 9A000000 		.4byte	0x9a
+ 1007 03a3 70       		.byte	0x70
+ 1008 03a4 07       		.uleb128 0x7
+ 1009 03a5 84030000 		.4byte	.LASF79
+ 1010 03a9 03       		.byte	0x3
+ 1011 03aa 7C       		.byte	0x7c
+ 1012 03ab 9A000000 		.4byte	0x9a
+ 1013 03af 71       		.byte	0x71
+ 1014 03b0 07       		.uleb128 0x7
+ 1015 03b1 17020000 		.4byte	.LASF80
+ 1016 03b5 03       		.byte	0x3
+ 1017 03b6 7D       		.byte	0x7d
+ 1018 03b7 9A000000 		.4byte	0x9a
+ 1019 03bb 72       		.byte	0x72
+ 1020 03bc 07       		.uleb128 0x7
+ 1021 03bd 27010000 		.4byte	.LASF81
+ 1022 03c1 03       		.byte	0x3
+ 1023 03c2 7E       		.byte	0x7e
+ 1024 03c3 9A000000 		.4byte	0x9a
+ 1025 03c7 73       		.byte	0x73
+ 1026 03c8 07       		.uleb128 0x7
+ARM GAS  C:\Users\eduar\AppData\Local\Temp\ccN7CLzG.s 			page 19
+
+
+ 1027 03c9 940C0000 		.4byte	.LASF82
+ 1028 03cd 03       		.byte	0x3
+ 1029 03ce 80       		.byte	0x80
+ 1030 03cf B0000000 		.4byte	0xb0
+ 1031 03d3 74       		.byte	0x74
+ 1032 03d4 07       		.uleb128 0x7
+ 1033 03d5 4A0B0000 		.4byte	.LASF83
+ 1034 03d9 03       		.byte	0x3
+ 1035 03da 81       		.byte	0x81
+ 1036 03db B0000000 		.4byte	0xb0
+ 1037 03df 76       		.byte	0x76
+ 1038 03e0 07       		.uleb128 0x7
+ 1039 03e1 62080000 		.4byte	.LASF84
+ 1040 03e5 03       		.byte	0x3
+ 1041 03e6 82       		.byte	0x82
+ 1042 03e7 B0000000 		.4byte	0xb0
+ 1043 03eb 78       		.byte	0x78
+ 1044 03ec 07       		.uleb128 0x7
+ 1045 03ed 41050000 		.4byte	.LASF85
+ 1046 03f1 03       		.byte	0x3
+ 1047 03f2 83       		.byte	0x83
+ 1048 03f3 B0000000 		.4byte	0xb0
+ 1049 03f7 7A       		.byte	0x7a
+ 1050 03f8 07       		.uleb128 0x7
+ 1051 03f9 030E0000 		.4byte	.LASF86
+ 1052 03fd 03       		.byte	0x3
+ 1053 03fe 86       		.byte	0x86
+ 1054 03ff 9A000000 		.4byte	0x9a
+ 1055 0403 7C       		.byte	0x7c
+ 1056 0404 07       		.uleb128 0x7
+ 1057 0405 EB100000 		.4byte	.LASF87
+ 1058 0409 03       		.byte	0x3
+ 1059 040a 87       		.byte	0x87
+ 1060 040b 9A000000 		.4byte	0x9a
+ 1061 040f 7D       		.byte	0x7d
+ 1062 0410 07       		.uleb128 0x7
+ 1063 0411 F2040000 		.4byte	.LASF88
+ 1064 0415 03       		.byte	0x3
+ 1065 0416 88       		.byte	0x88
+ 1066 0417 9A000000 		.4byte	0x9a
+ 1067 041b 7E       		.byte	0x7e
+ 1068 041c 07       		.uleb128 0x7
+ 1069 041d 1C040000 		.4byte	.LASF89
+ 1070 0421 03       		.byte	0x3
+ 1071 0422 89       		.byte	0x89
+ 1072 0423 9A000000 		.4byte	0x9a
+ 1073 0427 7F       		.byte	0x7f
+ 1074 0428 07       		.uleb128 0x7
+ 1075 0429 56050000 		.4byte	.LASF90
+ 1076 042d 03       		.byte	0x3
+ 1077 042e 8A       		.byte	0x8a
+ 1078 042f 9A000000 		.4byte	0x9a
+ 1079 0433 80       		.byte	0x80
+ 1080 0434 07       		.uleb128 0x7
+ 1081 0435 54000000 		.4byte	.LASF91
+ 1082 0439 03       		.byte	0x3
+ 1083 043a 8D       		.byte	0x8d
+ARM GAS  C:\Users\eduar\AppData\Local\Temp\ccN7CLzG.s 			page 20
+
+
+ 1084 043b C6000000 		.4byte	0xc6
+ 1085 043f 84       		.byte	0x84
+ 1086 0440 07       		.uleb128 0x7
+ 1087 0441 5A0E0000 		.4byte	.LASF92
+ 1088 0445 03       		.byte	0x3
+ 1089 0446 8E       		.byte	0x8e
+ 1090 0447 C6000000 		.4byte	0xc6
+ 1091 044b 88       		.byte	0x88
+ 1092 044c 07       		.uleb128 0x7
+ 1093 044d AF0A0000 		.4byte	.LASF93
+ 1094 0451 03       		.byte	0x3
+ 1095 0452 8F       		.byte	0x8f
+ 1096 0453 C6000000 		.4byte	0xc6
+ 1097 0457 8C       		.byte	0x8c
+ 1098 0458 07       		.uleb128 0x7
+ 1099 0459 370F0000 		.4byte	.LASF94
+ 1100 045d 03       		.byte	0x3
+ 1101 045e 90       		.byte	0x90
+ 1102 045f C6000000 		.4byte	0xc6
+ 1103 0463 90       		.byte	0x90
+ 1104 0464 07       		.uleb128 0x7
+ 1105 0465 D90D0000 		.4byte	.LASF95
+ 1106 0469 03       		.byte	0x3
+ 1107 046a 91       		.byte	0x91
+ 1108 046b C6000000 		.4byte	0xc6
+ 1109 046f 94       		.byte	0x94
+ 1110 0470 07       		.uleb128 0x7
+ 1111 0471 99030000 		.4byte	.LASF96
+ 1112 0475 03       		.byte	0x3
+ 1113 0476 92       		.byte	0x92
+ 1114 0477 C6000000 		.4byte	0xc6
+ 1115 047b 98       		.byte	0x98
+ 1116 047c 07       		.uleb128 0x7
+ 1117 047d 930E0000 		.4byte	.LASF97
+ 1118 0481 03       		.byte	0x3
+ 1119 0482 93       		.byte	0x93
+ 1120 0483 C6000000 		.4byte	0xc6
+ 1121 0487 9C       		.byte	0x9c
+ 1122 0488 07       		.uleb128 0x7
+ 1123 0489 AD070000 		.4byte	.LASF98
+ 1124 048d 03       		.byte	0x3
+ 1125 048e 94       		.byte	0x94
+ 1126 048f C6000000 		.4byte	0xc6
+ 1127 0493 A0       		.byte	0xa0
+ 1128 0494 07       		.uleb128 0x7
+ 1129 0495 D6000000 		.4byte	.LASF99
+ 1130 0499 03       		.byte	0x3
+ 1131 049a 95       		.byte	0x95
+ 1132 049b B0000000 		.4byte	0xb0
+ 1133 049f A4       		.byte	0xa4
+ 1134 04a0 07       		.uleb128 0x7
+ 1135 04a1 6E0C0000 		.4byte	.LASF100
+ 1136 04a5 03       		.byte	0x3
+ 1137 04a6 96       		.byte	0x96
+ 1138 04a7 B0000000 		.4byte	0xb0
+ 1139 04ab A6       		.byte	0xa6
+ 1140 04ac 07       		.uleb128 0x7
+ARM GAS  C:\Users\eduar\AppData\Local\Temp\ccN7CLzG.s 			page 21
+
+
+ 1141 04ad F20E0000 		.4byte	.LASF101
+ 1142 04b1 03       		.byte	0x3
+ 1143 04b2 97       		.byte	0x97
+ 1144 04b3 B0000000 		.4byte	0xb0
+ 1145 04b7 A8       		.byte	0xa8
+ 1146 04b8 07       		.uleb128 0x7
+ 1147 04b9 7E090000 		.4byte	.LASF102
+ 1148 04bd 03       		.byte	0x3
+ 1149 04be 98       		.byte	0x98
+ 1150 04bf B0000000 		.4byte	0xb0
+ 1151 04c3 AA       		.byte	0xaa
+ 1152 04c4 07       		.uleb128 0x7
+ 1153 04c5 51020000 		.4byte	.LASF103
+ 1154 04c9 03       		.byte	0x3
+ 1155 04ca 99       		.byte	0x99
+ 1156 04cb B0000000 		.4byte	0xb0
+ 1157 04cf AC       		.byte	0xac
+ 1158 04d0 07       		.uleb128 0x7
+ 1159 04d1 DC0A0000 		.4byte	.LASF104
+ 1160 04d5 03       		.byte	0x3
+ 1161 04d6 9A       		.byte	0x9a
+ 1162 04d7 B0000000 		.4byte	0xb0
+ 1163 04db AE       		.byte	0xae
+ 1164 04dc 07       		.uleb128 0x7
+ 1165 04dd 5F020000 		.4byte	.LASF105
+ 1166 04e1 03       		.byte	0x3
+ 1167 04e2 9D       		.byte	0x9d
+ 1168 04e3 B0000000 		.4byte	0xb0
+ 1169 04e7 B0       		.byte	0xb0
+ 1170 04e8 07       		.uleb128 0x7
+ 1171 04e9 8C0F0000 		.4byte	.LASF106
+ 1172 04ed 03       		.byte	0x3
+ 1173 04ee 9E       		.byte	0x9e
+ 1174 04ef C6000000 		.4byte	0xc6
+ 1175 04f3 B4       		.byte	0xb4
+ 1176 04f4 00       		.byte	0
+ 1177 04f5 03       		.uleb128 0x3
+ 1178 04f6 C0030000 		.4byte	.LASF107
+ 1179 04fa 03       		.byte	0x3
+ 1180 04fb 9F       		.byte	0x9f
+ 1181 04fc E4000000 		.4byte	0xe4
+ 1182 0500 02       		.uleb128 0x2
+ 1183 0501 01       		.byte	0x1
+ 1184 0502 08       		.byte	0x8
+ 1185 0503 48080000 		.4byte	.LASF108
+ 1186 0507 02       		.uleb128 0x2
+ 1187 0508 04       		.byte	0x4
+ 1188 0509 04       		.byte	0x4
+ 1189 050a 4C040000 		.4byte	.LASF109
+ 1190 050e 02       		.uleb128 0x2
+ 1191 050f 08       		.byte	0x8
+ 1192 0510 04       		.byte	0x4
+ 1193 0511 C5060000 		.4byte	.LASF110
+ 1194 0515 08       		.uleb128 0x8
+ 1195 0516 04       		.byte	0x4
+ 1196 0517 09       		.uleb128 0x9
+ 1197 0518 04       		.byte	0x4
+ARM GAS  C:\Users\eduar\AppData\Local\Temp\ccN7CLzG.s 			page 22
+
+
+ 1198 0519 93000000 		.4byte	0x93
+ 1199 051d 04       		.byte	0x4
+ 1200 051e C701     		.2byte	0x1c7
+ 1201 0520 34050000 		.4byte	0x534
+ 1202 0524 0A       		.uleb128 0xa
+ 1203 0525 11050000 		.4byte	.LASF111
+ 1204 0529 00       		.byte	0
+ 1205 052a 0B       		.uleb128 0xb
+ 1206 052b A30D0000 		.4byte	.LASF112
+ 1207 052f 00000040 		.4byte	0x40000000
+ 1208 0533 00       		.byte	0
+ 1209 0534 0C       		.uleb128 0xc
+ 1210 0535 9F050000 		.4byte	.LASF113
+ 1211 0539 04       		.byte	0x4
+ 1212 053a CA01     		.2byte	0x1ca
+ 1213 053c 17050000 		.4byte	0x517
+ 1214 0540 09       		.uleb128 0x9
+ 1215 0541 01       		.byte	0x1
+ 1216 0542 36000000 		.4byte	0x36
+ 1217 0546 04       		.byte	0x4
+ 1218 0547 EA01     		.2byte	0x1ea
+ 1219 0549 66050000 		.4byte	0x566
+ 1220 054d 0A       		.uleb128 0xa
+ 1221 054e 260F0000 		.4byte	.LASF114
+ 1222 0552 00       		.byte	0
+ 1223 0553 0A       		.uleb128 0xa
+ 1224 0554 A3040000 		.4byte	.LASF115
+ 1225 0558 01       		.byte	0x1
+ 1226 0559 0A       		.uleb128 0xa
+ 1227 055a CC060000 		.4byte	.LASF116
+ 1228 055e 02       		.byte	0x2
+ 1229 055f 0A       		.uleb128 0xa
+ 1230 0560 21090000 		.4byte	.LASF117
+ 1231 0564 03       		.byte	0x3
+ 1232 0565 00       		.byte	0
+ 1233 0566 0C       		.uleb128 0xc
+ 1234 0567 5D0B0000 		.4byte	.LASF118
+ 1235 056b 04       		.byte	0x4
+ 1236 056c EF01     		.2byte	0x1ef
+ 1237 056e 40050000 		.4byte	0x540
+ 1238 0572 09       		.uleb128 0x9
+ 1239 0573 01       		.byte	0x1
+ 1240 0574 36000000 		.4byte	0x36
+ 1241 0578 04       		.byte	0x4
+ 1242 0579 F501     		.2byte	0x1f5
+ 1243 057b 92050000 		.4byte	0x592
+ 1244 057f 0A       		.uleb128 0xa
+ 1245 0580 8C090000 		.4byte	.LASF119
+ 1246 0584 00       		.byte	0
+ 1247 0585 0A       		.uleb128 0xa
+ 1248 0586 1D100000 		.4byte	.LASF120
+ 1249 058a 08       		.byte	0x8
+ 1250 058b 0A       		.uleb128 0xa
+ 1251 058c D5010000 		.4byte	.LASF121
+ 1252 0590 10       		.byte	0x10
+ 1253 0591 00       		.byte	0
+ 1254 0592 0C       		.uleb128 0xc
+ARM GAS  C:\Users\eduar\AppData\Local\Temp\ccN7CLzG.s 			page 23
+
+
+ 1255 0593 6C0A0000 		.4byte	.LASF122
+ 1256 0597 04       		.byte	0x4
+ 1257 0598 F901     		.2byte	0x1f9
+ 1258 059a 72050000 		.4byte	0x572
+ 1259 059e 09       		.uleb128 0x9
+ 1260 059f 02       		.byte	0x2
+ 1261 05a0 53000000 		.4byte	0x53
+ 1262 05a4 04       		.byte	0x4
+ 1263 05a5 0F02     		.2byte	0x20f
+ 1264 05a7 B9050000 		.4byte	0x5b9
+ 1265 05ab 0A       		.uleb128 0xa
+ 1266 05ac 80070000 		.4byte	.LASF123
+ 1267 05b0 00       		.byte	0
+ 1268 05b1 0D       		.uleb128 0xd
+ 1269 05b2 060F0000 		.4byte	.LASF124
+ 1270 05b6 0008     		.2byte	0x800
+ 1271 05b8 00       		.byte	0
+ 1272 05b9 0C       		.uleb128 0xc
+ 1273 05ba 6E0F0000 		.4byte	.LASF125
+ 1274 05be 04       		.byte	0x4
+ 1275 05bf 1202     		.2byte	0x212
+ 1276 05c1 9E050000 		.4byte	0x59e
+ 1277 05c5 09       		.uleb128 0x9
+ 1278 05c6 02       		.byte	0x2
+ 1279 05c7 53000000 		.4byte	0x53
+ 1280 05cb 04       		.byte	0x4
+ 1281 05cc 1902     		.2byte	0x219
+ 1282 05ce EE050000 		.4byte	0x5ee
+ 1283 05d2 0A       		.uleb128 0xa
+ 1284 05d3 AB0F0000 		.4byte	.LASF126
+ 1285 05d7 00       		.byte	0
+ 1286 05d8 0D       		.uleb128 0xd
+ 1287 05d9 8B010000 		.4byte	.LASF127
+ 1288 05dd 0001     		.2byte	0x100
+ 1289 05df 0D       		.uleb128 0xd
+ 1290 05e0 AB100000 		.4byte	.LASF128
+ 1291 05e4 0002     		.2byte	0x200
+ 1292 05e6 0D       		.uleb128 0xd
+ 1293 05e7 59060000 		.4byte	.LASF129
+ 1294 05eb 0003     		.2byte	0x300
+ 1295 05ed 00       		.byte	0
+ 1296 05ee 0C       		.uleb128 0xc
+ 1297 05ef EA0A0000 		.4byte	.LASF130
+ 1298 05f3 04       		.byte	0x4
+ 1299 05f4 1E02     		.2byte	0x21e
+ 1300 05f6 C5050000 		.4byte	0x5c5
+ 1301 05fa 09       		.uleb128 0x9
+ 1302 05fb 01       		.byte	0x1
+ 1303 05fc 36000000 		.4byte	0x36
+ 1304 0600 04       		.byte	0x4
+ 1305 0601 2202     		.2byte	0x222
+ 1306 0603 14060000 		.4byte	0x614
+ 1307 0607 0A       		.uleb128 0xa
+ 1308 0608 710E0000 		.4byte	.LASF131
+ 1309 060c 00       		.byte	0
+ 1310 060d 0A       		.uleb128 0xa
+ 1311 060e B6120000 		.4byte	.LASF132
+ARM GAS  C:\Users\eduar\AppData\Local\Temp\ccN7CLzG.s 			page 24
+
+
+ 1312 0612 80       		.byte	0x80
+ 1313 0613 00       		.byte	0
+ 1314 0614 0C       		.uleb128 0xc
+ 1315 0615 19080000 		.4byte	.LASF133
+ 1316 0619 04       		.byte	0x4
+ 1317 061a 2502     		.2byte	0x225
+ 1318 061c FA050000 		.4byte	0x5fa
+ 1319 0620 09       		.uleb128 0x9
+ 1320 0621 01       		.byte	0x1
+ 1321 0622 36000000 		.4byte	0x36
+ 1322 0626 04       		.byte	0x4
+ 1323 0627 2902     		.2byte	0x229
+ 1324 0629 3A060000 		.4byte	0x63a
+ 1325 062d 0A       		.uleb128 0xa
+ 1326 062e 90000000 		.4byte	.LASF134
+ 1327 0632 00       		.byte	0
+ 1328 0633 0A       		.uleb128 0xa
+ 1329 0634 EF090000 		.4byte	.LASF135
+ 1330 0638 40       		.byte	0x40
+ 1331 0639 00       		.byte	0
+ 1332 063a 0C       		.uleb128 0xc
+ 1333 063b 280E0000 		.4byte	.LASF136
+ 1334 063f 04       		.byte	0x4
+ 1335 0640 2C02     		.2byte	0x22c
+ 1336 0642 20060000 		.4byte	0x620
+ 1337 0646 09       		.uleb128 0x9
+ 1338 0647 01       		.byte	0x1
+ 1339 0648 36000000 		.4byte	0x36
+ 1340 064c 04       		.byte	0x4
+ 1341 064d 3002     		.2byte	0x230
+ 1342 064f 60060000 		.4byte	0x660
+ 1343 0653 0A       		.uleb128 0xa
+ 1344 0654 94070000 		.4byte	.LASF137
+ 1345 0658 00       		.byte	0
+ 1346 0659 0A       		.uleb128 0xa
+ 1347 065a EC030000 		.4byte	.LASF138
+ 1348 065e 20       		.byte	0x20
+ 1349 065f 00       		.byte	0
+ 1350 0660 0C       		.uleb128 0xc
+ 1351 0661 31120000 		.4byte	.LASF139
+ 1352 0665 04       		.byte	0x4
+ 1353 0666 3302     		.2byte	0x233
+ 1354 0668 46060000 		.4byte	0x646
+ 1355 066c 02       		.uleb128 0x2
+ 1356 066d 01       		.byte	0x1
+ 1357 066e 02       		.byte	0x2
+ 1358 066f E0060000 		.4byte	.LASF140
+ 1359 0673 0E       		.uleb128 0xe
+ 1360 0674 10       		.byte	0x10
+ 1361 0675 04       		.byte	0x4
+ 1362 0676 0503     		.2byte	0x305
+ 1363 0678 F2060000 		.4byte	0x6f2
+ 1364 067c 0F       		.uleb128 0xf
+ 1365 067d 990D0000 		.4byte	.LASF141
+ 1366 0681 04       		.byte	0x4
+ 1367 0682 0603     		.2byte	0x306
+ 1368 0684 34050000 		.4byte	0x534
+ARM GAS  C:\Users\eduar\AppData\Local\Temp\ccN7CLzG.s 			page 25
+
+
+ 1369 0688 00       		.byte	0
+ 1370 0689 0F       		.uleb128 0xf
+ 1371 068a EA040000 		.4byte	.LASF142
+ 1372 068e 04       		.byte	0x4
+ 1373 068f 0903     		.2byte	0x309
+ 1374 0691 66050000 		.4byte	0x566
+ 1375 0695 04       		.byte	0x4
+ 1376 0696 0F       		.uleb128 0xf
+ 1377 0697 9B120000 		.4byte	.LASF143
+ 1378 069b 04       		.byte	0x4
+ 1379 069c 0A03     		.2byte	0x30a
+ 1380 069e 92050000 		.4byte	0x592
+ 1381 06a2 05       		.byte	0x5
+ 1382 06a3 0F       		.uleb128 0xf
+ 1383 06a4 630D0000 		.4byte	.LASF144
+ 1384 06a8 04       		.byte	0x4
+ 1385 06a9 0B03     		.2byte	0x30b
+ 1386 06ab B9050000 		.4byte	0x5b9
+ 1387 06af 06       		.byte	0x6
+ 1388 06b0 0F       		.uleb128 0xf
+ 1389 06b1 E0100000 		.4byte	.LASF145
+ 1390 06b5 04       		.byte	0x4
+ 1391 06b6 0C03     		.2byte	0x30c
+ 1392 06b8 EE050000 		.4byte	0x5ee
+ 1393 06bc 08       		.byte	0x8
+ 1394 06bd 0F       		.uleb128 0xf
+ 1395 06be F4000000 		.4byte	.LASF146
+ 1396 06c2 04       		.byte	0x4
+ 1397 06c3 0D03     		.2byte	0x30d
+ 1398 06c5 14060000 		.4byte	0x614
+ 1399 06c9 0A       		.byte	0xa
+ 1400 06ca 0F       		.uleb128 0xf
+ 1401 06cb 3D0B0000 		.4byte	.LASF147
+ 1402 06cf 04       		.byte	0x4
+ 1403 06d0 0E03     		.2byte	0x30e
+ 1404 06d2 3A060000 		.4byte	0x63a
+ 1405 06d6 0B       		.byte	0xb
+ 1406 06d7 0F       		.uleb128 0xf
+ 1407 06d8 54070000 		.4byte	.LASF148
+ 1408 06dc 04       		.byte	0x4
+ 1409 06dd 0F03     		.2byte	0x30f
+ 1410 06df 60060000 		.4byte	0x660
+ 1411 06e3 0C       		.byte	0xc
+ 1412 06e4 0F       		.uleb128 0xf
+ 1413 06e5 BB0D0000 		.4byte	.LASF149
+ 1414 06e9 04       		.byte	0x4
+ 1415 06ea 1003     		.2byte	0x310
+ 1416 06ec 6C060000 		.4byte	0x66c
+ 1417 06f0 0D       		.byte	0xd
+ 1418 06f1 00       		.byte	0
+ 1419 06f2 0C       		.uleb128 0xc
+ 1420 06f3 0B0D0000 		.4byte	.LASF150
+ 1421 06f7 04       		.byte	0x4
+ 1422 06f8 1103     		.2byte	0x311
+ 1423 06fa 73060000 		.4byte	0x673
+ 1424 06fe 09       		.uleb128 0x9
+ 1425 06ff 01       		.byte	0x1
+ARM GAS  C:\Users\eduar\AppData\Local\Temp\ccN7CLzG.s 			page 26
+
+
+ 1426 0700 36000000 		.4byte	0x36
+ 1427 0704 05       		.byte	0x5
+ 1428 0705 2107     		.2byte	0x721
+ 1429 0707 24070000 		.4byte	0x724
+ 1430 070b 0A       		.uleb128 0xa
+ 1431 070c B0000000 		.4byte	.LASF151
+ 1432 0710 00       		.byte	0
+ 1433 0711 0A       		.uleb128 0xa
+ 1434 0712 220C0000 		.4byte	.LASF152
+ 1435 0716 01       		.byte	0x1
+ 1436 0717 0A       		.uleb128 0xa
+ 1437 0718 1B0B0000 		.4byte	.LASF153
+ 1438 071c 02       		.byte	0x2
+ 1439 071d 0A       		.uleb128 0xa
+ 1440 071e C40F0000 		.4byte	.LASF154
+ 1441 0722 03       		.byte	0x3
+ 1442 0723 00       		.byte	0
+ 1443 0724 0C       		.uleb128 0xc
+ 1444 0725 83100000 		.4byte	.LASF155
+ 1445 0729 05       		.byte	0x5
+ 1446 072a 2607     		.2byte	0x726
+ 1447 072c FE060000 		.4byte	0x6fe
+ 1448 0730 09       		.uleb128 0x9
+ 1449 0731 01       		.byte	0x1
+ 1450 0732 36000000 		.4byte	0x36
+ 1451 0736 06       		.byte	0x6
+ 1452 0737 B101     		.2byte	0x1b1
+ 1453 0739 5C070000 		.4byte	0x75c
+ 1454 073d 0A       		.uleb128 0xa
+ 1455 073e DB0F0000 		.4byte	.LASF156
+ 1456 0742 00       		.byte	0
+ 1457 0743 0A       		.uleb128 0xa
+ 1458 0744 E6060000 		.4byte	.LASF157
+ 1459 0748 01       		.byte	0x1
+ 1460 0749 0A       		.uleb128 0xa
+ 1461 074a 5F070000 		.4byte	.LASF158
+ 1462 074e 02       		.byte	0x2
+ 1463 074f 0A       		.uleb128 0xa
+ 1464 0750 AF010000 		.4byte	.LASF159
+ 1465 0754 03       		.byte	0x3
+ 1466 0755 0A       		.uleb128 0xa
+ 1467 0756 C30E0000 		.4byte	.LASF160
+ 1468 075a 04       		.byte	0x4
+ 1469 075b 00       		.byte	0
+ 1470 075c 0C       		.uleb128 0xc
+ 1471 075d 000B0000 		.4byte	.LASF161
+ 1472 0761 06       		.byte	0x6
+ 1473 0762 B701     		.2byte	0x1b7
+ 1474 0764 30070000 		.4byte	0x730
+ 1475 0768 09       		.uleb128 0x9
+ 1476 0769 04       		.byte	0x4
+ 1477 076a 93000000 		.4byte	0x93
+ 1478 076e 06       		.byte	0x6
+ 1479 076f BC01     		.2byte	0x1bc
+ 1480 0771 85070000 		.4byte	0x785
+ 1481 0775 0A       		.uleb128 0xa
+ 1482 0776 F4080000 		.4byte	.LASF162
+ARM GAS  C:\Users\eduar\AppData\Local\Temp\ccN7CLzG.s 			page 27
+
+
+ 1483 077a 00       		.byte	0
+ 1484 077b 0B       		.uleb128 0xb
+ 1485 077c 3D000000 		.4byte	.LASF163
+ 1486 0780 00000001 		.4byte	0x1000000
+ 1487 0784 00       		.byte	0
+ 1488 0785 0C       		.uleb128 0xc
+ 1489 0786 CA110000 		.4byte	.LASF164
+ 1490 078a 06       		.byte	0x6
+ 1491 078b BF01     		.2byte	0x1bf
+ 1492 078d 68070000 		.4byte	0x768
+ 1493 0791 09       		.uleb128 0x9
+ 1494 0792 04       		.byte	0x4
+ 1495 0793 93000000 		.4byte	0x93
+ 1496 0797 06       		.byte	0x6
+ 1497 0798 C401     		.2byte	0x1c4
+ 1498 079a AE070000 		.4byte	0x7ae
+ 1499 079e 0A       		.uleb128 0xa
+ 1500 079f D1080000 		.4byte	.LASF165
+ 1501 07a3 00       		.byte	0
+ 1502 07a4 0B       		.uleb128 0xb
+ 1503 07a5 19060000 		.4byte	.LASF166
+ 1504 07a9 00000040 		.4byte	0x40000000
+ 1505 07ad 00       		.byte	0
+ 1506 07ae 0C       		.uleb128 0xc
+ 1507 07af 01120000 		.4byte	.LASF167
+ 1508 07b3 06       		.byte	0x6
+ 1509 07b4 C701     		.2byte	0x1c7
+ 1510 07b6 91070000 		.4byte	0x791
+ 1511 07ba 09       		.uleb128 0x9
+ 1512 07bb 04       		.byte	0x4
+ 1513 07bc 93000000 		.4byte	0x93
+ 1514 07c0 06       		.byte	0x6
+ 1515 07c1 CC01     		.2byte	0x1cc
+ 1516 07c3 F2070000 		.4byte	0x7f2
+ 1517 07c7 0A       		.uleb128 0xa
+ 1518 07c8 DF110000 		.4byte	.LASF168
+ 1519 07cc 00       		.byte	0
+ 1520 07cd 0B       		.uleb128 0xb
+ 1521 07ce 77050000 		.4byte	.LASF169
+ 1522 07d2 00004000 		.4byte	0x400000
+ 1523 07d6 0B       		.uleb128 0xb
+ 1524 07d7 30040000 		.4byte	.LASF170
+ 1525 07db 0000C000 		.4byte	0xc00000
+ 1526 07df 0B       		.uleb128 0xb
+ 1527 07e0 6F030000 		.4byte	.LASF171
+ 1528 07e4 00000008 		.4byte	0x8000000
+ 1529 07e8 0B       		.uleb128 0xb
+ 1530 07e9 F80F0000 		.4byte	.LASF172
+ 1531 07ed 00008008 		.4byte	0x8800000
+ 1532 07f1 00       		.byte	0
+ 1533 07f2 0C       		.uleb128 0xc
+ 1534 07f3 400E0000 		.4byte	.LASF173
+ 1535 07f7 06       		.byte	0x6
+ 1536 07f8 D401     		.2byte	0x1d4
+ 1537 07fa BA070000 		.4byte	0x7ba
+ 1538 07fe 09       		.uleb128 0x9
+ 1539 07ff 02       		.byte	0x2
+ARM GAS  C:\Users\eduar\AppData\Local\Temp\ccN7CLzG.s 			page 28
+
+
+ 1540 0800 53000000 		.4byte	0x53
+ 1541 0804 06       		.byte	0x6
+ 1542 0805 DA01     		.2byte	0x1da
+ 1543 0807 27080000 		.4byte	0x827
+ 1544 080b 0A       		.uleb128 0xa
+ 1545 080c 2B110000 		.4byte	.LASF174
+ 1546 0810 00       		.byte	0
+ 1547 0811 0D       		.uleb128 0xd
+ 1548 0812 05070000 		.4byte	.LASF175
+ 1549 0816 0001     		.2byte	0x100
+ 1550 0818 0D       		.uleb128 0xd
+ 1551 0819 BF0C0000 		.4byte	.LASF176
+ 1552 081d 0002     		.2byte	0x200
+ 1553 081f 0D       		.uleb128 0xd
+ 1554 0820 AF110000 		.4byte	.LASF177
+ 1555 0824 0003     		.2byte	0x300
+ 1556 0826 00       		.byte	0
+ 1557 0827 0C       		.uleb128 0xc
+ 1558 0828 3E010000 		.4byte	.LASF178
+ 1559 082c 06       		.byte	0x6
+ 1560 082d E001     		.2byte	0x1e0
+ 1561 082f FE070000 		.4byte	0x7fe
+ 1562 0833 09       		.uleb128 0x9
+ 1563 0834 01       		.byte	0x1
+ 1564 0835 36000000 		.4byte	0x36
+ 1565 0839 06       		.byte	0x6
+ 1566 083a E701     		.2byte	0x1e7
+ 1567 083c 4D080000 		.4byte	0x84d
+ 1568 0840 0A       		.uleb128 0xa
+ 1569 0841 83060000 		.4byte	.LASF179
+ 1570 0845 00       		.byte	0
+ 1571 0846 0A       		.uleb128 0xa
+ 1572 0847 C40A0000 		.4byte	.LASF180
+ 1573 084b 01       		.byte	0x1
+ 1574 084c 00       		.byte	0
+ 1575 084d 0C       		.uleb128 0xc
+ 1576 084e A20B0000 		.4byte	.LASF181
+ 1577 0852 06       		.byte	0x6
+ 1578 0853 EA01     		.2byte	0x1ea
+ 1579 0855 33080000 		.4byte	0x833
+ 1580 0859 09       		.uleb128 0x9
+ 1581 085a 01       		.byte	0x1
+ 1582 085b 36000000 		.4byte	0x36
+ 1583 085f 06       		.byte	0x6
+ 1584 0860 F101     		.2byte	0x1f1
+ 1585 0862 73080000 		.4byte	0x873
+ 1586 0866 0A       		.uleb128 0xa
+ 1587 0867 77000000 		.4byte	.LASF182
+ 1588 086b 00       		.byte	0
+ 1589 086c 0A       		.uleb128 0xa
+ 1590 086d DE0C0000 		.4byte	.LASF183
+ 1591 0871 01       		.byte	0x1
+ 1592 0872 00       		.byte	0
+ 1593 0873 0C       		.uleb128 0xc
+ 1594 0874 D0030000 		.4byte	.LASF184
+ 1595 0878 06       		.byte	0x6
+ 1596 0879 F401     		.2byte	0x1f4
+ARM GAS  C:\Users\eduar\AppData\Local\Temp\ccN7CLzG.s 			page 29
+
+
+ 1597 087b 59080000 		.4byte	0x859
+ 1598 087f 0E       		.uleb128 0xe
+ 1599 0880 34       		.byte	0x34
+ 1600 0881 06       		.byte	0x6
+ 1601 0882 1702     		.2byte	0x217
+ 1602 0884 59090000 		.4byte	0x959
+ 1603 0888 0F       		.uleb128 0xf
+ 1604 0889 65030000 		.4byte	.LASF185
+ 1605 088d 06       		.byte	0x6
+ 1606 088e 1902     		.2byte	0x219
+ 1607 0890 4D080000 		.4byte	0x84d
+ 1608 0894 00       		.byte	0
+ 1609 0895 0F       		.uleb128 0xf
+ 1610 0896 C4100000 		.4byte	.LASF186
+ 1611 089a 06       		.byte	0x6
+ 1612 089b 1A02     		.2byte	0x21a
+ 1613 089d 85070000 		.4byte	0x785
+ 1614 08a1 04       		.byte	0x4
+ 1615 08a2 0F       		.uleb128 0xf
+ 1616 08a3 320B0000 		.4byte	.LASF187
+ 1617 08a7 06       		.byte	0x6
+ 1618 08a8 1B02     		.2byte	0x21b
+ 1619 08aa 5C070000 		.4byte	0x75c
+ 1620 08ae 08       		.byte	0x8
+ 1621 08af 0F       		.uleb128 0xf
+ 1622 08b0 190F0000 		.4byte	.LASF188
+ 1623 08b4 06       		.byte	0x6
+ 1624 08b5 1C02     		.2byte	0x21c
+ 1625 08b7 27080000 		.4byte	0x827
+ 1626 08bb 0A       		.byte	0xa
+ 1627 08bc 0F       		.uleb128 0xf
+ 1628 08bd CC040000 		.4byte	.LASF189
+ 1629 08c1 06       		.byte	0x6
+ 1630 08c2 1D02     		.2byte	0x21d
+ 1631 08c4 F2070000 		.4byte	0x7f2
+ 1632 08c8 0C       		.byte	0xc
+ 1633 08c9 0F       		.uleb128 0xf
+ 1634 08ca 7F0F0000 		.4byte	.LASF190
+ 1635 08ce 06       		.byte	0x6
+ 1636 08cf 1E02     		.2byte	0x21e
+ 1637 08d1 73080000 		.4byte	0x873
+ 1638 08d5 10       		.byte	0x10
+ 1639 08d6 0F       		.uleb128 0xf
+ 1640 08d7 990D0000 		.4byte	.LASF141
+ 1641 08db 06       		.byte	0x6
+ 1642 08dc 1F02     		.2byte	0x21f
+ 1643 08de AE070000 		.4byte	0x7ae
+ 1644 08e2 14       		.byte	0x14
+ 1645 08e3 0F       		.uleb128 0xf
+ 1646 08e4 6D020000 		.4byte	.LASF191
+ 1647 08e8 06       		.byte	0x6
+ 1648 08e9 2002     		.2byte	0x220
+ 1649 08eb C6000000 		.4byte	0xc6
+ 1650 08ef 18       		.byte	0x18
+ 1651 08f0 0F       		.uleb128 0xf
+ 1652 08f1 44060000 		.4byte	.LASF192
+ 1653 08f5 06       		.byte	0x6
+ARM GAS  C:\Users\eduar\AppData\Local\Temp\ccN7CLzG.s 			page 30
+
+
+ 1654 08f6 2102     		.2byte	0x221
+ 1655 08f8 BB000000 		.4byte	0xbb
+ 1656 08fc 1C       		.byte	0x1c
+ 1657 08fd 0F       		.uleb128 0xf
+ 1658 08fe 2D020000 		.4byte	.LASF193
+ 1659 0902 06       		.byte	0x6
+ 1660 0903 2202     		.2byte	0x222
+ 1661 0905 BB000000 		.4byte	0xbb
+ 1662 0909 20       		.byte	0x20
+ 1663 090a 0F       		.uleb128 0xf
+ 1664 090b F0050000 		.4byte	.LASF194
+ 1665 090f 06       		.byte	0x6
+ 1666 0910 2302     		.2byte	0x223
+ 1667 0912 6C060000 		.4byte	0x66c
+ 1668 0916 24       		.byte	0x24
+ 1669 0917 0F       		.uleb128 0xf
+ 1670 0918 FE010000 		.4byte	.LASF195
+ 1671 091c 06       		.byte	0x6
+ 1672 091d 2602     		.2byte	0x226
+ 1673 091f 6C060000 		.4byte	0x66c
+ 1674 0923 25       		.byte	0x25
+ 1675 0924 0F       		.uleb128 0xf
+ 1676 0925 77080000 		.4byte	.LASF196
+ 1677 0929 06       		.byte	0x6
+ 1678 092a 2702     		.2byte	0x227
+ 1679 092c 24070000 		.4byte	0x724
+ 1680 0930 26       		.byte	0x26
+ 1681 0931 0F       		.uleb128 0xf
+ 1682 0932 B6050000 		.4byte	.LASF197
+ 1683 0936 06       		.byte	0x6
+ 1684 0937 2802     		.2byte	0x228
+ 1685 0939 C6000000 		.4byte	0xc6
+ 1686 093d 28       		.byte	0x28
+ 1687 093e 0F       		.uleb128 0xf
+ 1688 093f DF070000 		.4byte	.LASF198
+ 1689 0943 06       		.byte	0x6
+ 1690 0944 2902     		.2byte	0x229
+ 1691 0946 C6000000 		.4byte	0xc6
+ 1692 094a 2C       		.byte	0x2c
+ 1693 094b 0F       		.uleb128 0xf
+ 1694 094c AF030000 		.4byte	.LASF199
+ 1695 0950 06       		.byte	0x6
+ 1696 0951 2A02     		.2byte	0x22a
+ 1697 0953 C6000000 		.4byte	0xc6
+ 1698 0957 30       		.byte	0x30
+ 1699 0958 00       		.byte	0
+ 1700 0959 0C       		.uleb128 0xc
+ 1701 095a FC100000 		.4byte	.LASF200
+ 1702 095e 06       		.byte	0x6
+ 1703 095f 2B02     		.2byte	0x22b
+ 1704 0961 7F080000 		.4byte	0x87f
+ 1705 0965 09       		.uleb128 0x9
+ 1706 0966 01       		.byte	0x1
+ 1707 0967 36000000 		.4byte	0x36
+ 1708 096b 07       		.byte	0x7
+ 1709 096c 1304     		.2byte	0x413
+ 1710 096e 8B090000 		.4byte	0x98b
+ARM GAS  C:\Users\eduar\AppData\Local\Temp\ccN7CLzG.s 			page 31
+
+
+ 1711 0972 0A       		.uleb128 0xa
+ 1712 0973 4D030000 		.4byte	.LASF201
+ 1713 0977 00       		.byte	0
+ 1714 0978 0A       		.uleb128 0xa
+ 1715 0979 D7050000 		.4byte	.LASF202
+ 1716 097d 01       		.byte	0x1
+ 1717 097e 0A       		.uleb128 0xa
+ 1718 097f 30080000 		.4byte	.LASF203
+ 1719 0983 02       		.byte	0x2
+ 1720 0984 0A       		.uleb128 0xa
+ 1721 0985 0D010000 		.4byte	.LASF204
+ 1722 0989 03       		.byte	0x3
+ 1723 098a 00       		.byte	0
+ 1724 098b 0C       		.uleb128 0xc
+ 1725 098c 78120000 		.4byte	.LASF205
+ 1726 0990 07       		.byte	0x7
+ 1727 0991 1804     		.2byte	0x418
+ 1728 0993 65090000 		.4byte	0x965
+ 1729 0997 0E       		.uleb128 0xe
+ 1730 0998 78       		.byte	0x78
+ 1731 0999 07       		.byte	0x7
+ 1732 099a 0205     		.2byte	0x502
+ 1733 099c 640A0000 		.4byte	0xa64
+ 1734 09a0 0F       		.uleb128 0xf
+ 1735 09a1 14060000 		.4byte	.LASF206
+ 1736 09a5 07       		.byte	0x7
+ 1737 09a6 0405     		.2byte	0x504
+ 1738 09a8 C6000000 		.4byte	0xc6
+ 1739 09ac 00       		.byte	0
+ 1740 09ad 0F       		.uleb128 0xf
+ 1741 09ae 4C0F0000 		.4byte	.LASF207
+ 1742 09b2 07       		.byte	0x7
+ 1743 09b3 0505     		.2byte	0x505
+ 1744 09b5 C6000000 		.4byte	0xc6
+ 1745 09b9 04       		.byte	0x4
+ 1746 09ba 0F       		.uleb128 0xf
+ 1747 09bb DE0B0000 		.4byte	.LASF208
+ 1748 09bf 07       		.byte	0x7
+ 1749 09c0 0605     		.2byte	0x506
+ 1750 09c2 C6000000 		.4byte	0xc6
+ 1751 09c6 08       		.byte	0x8
+ 1752 09c7 0F       		.uleb128 0xf
+ 1753 09c8 A90E0000 		.4byte	.LASF209
+ 1754 09cc 07       		.byte	0x7
+ 1755 09cd 0705     		.2byte	0x507
+ 1756 09cf C6000000 		.4byte	0xc6
+ 1757 09d3 0C       		.byte	0xc
+ 1758 09d4 0F       		.uleb128 0xf
+ 1759 09d5 C1050000 		.4byte	.LASF210
+ 1760 09d9 07       		.byte	0x7
+ 1761 09da 0805     		.2byte	0x508
+ 1762 09dc C6000000 		.4byte	0xc6
+ 1763 09e0 10       		.byte	0x10
+ 1764 09e1 0F       		.uleb128 0xf
+ 1765 09e2 74090000 		.4byte	.LASF211
+ 1766 09e6 07       		.byte	0x7
+ 1767 09e7 0905     		.2byte	0x509
+ARM GAS  C:\Users\eduar\AppData\Local\Temp\ccN7CLzG.s 			page 32
+
+
+ 1768 09e9 8B090000 		.4byte	0x98b
+ 1769 09ed 14       		.byte	0x14
+ 1770 09ee 0F       		.uleb128 0xf
+ 1771 09ef 4D080000 		.4byte	.LASF212
+ 1772 09f3 07       		.byte	0x7
+ 1773 09f4 0A05     		.2byte	0x50a
+ 1774 09f6 C6000000 		.4byte	0xc6
+ 1775 09fa 18       		.byte	0x18
+ 1776 09fb 0F       		.uleb128 0xf
+ 1777 09fc A4110000 		.4byte	.LASF213
+ 1778 0a00 07       		.byte	0x7
+ 1779 0a01 0B05     		.2byte	0x50b
+ 1780 0a03 640A0000 		.4byte	0xa64
+ 1781 0a07 1C       		.byte	0x1c
+ 1782 0a08 0F       		.uleb128 0xf
+ 1783 0a09 AD120000 		.4byte	.LASF214
+ 1784 0a0d 07       		.byte	0x7
+ 1785 0a0e 0C05     		.2byte	0x50c
+ 1786 0a10 C6000000 		.4byte	0xc6
+ 1787 0a14 5C       		.byte	0x5c
+ 1788 0a15 0F       		.uleb128 0xf
+ 1789 0a16 45020000 		.4byte	.LASF215
+ 1790 0a1a 07       		.byte	0x7
+ 1791 0a1b 0D05     		.2byte	0x50d
+ 1792 0a1d C6000000 		.4byte	0xc6
+ 1793 0a21 60       		.byte	0x60
+ 1794 0a22 0F       		.uleb128 0xf
+ 1795 0a23 6A120000 		.4byte	.LASF216
+ 1796 0a27 07       		.byte	0x7
+ 1797 0a28 0E05     		.2byte	0x50e
+ 1798 0a2a C6000000 		.4byte	0xc6
+ 1799 0a2e 64       		.byte	0x64
+ 1800 0a2f 0F       		.uleb128 0xf
+ 1801 0a30 6F0B0000 		.4byte	.LASF217
+ 1802 0a34 07       		.byte	0x7
+ 1803 0a35 0F05     		.2byte	0x50f
+ 1804 0a37 C6000000 		.4byte	0xc6
+ 1805 0a3b 68       		.byte	0x68
+ 1806 0a3c 0F       		.uleb128 0xf
+ 1807 0a3d 45090000 		.4byte	.LASF218
+ 1808 0a41 07       		.byte	0x7
+ 1809 0a42 1005     		.2byte	0x510
+ 1810 0a44 C6000000 		.4byte	0xc6
+ 1811 0a48 6C       		.byte	0x6c
+ 1812 0a49 0F       		.uleb128 0xf
+ 1813 0a4a 1A120000 		.4byte	.LASF219
+ 1814 0a4e 07       		.byte	0x7
+ 1815 0a4f 1105     		.2byte	0x511
+ 1816 0a51 6C060000 		.4byte	0x66c
+ 1817 0a55 70       		.byte	0x70
+ 1818 0a56 0F       		.uleb128 0xf
+ 1819 0a57 EF070000 		.4byte	.LASF220
+ 1820 0a5b 07       		.byte	0x7
+ 1821 0a5c 1205     		.2byte	0x512
+ 1822 0a5e C6000000 		.4byte	0xc6
+ 1823 0a62 74       		.byte	0x74
+ 1824 0a63 00       		.byte	0
+ARM GAS  C:\Users\eduar\AppData\Local\Temp\ccN7CLzG.s 			page 33
+
+
+ 1825 0a64 10       		.uleb128 0x10
+ 1826 0a65 C6000000 		.4byte	0xc6
+ 1827 0a69 740A0000 		.4byte	0xa74
+ 1828 0a6d 11       		.uleb128 0x11
+ 1829 0a6e D1000000 		.4byte	0xd1
+ 1830 0a72 0F       		.byte	0xf
+ 1831 0a73 00       		.byte	0
+ 1832 0a74 0C       		.uleb128 0xc
+ 1833 0a75 00060000 		.4byte	.LASF221
+ 1834 0a79 07       		.byte	0x7
+ 1835 0a7a 1305     		.2byte	0x513
+ 1836 0a7c 97090000 		.4byte	0x997
+ 1837 0a80 12       		.uleb128 0x12
+ 1838 0a81 04       		.byte	0x4
+ 1839 0a82 860A0000 		.4byte	0xa86
+ 1840 0a86 13       		.uleb128 0x13
+ 1841 0a87 910A0000 		.4byte	0xa91
+ 1842 0a8b 14       		.uleb128 0x14
+ 1843 0a8c C6000000 		.4byte	0xc6
+ 1844 0a90 00       		.byte	0
+ 1845 0a91 0C       		.uleb128 0xc
+ 1846 0a92 55090000 		.4byte	.LASF222
+ 1847 0a96 08       		.byte	0x8
+ 1848 0a97 D901     		.2byte	0x1d9
+ 1849 0a99 800A0000 		.4byte	0xa80
+ 1850 0a9d 15       		.uleb128 0x15
+ 1851 0a9e B4040000 		.4byte	.LASF238
+ 1852 0aa2 38       		.byte	0x38
+ 1853 0aa3 08       		.byte	0x8
+ 1854 0aa4 7502     		.2byte	0x275
+ 1855 0aa6 610B0000 		.4byte	0xb61
+ 1856 0aaa 0F       		.uleb128 0xf
+ 1857 0aab C4000000 		.4byte	.LASF223
+ 1858 0aaf 08       		.byte	0x8
+ 1859 0ab0 7802     		.2byte	0x278
+ 1860 0ab2 D8000000 		.4byte	0xd8
+ 1861 0ab6 00       		.byte	0
+ 1862 0ab7 0F       		.uleb128 0xf
+ 1863 0ab8 4A060000 		.4byte	.LASF224
+ 1864 0abc 08       		.byte	0x8
+ 1865 0abd 7902     		.2byte	0x279
+ 1866 0abf D8000000 		.4byte	0xd8
+ 1867 0ac3 04       		.byte	0x4
+ 1868 0ac4 0F       		.uleb128 0xf
+ 1869 0ac5 8C0B0000 		.4byte	.LASF225
+ 1870 0ac9 08       		.byte	0x8
+ 1871 0aca 7B02     		.2byte	0x27b
+ 1872 0acc 15050000 		.4byte	0x515
+ 1873 0ad0 08       		.byte	0x8
+ 1874 0ad1 0F       		.uleb128 0xf
+ 1875 0ad2 F0010000 		.4byte	.LASF226
+ 1876 0ad6 08       		.byte	0x8
+ 1877 0ad7 7C02     		.2byte	0x27c
+ 1878 0ad9 C6000000 		.4byte	0xc6
+ 1879 0add 0C       		.byte	0xc
+ 1880 0ade 0F       		.uleb128 0xf
+ 1881 0adf 420A0000 		.4byte	.LASF227
+ARM GAS  C:\Users\eduar\AppData\Local\Temp\ccN7CLzG.s 			page 34
+
+
+ 1882 0ae3 08       		.byte	0x8
+ 1883 0ae4 7D02     		.2byte	0x27d
+ 1884 0ae6 D8000000 		.4byte	0xd8
+ 1885 0aea 10       		.byte	0x10
+ 1886 0aeb 0F       		.uleb128 0xf
+ 1887 0aec 54080000 		.4byte	.LASF228
+ 1888 0af0 08       		.byte	0x8
+ 1889 0af1 7E02     		.2byte	0x27e
+ 1890 0af3 D8000000 		.4byte	0xd8
+ 1891 0af7 14       		.byte	0x14
+ 1892 0af8 0F       		.uleb128 0xf
+ 1893 0af9 53060000 		.4byte	.LASF229
+ 1894 0afd 08       		.byte	0x8
+ 1895 0afe 8002     		.2byte	0x280
+ 1896 0b00 15050000 		.4byte	0x515
+ 1897 0b04 18       		.byte	0x18
+ 1898 0b05 0F       		.uleb128 0xf
+ 1899 0b06 D8120000 		.4byte	.LASF230
+ 1900 0b0a 08       		.byte	0x8
+ 1901 0b0b 8102     		.2byte	0x281
+ 1902 0b0d C6000000 		.4byte	0xc6
+ 1903 0b11 1C       		.byte	0x1c
+ 1904 0b12 0F       		.uleb128 0xf
+ 1905 0b13 B3080000 		.4byte	.LASF231
+ 1906 0b17 08       		.byte	0x8
+ 1907 0b18 8202     		.2byte	0x282
+ 1908 0b1a D8000000 		.4byte	0xd8
+ 1909 0b1e 20       		.byte	0x20
+ 1910 0b1f 0F       		.uleb128 0xf
+ 1911 0b20 150B0000 		.4byte	.LASF232
+ 1912 0b24 08       		.byte	0x8
+ 1913 0b25 8402     		.2byte	0x284
+ 1914 0b27 15050000 		.4byte	0x515
+ 1915 0b2b 24       		.byte	0x24
+ 1916 0b2c 0F       		.uleb128 0xf
+ 1917 0b2d 9A0A0000 		.4byte	.LASF233
+ 1918 0b31 08       		.byte	0x8
+ 1919 0b32 8502     		.2byte	0x285
+ 1920 0b34 C6000000 		.4byte	0xc6
+ 1921 0b38 28       		.byte	0x28
+ 1922 0b39 0F       		.uleb128 0xf
+ 1923 0b3a C80D0000 		.4byte	.LASF234
+ 1924 0b3e 08       		.byte	0x8
+ 1925 0b3f 8602     		.2byte	0x286
+ 1926 0b41 D8000000 		.4byte	0xd8
+ 1927 0b45 2C       		.byte	0x2c
+ 1928 0b46 0F       		.uleb128 0xf
+ 1929 0b47 BC060000 		.4byte	.LASF235
+ 1930 0b4b 08       		.byte	0x8
+ 1931 0b4c 8B02     		.2byte	0x28b
+ 1932 0b4e 910A0000 		.4byte	0xa91
+ 1933 0b52 30       		.byte	0x30
+ 1934 0b53 0F       		.uleb128 0xf
+ 1935 0b54 C9080000 		.4byte	.LASF236
+ 1936 0b58 08       		.byte	0x8
+ 1937 0b59 8E02     		.2byte	0x28e
+ 1938 0b5b C6000000 		.4byte	0xc6
+ARM GAS  C:\Users\eduar\AppData\Local\Temp\ccN7CLzG.s 			page 35
+
+
+ 1939 0b5f 34       		.byte	0x34
+ 1940 0b60 00       		.byte	0
+ 1941 0b61 0C       		.uleb128 0xc
+ 1942 0b62 60040000 		.4byte	.LASF237
+ 1943 0b66 08       		.byte	0x8
+ 1944 0b67 9102     		.2byte	0x291
+ 1945 0b69 9D0A0000 		.4byte	0xa9d
+ 1946 0b6d 16       		.uleb128 0x16
+ 1947 0b6e 72110000 		.4byte	.LASF239
+ 1948 0b72 4C       		.byte	0x4c
+ 1949 0b73 09       		.byte	0x9
+ 1950 0b74 2F       		.byte	0x2f
+ 1951 0b75 5E0C0000 		.4byte	0xc5e
+ 1952 0b79 07       		.uleb128 0x7
+ 1953 0b7a 52110000 		.4byte	.LASF240
+ 1954 0b7e 09       		.byte	0x9
+ 1955 0b7f 31       		.byte	0x31
+ 1956 0b80 C6000000 		.4byte	0xc6
+ 1957 0b84 00       		.byte	0
+ 1958 0b85 07       		.uleb128 0x7
+ 1959 0b86 A4080000 		.4byte	.LASF241
+ 1960 0b8a 09       		.byte	0x9
+ 1961 0b8b 33       		.byte	0x33
+ 1962 0b8c C6000000 		.4byte	0xc6
+ 1963 0b90 04       		.byte	0x4
+ 1964 0b91 07       		.uleb128 0x7
+ 1965 0b92 C40B0000 		.4byte	.LASF242
+ 1966 0b96 09       		.byte	0x9
+ 1967 0b97 34       		.byte	0x34
+ 1968 0b98 C6000000 		.4byte	0xc6
+ 1969 0b9c 08       		.byte	0x8
+ 1970 0b9d 07       		.uleb128 0x7
+ 1971 0b9e 8A0D0000 		.4byte	.LASF243
+ 1972 0ba2 09       		.byte	0x9
+ 1973 0ba3 35       		.byte	0x35
+ 1974 0ba4 C6000000 		.4byte	0xc6
+ 1975 0ba8 0C       		.byte	0xc
+ 1976 0ba9 07       		.uleb128 0x7
+ 1977 0baa 830C0000 		.4byte	.LASF244
+ 1978 0bae 09       		.byte	0x9
+ 1979 0baf 37       		.byte	0x37
+ 1980 0bb0 C6000000 		.4byte	0xc6
+ 1981 0bb4 10       		.byte	0x10
+ 1982 0bb5 07       		.uleb128 0x7
+ 1983 0bb6 7C020000 		.4byte	.LASF245
+ 1984 0bba 09       		.byte	0x9
+ 1985 0bbb 38       		.byte	0x38
+ 1986 0bbc C6000000 		.4byte	0xc6
+ 1987 0bc0 14       		.byte	0x14
+ 1988 0bc1 07       		.uleb128 0x7
+ 1989 0bc2 85020000 		.4byte	.LASF246
+ 1990 0bc6 09       		.byte	0x9
+ 1991 0bc7 39       		.byte	0x39
+ 1992 0bc8 C6000000 		.4byte	0xc6
+ 1993 0bcc 18       		.byte	0x18
+ 1994 0bcd 07       		.uleb128 0x7
+ 1995 0bce F90C0000 		.4byte	.LASF247
+ARM GAS  C:\Users\eduar\AppData\Local\Temp\ccN7CLzG.s 			page 36
+
+
+ 1996 0bd2 09       		.byte	0x9
+ 1997 0bd3 3A       		.byte	0x3a
+ 1998 0bd4 6C060000 		.4byte	0x66c
+ 1999 0bd8 1C       		.byte	0x1c
+ 2000 0bd9 07       		.uleb128 0x7
+ 2001 0bda 02040000 		.4byte	.LASF248
+ 2002 0bde 09       		.byte	0x9
+ 2003 0bdf 3C       		.byte	0x3c
+ 2004 0be0 C6000000 		.4byte	0xc6
+ 2005 0be4 20       		.byte	0x20
+ 2006 0be5 07       		.uleb128 0x7
+ 2007 0be6 33060000 		.4byte	.LASF249
+ 2008 0bea 09       		.byte	0x9
+ 2009 0beb 3D       		.byte	0x3d
+ 2010 0bec C6000000 		.4byte	0xc6
+ 2011 0bf0 24       		.byte	0x24
+ 2012 0bf1 07       		.uleb128 0x7
+ 2013 0bf2 0C080000 		.4byte	.LASF250
+ 2014 0bf6 09       		.byte	0x9
+ 2015 0bf7 3F       		.byte	0x3f
+ 2016 0bf8 C6000000 		.4byte	0xc6
+ 2017 0bfc 28       		.byte	0x28
+ 2018 0bfd 07       		.uleb128 0x7
+ 2019 0bfe 5C0A0000 		.4byte	.LASF251
+ 2020 0c02 09       		.byte	0x9
+ 2021 0c03 40       		.byte	0x40
+ 2022 0c04 C6000000 		.4byte	0xc6
+ 2023 0c08 2C       		.byte	0x2c
+ 2024 0c09 07       		.uleb128 0x7
+ 2025 0c0a E2120000 		.4byte	.LASF252
+ 2026 0c0e 09       		.byte	0x9
+ 2027 0c0f 42       		.byte	0x42
+ 2028 0c10 C6000000 		.4byte	0xc6
+ 2029 0c14 30       		.byte	0x30
+ 2030 0c15 07       		.uleb128 0x7
+ 2031 0c16 D0090000 		.4byte	.LASF253
+ 2032 0c1a 09       		.byte	0x9
+ 2033 0c1b 43       		.byte	0x43
+ 2034 0c1c C6000000 		.4byte	0xc6
+ 2035 0c20 34       		.byte	0x34
+ 2036 0c21 07       		.uleb128 0x7
+ 2037 0c22 55010000 		.4byte	.LASF254
+ 2038 0c26 09       		.byte	0x9
+ 2039 0c27 45       		.byte	0x45
+ 2040 0c28 C6000000 		.4byte	0xc6
+ 2041 0c2c 38       		.byte	0x38
+ 2042 0c2d 07       		.uleb128 0x7
+ 2043 0c2e 14000000 		.4byte	.LASF255
+ 2044 0c32 09       		.byte	0x9
+ 2045 0c33 46       		.byte	0x46
+ 2046 0c34 C6000000 		.4byte	0xc6
+ 2047 0c38 3C       		.byte	0x3c
+ 2048 0c39 07       		.uleb128 0x7
+ 2049 0c3a E6010000 		.4byte	.LASF256
+ 2050 0c3e 09       		.byte	0x9
+ 2051 0c3f 48       		.byte	0x48
+ 2052 0c40 C6000000 		.4byte	0xc6
+ARM GAS  C:\Users\eduar\AppData\Local\Temp\ccN7CLzG.s 			page 37
+
+
+ 2053 0c44 40       		.byte	0x40
+ 2054 0c45 07       		.uleb128 0x7
+ 2055 0c46 480D0000 		.4byte	.LASF257
+ 2056 0c4a 09       		.byte	0x9
+ 2057 0c4b 49       		.byte	0x49
+ 2058 0c4c C6000000 		.4byte	0xc6
+ 2059 0c50 44       		.byte	0x44
+ 2060 0c51 07       		.uleb128 0x7
+ 2061 0c52 A00F0000 		.4byte	.LASF258
+ 2062 0c56 09       		.byte	0x9
+ 2063 0c57 4B       		.byte	0x4b
+ 2064 0c58 C6000000 		.4byte	0xc6
+ 2065 0c5c 48       		.byte	0x48
+ 2066 0c5d 00       		.byte	0
+ 2067 0c5e 03       		.uleb128 0x3
+ 2068 0c5f 040C0000 		.4byte	.LASF259
+ 2069 0c63 09       		.byte	0x9
+ 2070 0c64 4C       		.byte	0x4c
+ 2071 0c65 6D0B0000 		.4byte	0xb6d
+ 2072 0c69 06       		.uleb128 0x6
+ 2073 0c6a 14       		.byte	0x14
+ 2074 0c6b 0A       		.byte	0xa
+ 2075 0c6c 3B       		.byte	0x3b
+ 2076 0c6d AE0C0000 		.4byte	0xcae
+ 2077 0c71 07       		.uleb128 0x7
+ 2078 0c72 74010000 		.4byte	.LASF260
+ 2079 0c76 0A       		.byte	0xa
+ 2080 0c77 3D       		.byte	0x3d
+ 2081 0c78 C6000000 		.4byte	0xc6
+ 2082 0c7c 00       		.byte	0
+ 2083 0c7d 07       		.uleb128 0x7
+ 2084 0c7e 05050000 		.4byte	.LASF261
+ 2085 0c82 0A       		.byte	0xa
+ 2086 0c83 3E       		.byte	0x3e
+ 2087 0c84 C6000000 		.4byte	0xc6
+ 2088 0c88 04       		.byte	0x4
+ 2089 0c89 07       		.uleb128 0x7
+ 2090 0c8a A3010000 		.4byte	.LASF262
+ 2091 0c8e 0A       		.byte	0xa
+ 2092 0c8f 3F       		.byte	0x3f
+ 2093 0c90 AE0C0000 		.4byte	0xcae
+ 2094 0c94 08       		.byte	0x8
+ 2095 0c95 07       		.uleb128 0x7
+ 2096 0c96 F80D0000 		.4byte	.LASF263
+ 2097 0c9a 0A       		.byte	0xa
+ 2098 0c9b 40       		.byte	0x40
+ 2099 0c9c C6000000 		.4byte	0xc6
+ 2100 0ca0 0C       		.byte	0xc
+ 2101 0ca1 07       		.uleb128 0x7
+ 2102 0ca2 32100000 		.4byte	.LASF264
+ 2103 0ca6 0A       		.byte	0xa
+ 2104 0ca7 45       		.byte	0x45
+ 2105 0ca8 C6000000 		.4byte	0xc6
+ 2106 0cac 10       		.byte	0x10
+ 2107 0cad 00       		.byte	0
+ 2108 0cae 12       		.uleb128 0x12
+ 2109 0caf 04       		.byte	0x4
+ARM GAS  C:\Users\eduar\AppData\Local\Temp\ccN7CLzG.s 			page 38
+
+
+ 2110 0cb0 B40C0000 		.4byte	0xcb4
+ 2111 0cb4 17       		.uleb128 0x17
+ 2112 0cb5 740A0000 		.4byte	0xa74
+ 2113 0cb9 03       		.uleb128 0x3
+ 2114 0cba 33090000 		.4byte	.LASF265
+ 2115 0cbe 0A       		.byte	0xa
+ 2116 0cbf 48       		.byte	0x48
+ 2117 0cc0 690C0000 		.4byte	0xc69
+ 2118 0cc4 18       		.uleb128 0x18
+ 2119 0cc5 3B0D0000 		.4byte	.LASF266
+ 2120 0cc9 0B       		.byte	0xb
+ 2121 0cca F907     		.2byte	0x7f9
+ 2122 0ccc D00C0000 		.4byte	0xcd0
+ 2123 0cd0 05       		.uleb128 0x5
+ 2124 0cd1 BB000000 		.4byte	0xbb
+ 2125 0cd5 19       		.uleb128 0x19
+ 2126 0cd6 22000000 		.4byte	.LASF267
+ 2127 0cda 03       		.byte	0x3
+ 2128 0cdb A7       		.byte	0xa7
+ 2129 0cdc E00C0000 		.4byte	0xce0
+ 2130 0ce0 12       		.uleb128 0x12
+ 2131 0ce1 04       		.byte	0x4
+ 2132 0ce2 E60C0000 		.4byte	0xce6
+ 2133 0ce6 17       		.uleb128 0x17
+ 2134 0ce7 F5040000 		.4byte	0x4f5
+ 2135 0ceb 19       		.uleb128 0x19
+ 2136 0cec 1E110000 		.4byte	.LASF268
+ 2137 0cf0 0C       		.byte	0xc
+ 2138 0cf1 87       		.byte	0x87
+ 2139 0cf2 610B0000 		.4byte	0xb61
+ 2140 0cf6 18       		.uleb128 0x18
+ 2141 0cf7 99100000 		.4byte	.LASF269
+ 2142 0cfb 0A       		.byte	0xa
+ 2143 0cfc 6001     		.2byte	0x160
+ 2144 0cfe C6000000 		.4byte	0xc6
+ 2145 0d02 10       		.uleb128 0x10
+ 2146 0d03 120D0000 		.4byte	0xd12
+ 2147 0d07 120D0000 		.4byte	0xd12
+ 2148 0d0b 11       		.uleb128 0x11
+ 2149 0d0c D1000000 		.4byte	0xd1
+ 2150 0d10 00       		.byte	0
+ 2151 0d11 00       		.byte	0
+ 2152 0d12 17       		.uleb128 0x17
+ 2153 0d13 B90C0000 		.4byte	0xcb9
+ 2154 0d17 18       		.uleb128 0x18
+ 2155 0d18 B00C0000 		.4byte	.LASF270
+ 2156 0d1c 0A       		.byte	0xa
+ 2157 0d1d 6401     		.2byte	0x164
+ 2158 0d1f 230D0000 		.4byte	0xd23
+ 2159 0d23 17       		.uleb128 0x17
+ 2160 0d24 020D0000 		.4byte	0xd02
+ 2161 0d28 19       		.uleb128 0x19
+ 2162 0d29 94080000 		.4byte	.LASF271
+ 2163 0d2d 0D       		.byte	0xd
+ 2164 0d2e 5A       		.byte	0x5a
+ 2165 0d2f 330D0000 		.4byte	0xd33
+ 2166 0d33 17       		.uleb128 0x17
+ARM GAS  C:\Users\eduar\AppData\Local\Temp\ccN7CLzG.s 			page 39
+
+
+ 2167 0d34 59090000 		.4byte	0x959
+ 2168 0d38 19       		.uleb128 0x19
+ 2169 0d39 8C040000 		.4byte	.LASF272
+ 2170 0d3d 0D       		.byte	0xd
+ 2171 0d3e 5E       		.byte	0x5e
+ 2172 0d3f 430D0000 		.4byte	0xd43
+ 2173 0d43 17       		.uleb128 0x17
+ 2174 0d44 F2060000 		.4byte	0x6f2
+ 2175 0d48 19       		.uleb128 0x19
+ 2176 0d49 2C000000 		.4byte	.LASF273
+ 2177 0d4d 0E       		.byte	0xe
+ 2178 0d4e 1F       		.byte	0x1f
+ 2179 0d4f 530D0000 		.4byte	0xd53
+ 2180 0d53 17       		.uleb128 0x17
+ 2181 0d54 5E0C0000 		.4byte	0xc5e
+ 2182 0d58 10       		.uleb128 0x10
+ 2183 0d59 690D0000 		.4byte	0xd69
+ 2184 0d5d 690D0000 		.4byte	0xd69
+ 2185 0d61 1A       		.uleb128 0x1a
+ 2186 0d62 D1000000 		.4byte	0xd1
+ 2187 0d66 F301     		.2byte	0x1f3
+ 2188 0d68 00       		.byte	0
+ 2189 0d69 17       		.uleb128 0x17
+ 2190 0d6a C6000000 		.4byte	0xc6
+ 2191 0d6e 1B       		.uleb128 0x1b
+ 2192 0d6f 8D050000 		.4byte	.LASF274
+ 2193 0d73 0F       		.byte	0xf
+ 2194 0d74 05       		.byte	0x5
+ 2195 0d75 7F0D0000 		.4byte	0xd7f
+ 2196 0d79 05       		.uleb128 0x5
+ 2197 0d7a 03       		.byte	0x3
+ 2198 0d7b 00000000 		.4byte	triangularWaveLUT
+ 2199 0d7f 17       		.uleb128 0x17
+ 2200 0d80 580D0000 		.4byte	0xd58
+ 2201 0d84 00       		.byte	0
+ 2202              		.section	.debug_abbrev,"",%progbits
+ 2203              	.Ldebug_abbrev0:
+ 2204 0000 01       		.uleb128 0x1
+ 2205 0001 11       		.uleb128 0x11
+ 2206 0002 01       		.byte	0x1
+ 2207 0003 25       		.uleb128 0x25
+ 2208 0004 0E       		.uleb128 0xe
+ 2209 0005 13       		.uleb128 0x13
+ 2210 0006 0B       		.uleb128 0xb
+ 2211 0007 03       		.uleb128 0x3
+ 2212 0008 0E       		.uleb128 0xe
+ 2213 0009 1B       		.uleb128 0x1b
+ 2214 000a 0E       		.uleb128 0xe
+ 2215 000b 10       		.uleb128 0x10
+ 2216 000c 17       		.uleb128 0x17
+ 2217 000d 00       		.byte	0
+ 2218 000e 00       		.byte	0
+ 2219 000f 02       		.uleb128 0x2
+ 2220 0010 24       		.uleb128 0x24
+ 2221 0011 00       		.byte	0
+ 2222 0012 0B       		.uleb128 0xb
+ 2223 0013 0B       		.uleb128 0xb
+ARM GAS  C:\Users\eduar\AppData\Local\Temp\ccN7CLzG.s 			page 40
+
+
+ 2224 0014 3E       		.uleb128 0x3e
+ 2225 0015 0B       		.uleb128 0xb
+ 2226 0016 03       		.uleb128 0x3
+ 2227 0017 0E       		.uleb128 0xe
+ 2228 0018 00       		.byte	0
+ 2229 0019 00       		.byte	0
+ 2230 001a 03       		.uleb128 0x3
+ 2231 001b 16       		.uleb128 0x16
+ 2232 001c 00       		.byte	0
+ 2233 001d 03       		.uleb128 0x3
+ 2234 001e 0E       		.uleb128 0xe
+ 2235 001f 3A       		.uleb128 0x3a
+ 2236 0020 0B       		.uleb128 0xb
+ 2237 0021 3B       		.uleb128 0x3b
+ 2238 0022 0B       		.uleb128 0xb
+ 2239 0023 49       		.uleb128 0x49
+ 2240 0024 13       		.uleb128 0x13
+ 2241 0025 00       		.byte	0
+ 2242 0026 00       		.byte	0
+ 2243 0027 04       		.uleb128 0x4
+ 2244 0028 24       		.uleb128 0x24
+ 2245 0029 00       		.byte	0
+ 2246 002a 0B       		.uleb128 0xb
+ 2247 002b 0B       		.uleb128 0xb
+ 2248 002c 3E       		.uleb128 0x3e
+ 2249 002d 0B       		.uleb128 0xb
+ 2250 002e 03       		.uleb128 0x3
+ 2251 002f 08       		.uleb128 0x8
+ 2252 0030 00       		.byte	0
+ 2253 0031 00       		.byte	0
+ 2254 0032 05       		.uleb128 0x5
+ 2255 0033 35       		.uleb128 0x35
+ 2256 0034 00       		.byte	0
+ 2257 0035 49       		.uleb128 0x49
+ 2258 0036 13       		.uleb128 0x13
+ 2259 0037 00       		.byte	0
+ 2260 0038 00       		.byte	0
+ 2261 0039 06       		.uleb128 0x6
+ 2262 003a 13       		.uleb128 0x13
+ 2263 003b 01       		.byte	0x1
+ 2264 003c 0B       		.uleb128 0xb
+ 2265 003d 0B       		.uleb128 0xb
+ 2266 003e 3A       		.uleb128 0x3a
+ 2267 003f 0B       		.uleb128 0xb
+ 2268 0040 3B       		.uleb128 0x3b
+ 2269 0041 0B       		.uleb128 0xb
+ 2270 0042 01       		.uleb128 0x1
+ 2271 0043 13       		.uleb128 0x13
+ 2272 0044 00       		.byte	0
+ 2273 0045 00       		.byte	0
+ 2274 0046 07       		.uleb128 0x7
+ 2275 0047 0D       		.uleb128 0xd
+ 2276 0048 00       		.byte	0
+ 2277 0049 03       		.uleb128 0x3
+ 2278 004a 0E       		.uleb128 0xe
+ 2279 004b 3A       		.uleb128 0x3a
+ 2280 004c 0B       		.uleb128 0xb
+ARM GAS  C:\Users\eduar\AppData\Local\Temp\ccN7CLzG.s 			page 41
+
+
+ 2281 004d 3B       		.uleb128 0x3b
+ 2282 004e 0B       		.uleb128 0xb
+ 2283 004f 49       		.uleb128 0x49
+ 2284 0050 13       		.uleb128 0x13
+ 2285 0051 38       		.uleb128 0x38
+ 2286 0052 0B       		.uleb128 0xb
+ 2287 0053 00       		.byte	0
+ 2288 0054 00       		.byte	0
+ 2289 0055 08       		.uleb128 0x8
+ 2290 0056 0F       		.uleb128 0xf
+ 2291 0057 00       		.byte	0
+ 2292 0058 0B       		.uleb128 0xb
+ 2293 0059 0B       		.uleb128 0xb
+ 2294 005a 00       		.byte	0
+ 2295 005b 00       		.byte	0
+ 2296 005c 09       		.uleb128 0x9
+ 2297 005d 04       		.uleb128 0x4
+ 2298 005e 01       		.byte	0x1
+ 2299 005f 0B       		.uleb128 0xb
+ 2300 0060 0B       		.uleb128 0xb
+ 2301 0061 49       		.uleb128 0x49
+ 2302 0062 13       		.uleb128 0x13
+ 2303 0063 3A       		.uleb128 0x3a
+ 2304 0064 0B       		.uleb128 0xb
+ 2305 0065 3B       		.uleb128 0x3b
+ 2306 0066 05       		.uleb128 0x5
+ 2307 0067 01       		.uleb128 0x1
+ 2308 0068 13       		.uleb128 0x13
+ 2309 0069 00       		.byte	0
+ 2310 006a 00       		.byte	0
+ 2311 006b 0A       		.uleb128 0xa
+ 2312 006c 28       		.uleb128 0x28
+ 2313 006d 00       		.byte	0
+ 2314 006e 03       		.uleb128 0x3
+ 2315 006f 0E       		.uleb128 0xe
+ 2316 0070 1C       		.uleb128 0x1c
+ 2317 0071 0B       		.uleb128 0xb
+ 2318 0072 00       		.byte	0
+ 2319 0073 00       		.byte	0
+ 2320 0074 0B       		.uleb128 0xb
+ 2321 0075 28       		.uleb128 0x28
+ 2322 0076 00       		.byte	0
+ 2323 0077 03       		.uleb128 0x3
+ 2324 0078 0E       		.uleb128 0xe
+ 2325 0079 1C       		.uleb128 0x1c
+ 2326 007a 06       		.uleb128 0x6
+ 2327 007b 00       		.byte	0
+ 2328 007c 00       		.byte	0
+ 2329 007d 0C       		.uleb128 0xc
+ 2330 007e 16       		.uleb128 0x16
+ 2331 007f 00       		.byte	0
+ 2332 0080 03       		.uleb128 0x3
+ 2333 0081 0E       		.uleb128 0xe
+ 2334 0082 3A       		.uleb128 0x3a
+ 2335 0083 0B       		.uleb128 0xb
+ 2336 0084 3B       		.uleb128 0x3b
+ 2337 0085 05       		.uleb128 0x5
+ARM GAS  C:\Users\eduar\AppData\Local\Temp\ccN7CLzG.s 			page 42
+
+
+ 2338 0086 49       		.uleb128 0x49
+ 2339 0087 13       		.uleb128 0x13
+ 2340 0088 00       		.byte	0
+ 2341 0089 00       		.byte	0
+ 2342 008a 0D       		.uleb128 0xd
+ 2343 008b 28       		.uleb128 0x28
+ 2344 008c 00       		.byte	0
+ 2345 008d 03       		.uleb128 0x3
+ 2346 008e 0E       		.uleb128 0xe
+ 2347 008f 1C       		.uleb128 0x1c
+ 2348 0090 05       		.uleb128 0x5
+ 2349 0091 00       		.byte	0
+ 2350 0092 00       		.byte	0
+ 2351 0093 0E       		.uleb128 0xe
+ 2352 0094 13       		.uleb128 0x13
+ 2353 0095 01       		.byte	0x1
+ 2354 0096 0B       		.uleb128 0xb
+ 2355 0097 0B       		.uleb128 0xb
+ 2356 0098 3A       		.uleb128 0x3a
+ 2357 0099 0B       		.uleb128 0xb
+ 2358 009a 3B       		.uleb128 0x3b
+ 2359 009b 05       		.uleb128 0x5
+ 2360 009c 01       		.uleb128 0x1
+ 2361 009d 13       		.uleb128 0x13
+ 2362 009e 00       		.byte	0
+ 2363 009f 00       		.byte	0
+ 2364 00a0 0F       		.uleb128 0xf
+ 2365 00a1 0D       		.uleb128 0xd
+ 2366 00a2 00       		.byte	0
+ 2367 00a3 03       		.uleb128 0x3
+ 2368 00a4 0E       		.uleb128 0xe
+ 2369 00a5 3A       		.uleb128 0x3a
+ 2370 00a6 0B       		.uleb128 0xb
+ 2371 00a7 3B       		.uleb128 0x3b
+ 2372 00a8 05       		.uleb128 0x5
+ 2373 00a9 49       		.uleb128 0x49
+ 2374 00aa 13       		.uleb128 0x13
+ 2375 00ab 38       		.uleb128 0x38
+ 2376 00ac 0B       		.uleb128 0xb
+ 2377 00ad 00       		.byte	0
+ 2378 00ae 00       		.byte	0
+ 2379 00af 10       		.uleb128 0x10
+ 2380 00b0 01       		.uleb128 0x1
+ 2381 00b1 01       		.byte	0x1
+ 2382 00b2 49       		.uleb128 0x49
+ 2383 00b3 13       		.uleb128 0x13
+ 2384 00b4 01       		.uleb128 0x1
+ 2385 00b5 13       		.uleb128 0x13
+ 2386 00b6 00       		.byte	0
+ 2387 00b7 00       		.byte	0
+ 2388 00b8 11       		.uleb128 0x11
+ 2389 00b9 21       		.uleb128 0x21
+ 2390 00ba 00       		.byte	0
+ 2391 00bb 49       		.uleb128 0x49
+ 2392 00bc 13       		.uleb128 0x13
+ 2393 00bd 2F       		.uleb128 0x2f
+ 2394 00be 0B       		.uleb128 0xb
+ARM GAS  C:\Users\eduar\AppData\Local\Temp\ccN7CLzG.s 			page 43
+
+
+ 2395 00bf 00       		.byte	0
+ 2396 00c0 00       		.byte	0
+ 2397 00c1 12       		.uleb128 0x12
+ 2398 00c2 0F       		.uleb128 0xf
+ 2399 00c3 00       		.byte	0
+ 2400 00c4 0B       		.uleb128 0xb
+ 2401 00c5 0B       		.uleb128 0xb
+ 2402 00c6 49       		.uleb128 0x49
+ 2403 00c7 13       		.uleb128 0x13
+ 2404 00c8 00       		.byte	0
+ 2405 00c9 00       		.byte	0
+ 2406 00ca 13       		.uleb128 0x13
+ 2407 00cb 15       		.uleb128 0x15
+ 2408 00cc 01       		.byte	0x1
+ 2409 00cd 27       		.uleb128 0x27
+ 2410 00ce 19       		.uleb128 0x19
+ 2411 00cf 01       		.uleb128 0x1
+ 2412 00d0 13       		.uleb128 0x13
+ 2413 00d1 00       		.byte	0
+ 2414 00d2 00       		.byte	0
+ 2415 00d3 14       		.uleb128 0x14
+ 2416 00d4 05       		.uleb128 0x5
+ 2417 00d5 00       		.byte	0
+ 2418 00d6 49       		.uleb128 0x49
+ 2419 00d7 13       		.uleb128 0x13
+ 2420 00d8 00       		.byte	0
+ 2421 00d9 00       		.byte	0
+ 2422 00da 15       		.uleb128 0x15
+ 2423 00db 13       		.uleb128 0x13
+ 2424 00dc 01       		.byte	0x1
+ 2425 00dd 03       		.uleb128 0x3
+ 2426 00de 0E       		.uleb128 0xe
+ 2427 00df 0B       		.uleb128 0xb
+ 2428 00e0 0B       		.uleb128 0xb
+ 2429 00e1 3A       		.uleb128 0x3a
+ 2430 00e2 0B       		.uleb128 0xb
+ 2431 00e3 3B       		.uleb128 0x3b
+ 2432 00e4 05       		.uleb128 0x5
+ 2433 00e5 01       		.uleb128 0x1
+ 2434 00e6 13       		.uleb128 0x13
+ 2435 00e7 00       		.byte	0
+ 2436 00e8 00       		.byte	0
+ 2437 00e9 16       		.uleb128 0x16
+ 2438 00ea 13       		.uleb128 0x13
+ 2439 00eb 01       		.byte	0x1
+ 2440 00ec 03       		.uleb128 0x3
+ 2441 00ed 0E       		.uleb128 0xe
+ 2442 00ee 0B       		.uleb128 0xb
+ 2443 00ef 0B       		.uleb128 0xb
+ 2444 00f0 3A       		.uleb128 0x3a
+ 2445 00f1 0B       		.uleb128 0xb
+ 2446 00f2 3B       		.uleb128 0x3b
+ 2447 00f3 0B       		.uleb128 0xb
+ 2448 00f4 01       		.uleb128 0x1
+ 2449 00f5 13       		.uleb128 0x13
+ 2450 00f6 00       		.byte	0
+ 2451 00f7 00       		.byte	0
+ARM GAS  C:\Users\eduar\AppData\Local\Temp\ccN7CLzG.s 			page 44
+
+
+ 2452 00f8 17       		.uleb128 0x17
+ 2453 00f9 26       		.uleb128 0x26
+ 2454 00fa 00       		.byte	0
+ 2455 00fb 49       		.uleb128 0x49
+ 2456 00fc 13       		.uleb128 0x13
+ 2457 00fd 00       		.byte	0
+ 2458 00fe 00       		.byte	0
+ 2459 00ff 18       		.uleb128 0x18
+ 2460 0100 34       		.uleb128 0x34
+ 2461 0101 00       		.byte	0
+ 2462 0102 03       		.uleb128 0x3
+ 2463 0103 0E       		.uleb128 0xe
+ 2464 0104 3A       		.uleb128 0x3a
+ 2465 0105 0B       		.uleb128 0xb
+ 2466 0106 3B       		.uleb128 0x3b
+ 2467 0107 05       		.uleb128 0x5
+ 2468 0108 49       		.uleb128 0x49
+ 2469 0109 13       		.uleb128 0x13
+ 2470 010a 3F       		.uleb128 0x3f
+ 2471 010b 19       		.uleb128 0x19
+ 2472 010c 3C       		.uleb128 0x3c
+ 2473 010d 19       		.uleb128 0x19
+ 2474 010e 00       		.byte	0
+ 2475 010f 00       		.byte	0
+ 2476 0110 19       		.uleb128 0x19
+ 2477 0111 34       		.uleb128 0x34
+ 2478 0112 00       		.byte	0
+ 2479 0113 03       		.uleb128 0x3
+ 2480 0114 0E       		.uleb128 0xe
+ 2481 0115 3A       		.uleb128 0x3a
+ 2482 0116 0B       		.uleb128 0xb
+ 2483 0117 3B       		.uleb128 0x3b
+ 2484 0118 0B       		.uleb128 0xb
+ 2485 0119 49       		.uleb128 0x49
+ 2486 011a 13       		.uleb128 0x13
+ 2487 011b 3F       		.uleb128 0x3f
+ 2488 011c 19       		.uleb128 0x19
+ 2489 011d 3C       		.uleb128 0x3c
+ 2490 011e 19       		.uleb128 0x19
+ 2491 011f 00       		.byte	0
+ 2492 0120 00       		.byte	0
+ 2493 0121 1A       		.uleb128 0x1a
+ 2494 0122 21       		.uleb128 0x21
+ 2495 0123 00       		.byte	0
+ 2496 0124 49       		.uleb128 0x49
+ 2497 0125 13       		.uleb128 0x13
+ 2498 0126 2F       		.uleb128 0x2f
+ 2499 0127 05       		.uleb128 0x5
+ 2500 0128 00       		.byte	0
+ 2501 0129 00       		.byte	0
+ 2502 012a 1B       		.uleb128 0x1b
+ 2503 012b 34       		.uleb128 0x34
+ 2504 012c 00       		.byte	0
+ 2505 012d 03       		.uleb128 0x3
+ 2506 012e 0E       		.uleb128 0xe
+ 2507 012f 3A       		.uleb128 0x3a
+ 2508 0130 0B       		.uleb128 0xb
+ARM GAS  C:\Users\eduar\AppData\Local\Temp\ccN7CLzG.s 			page 45
+
+
+ 2509 0131 3B       		.uleb128 0x3b
+ 2510 0132 0B       		.uleb128 0xb
+ 2511 0133 49       		.uleb128 0x49
+ 2512 0134 13       		.uleb128 0x13
+ 2513 0135 3F       		.uleb128 0x3f
+ 2514 0136 19       		.uleb128 0x19
+ 2515 0137 02       		.uleb128 0x2
+ 2516 0138 18       		.uleb128 0x18
+ 2517 0139 00       		.byte	0
+ 2518 013a 00       		.byte	0
+ 2519 013b 00       		.byte	0
+ 2520              		.section	.debug_aranges,"",%progbits
+ 2521 0000 14000000 		.4byte	0x14
+ 2522 0004 0200     		.2byte	0x2
+ 2523 0006 00000000 		.4byte	.Ldebug_info0
+ 2524 000a 04       		.byte	0x4
+ 2525 000b 00       		.byte	0
+ 2526 000c 0000     		.2byte	0
+ 2527 000e 0000     		.2byte	0
+ 2528 0010 00000000 		.4byte	0
+ 2529 0014 00000000 		.4byte	0
+ 2530              		.section	.debug_line,"",%progbits
+ 2531              	.Ldebug_line0:
+ 2532 0000 82030000 		.section	.debug_str,"MS",%progbits,1
+ 2532      02007C03 
+ 2532      00000201 
+ 2532      FB0E0D00 
+ 2532      01010101 
+ 2533              	.LASF64:
+ 2534 0000 666C6173 		.ascii	"flashCtlMainWs1Freq\000"
+ 2534      6843746C 
+ 2534      4D61696E 
+ 2534      57733146 
+ 2534      72657100 
+ 2535              	.LASF255:
+ 2536 0014 73746F70 		.ascii	"stopInputMode\000"
+ 2536      496E7075 
+ 2536      744D6F64 
+ 2536      6500
+ 2537              	.LASF267:
+ 2538 0022 63795F64 		.ascii	"cy_device\000"
+ 2538      65766963 
+ 2538      6500
+ 2539              	.LASF273:
+ 2540 002c 53746F70 		.ascii	"Stopwatch_config\000"
+ 2540      77617463 
+ 2540      685F636F 
+ 2540      6E666967 
+ 2540      00
+ 2541              	.LASF163:
+ 2542 003d 43595F43 		.ascii	"CY_CTDAC_FORMAT_SIGNED\000"
+ 2542      54444143 
+ 2542      5F464F52 
+ 2542      4D41545F 
+ 2542      5349474E 
+ 2543              	.LASF91:
+ 2544 0054 63707573 		.ascii	"cpussCm0ClockCtlOffset\000"
+ARM GAS  C:\Users\eduar\AppData\Local\Temp\ccN7CLzG.s 			page 46
+
+
+ 2544      73436D30 
+ 2544      436C6F63 
+ 2544      6B43746C 
+ 2544      4F666673 
+ 2545              	.LASF50:
+ 2546 006b 70657269 		.ascii	"periClockNr\000"
+ 2546      436C6F63 
+ 2546      6B4E7200 
+ 2547              	.LASF182:
+ 2548 0077 43595F43 		.ascii	"CY_CTDAC_OUTPUT_BUFFERED\000"
+ 2548      54444143 
+ 2548      5F4F5554 
+ 2548      5055545F 
+ 2548      42554646 
+ 2549              	.LASF134:
+ 2550 0090 43595F43 		.ascii	"CY_CTB_COMP_BYPASS_SYNC\000"
+ 2550      54425F43 
+ 2550      4F4D505F 
+ 2550      42595041 
+ 2550      53535F53 
+ 2551              	.LASF24:
+ 2552 00a8 75646242 		.ascii	"udbBase\000"
+ 2552      61736500 
+ 2553              	.LASF151:
+ 2554 00b0 43595F53 		.ascii	"CY_SYSCLK_DIV_8_BIT\000"
+ 2554      5953434C 
+ 2554      4B5F4449 
+ 2554      565F385F 
+ 2554      42495400 
+ 2555              	.LASF223:
+ 2556 00c4 74785374 		.ascii	"txStatus\000"
+ 2556      61747573 
+ 2556      00
+ 2557              	.LASF23:
+ 2558 00cd 70657269 		.ascii	"periBase\000"
+ 2558      42617365 
+ 2558      00
+ 2559              	.LASF99:
+ 2560 00d6 63707573 		.ascii	"cpussCm0NmiCtlOffset\000"
+ 2560      73436D30 
+ 2560      4E6D6943 
+ 2560      746C4F66 
+ 2560      66736574 
+ 2561              	.LASF69:
+ 2562 00eb 64774368 		.ascii	"dwChSize\000"
+ 2562      53697A65 
+ 2562      00
+ 2563              	.LASF146:
+ 2564 00f4 6F61436F 		.ascii	"oaCompLevel\000"
+ 2564      6D704C65 
+ 2564      76656C00 
+ 2565              	.LASF51:
+ 2566 0100 736D6966 		.ascii	"smifDeviceNr\000"
+ 2566      44657669 
+ 2566      63654E72 
+ 2566      00
+ 2567              	.LASF204:
+ARM GAS  C:\Users\eduar\AppData\Local\Temp\ccN7CLzG.s 			page 47
+
+
+ 2568 010d 43595F53 		.ascii	"CY_SAR_RANGE_COND_OUTSIDE\000"
+ 2568      41525F52 
+ 2568      414E4745 
+ 2568      5F434F4E 
+ 2568      445F4F55 
+ 2569              	.LASF81:
+ 2570 0127 70657269 		.ascii	"periDivCmdPaTypeSelPos\000"
+ 2570      44697643 
+ 2570      6D645061 
+ 2570      54797065 
+ 2570      53656C50 
+ 2571              	.LASF178:
+ 2572 013e 63795F65 		.ascii	"cy_en_ctdac_deglitch_t\000"
+ 2572      6E5F6374 
+ 2572      6461635F 
+ 2572      6465676C 
+ 2572      69746368 
+ 2573              	.LASF254:
+ 2574 0155 73746172 		.ascii	"startInput\000"
+ 2574      74496E70 
+ 2574      757400
+ 2575              	.LASF7:
+ 2576 0160 5F5F696E 		.ascii	"__int32_t\000"
+ 2576      7433325F 
+ 2576      7400
+ 2577              	.LASF21:
+ 2578 016a 63707573 		.ascii	"cpussBase\000"
+ 2578      73426173 
+ 2578      6500
+ 2579              	.LASF260:
+ 2580 0174 6368616E 		.ascii	"channelBase\000"
+ 2580      6E656C42 
+ 2580      61736500 
+ 2581              	.LASF45:
+ 2582 0180 63707573 		.ascii	"cpussFmIrq\000"
+ 2582      73466D49 
+ 2582      727100
+ 2583              	.LASF127:
+ 2584 018b 43595F43 		.ascii	"CY_CTB_COMP_EDGE_RISING\000"
+ 2584      54425F43 
+ 2584      4F4D505F 
+ 2584      45444745 
+ 2584      5F524953 
+ 2585              	.LASF262:
+ 2586 01a3 6877436F 		.ascii	"hwConfigStc\000"
+ 2586      6E666967 
+ 2586      53746300 
+ 2587              	.LASF159:
+ 2588 01af 43595F43 		.ascii	"CY_CTDAC_UPDATE_STROBE_EDGE_IMMEDIATE\000"
+ 2588      54444143 
+ 2588      5F555044 
+ 2588      4154455F 
+ 2588      5354524F 
+ 2589              	.LASF121:
+ 2590 01d5 43595F43 		.ascii	"CY_CTB_MODE_COMP\000"
+ 2590      54425F4D 
+ 2590      4F44455F 
+ARM GAS  C:\Users\eduar\AppData\Local\Temp\ccN7CLzG.s 			page 48
+
+
+ 2590      434F4D50 
+ 2590      00
+ 2591              	.LASF256:
+ 2592 01e6 73746F70 		.ascii	"stopInput\000"
+ 2592      496E7075 
+ 2592      7400
+ 2593              	.LASF226:
+ 2594 01f0 72785269 		.ascii	"rxRingBufSize\000"
+ 2594      6E674275 
+ 2594      6653697A 
+ 2594      6500
+ 2595              	.LASF195:
+ 2596 01fe 636F6E66 		.ascii	"configClock\000"
+ 2596      6967436C 
+ 2596      6F636B00 
+ 2597              	.LASF77:
+ 2598 020a 70657269 		.ascii	"periTrGrSize\000"
+ 2598      54724772 
+ 2598      53697A65 
+ 2598      00
+ 2599              	.LASF80:
+ 2600 0217 70657269 		.ascii	"periDivCmdPaDivSelPos\000"
+ 2600      44697643 
+ 2600      6D645061 
+ 2600      44697653 
+ 2600      656C506F 
+ 2601              	.LASF193:
+ 2602 022d 6E657874 		.ascii	"nextValue\000"
+ 2602      56616C75 
+ 2602      6500
+ 2603              	.LASF57:
+ 2604 0237 63727970 		.ascii	"cryptoMemSize\000"
+ 2604      746F4D65 
+ 2604      6D53697A 
+ 2604      6500
+ 2605              	.LASF215:
+ 2606 0245 73617449 		.ascii	"satIntrMask\000"
+ 2606      6E74724D 
+ 2606      61736B00 
+ 2607              	.LASF103:
+ 2608 0251 63707573 		.ascii	"cpussRam1Ctl0\000"
+ 2608      7352616D 
+ 2608      3143746C 
+ 2608      3000
+ 2609              	.LASF105:
+ 2610 025f 69706353 		.ascii	"ipcStructSize\000"
+ 2610      74727563 
+ 2610      7453697A 
+ 2610      6500
+ 2611              	.LASF191:
+ 2612 026d 6465676C 		.ascii	"deglitchCycles\000"
+ 2612      69746368 
+ 2612      4379636C 
+ 2612      657300
+ 2613              	.LASF245:
+ 2614 027c 636F6D70 		.ascii	"compare0\000"
+ 2614      61726530 
+ARM GAS  C:\Users\eduar\AppData\Local\Temp\ccN7CLzG.s 			page 49
+
+
+ 2614      00
+ 2615              	.LASF246:
+ 2616 0285 636F6D70 		.ascii	"compare1\000"
+ 2616      61726531 
+ 2616      00
+ 2617              	.LASF275:
+ 2618 028e 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
+ 2618      43313120 
+ 2618      352E342E 
+ 2618      31203230 
+ 2618      31363036 
+ 2619 02c1 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m4 -mfloat-abi=s"
+ 2619      20726576 
+ 2619      6973696F 
+ 2619      6E203233 
+ 2619      37373135 
+ 2620 02f4 6F667466 		.ascii	"oftfp -mfpu=fpv4-sp-d16 -mthumb -g -Og -ffunction-s"
+ 2620      70202D6D 
+ 2620      6670753D 
+ 2620      66707634 
+ 2620      2D73702D 
+ 2621 0327 65637469 		.ascii	"ections -ffat-lto-objects\000"
+ 2621      6F6E7320 
+ 2621      2D666661 
+ 2621      742D6C74 
+ 2621      6F2D6F62 
+ 2622              	.LASF39:
+ 2623 0341 70726F74 		.ascii	"protVersion\000"
+ 2623      56657273 
+ 2623      696F6E00 
+ 2624              	.LASF201:
+ 2625 034d 43595F53 		.ascii	"CY_SAR_RANGE_COND_BELOW\000"
+ 2625      41525F52 
+ 2625      414E4745 
+ 2625      5F434F4E 
+ 2625      445F4245 
+ 2626              	.LASF185:
+ 2627 0365 72656653 		.ascii	"refSource\000"
+ 2627      6F757263 
+ 2627      6500
+ 2628              	.LASF171:
+ 2629 036f 43595F43 		.ascii	"CY_CTDAC_OUTPUT_VSSA\000"
+ 2629      54444143 
+ 2629      5F4F5554 
+ 2629      5055545F 
+ 2629      56535341 
+ 2630              	.LASF79:
+ 2631 0384 70657269 		.ascii	"periDivCmdTypeSelPos\000"
+ 2631      44697643 
+ 2631      6D645479 
+ 2631      70655365 
+ 2631      6C506F73 
+ 2632              	.LASF96:
+ 2633 0399 63707573 		.ascii	"cpussTrimRamCtlOffset\000"
+ 2633      73547269 
+ 2633      6D52616D 
+ 2633      43746C4F 
+ARM GAS  C:\Users\eduar\AppData\Local\Temp\ccN7CLzG.s 			page 50
+
+
+ 2633      66667365 
+ 2634              	.LASF199:
+ 2635 03af 64697669 		.ascii	"dividerFracValue\000"
+ 2635      64657246 
+ 2635      72616356 
+ 2635      616C7565 
+ 2635      00
+ 2636              	.LASF107:
+ 2637 03c0 63795F73 		.ascii	"cy_stc_device_t\000"
+ 2637      74635F64 
+ 2637      65766963 
+ 2637      655F7400 
+ 2638              	.LASF184:
+ 2639 03d0 63795F65 		.ascii	"cy_en_ctdac_output_buffer_t\000"
+ 2639      6E5F6374 
+ 2639      6461635F 
+ 2639      6F757470 
+ 2639      75745F62 
+ 2640              	.LASF138:
+ 2641 03ec 43595F43 		.ascii	"CY_CTB_COMP_HYST_10MV\000"
+ 2641      54425F43 
+ 2641      4F4D505F 
+ 2641      48595354 
+ 2641      5F31304D 
+ 2642              	.LASF248:
+ 2643 0402 696E7465 		.ascii	"interruptSources\000"
+ 2643      72727570 
+ 2643      74536F75 
+ 2643      72636573 
+ 2643      00
+ 2644              	.LASF18:
+ 2645 0413 75696E74 		.ascii	"uint32_t\000"
+ 2645      33325F74 
+ 2645      00
+ 2646              	.LASF89:
+ 2647 041c 6770696F 		.ascii	"gpioPrtCfgOutOffset\000"
+ 2647      50727443 
+ 2647      66674F75 
+ 2647      744F6666 
+ 2647      73657400 
+ 2648              	.LASF170:
+ 2649 0430 43595F43 		.ascii	"CY_CTDAC_OUTPUT_VALUE_PLUS1\000"
+ 2649      54444143 
+ 2649      5F4F5554 
+ 2649      5055545F 
+ 2649      56414C55 
+ 2650              	.LASF109:
+ 2651 044c 666C6F61 		.ascii	"float\000"
+ 2651      7400
+ 2652              	.LASF32:
+ 2653 0452 63727970 		.ascii	"cryptoVersion\000"
+ 2653      746F5665 
+ 2653      7273696F 
+ 2653      6E00
+ 2654              	.LASF237:
+ 2655 0460 63795F73 		.ascii	"cy_stc_scb_uart_context_t\000"
+ 2655      74635F73 
+ARM GAS  C:\Users\eduar\AppData\Local\Temp\ccN7CLzG.s 			page 51
+
+
+ 2655      63625F75 
+ 2655      6172745F 
+ 2655      636F6E74 
+ 2656              	.LASF61:
+ 2657 047a 666C6173 		.ascii	"flashProgramDelay\000"
+ 2657      6850726F 
+ 2657      6772616D 
+ 2657      44656C61 
+ 2657      7900
+ 2658              	.LASF272:
+ 2659 048c 4441435F 		.ascii	"DAC_outputBufferConfig\000"
+ 2659      6F757470 
+ 2659      75744275 
+ 2659      66666572 
+ 2659      436F6E66 
+ 2660              	.LASF115:
+ 2661 04a3 43595F43 		.ascii	"CY_CTB_POWER_LOW\000"
+ 2661      54425F50 
+ 2661      4F574552 
+ 2661      5F4C4F57 
+ 2661      00
+ 2662              	.LASF238:
+ 2663 04b4 63795F73 		.ascii	"cy_stc_scb_uart_context\000"
+ 2663      74635F73 
+ 2663      63625F75 
+ 2663      6172745F 
+ 2663      636F6E74 
+ 2664              	.LASF189:
+ 2665 04cc 6F757470 		.ascii	"outputMode\000"
+ 2665      75744D6F 
+ 2665      646500
+ 2666              	.LASF22:
+ 2667 04d7 666C6173 		.ascii	"flashcBase\000"
+ 2667      68634261 
+ 2667      736500
+ 2668              	.LASF15:
+ 2669 04e2 696E7431 		.ascii	"int16_t\000"
+ 2669      365F7400 
+ 2670              	.LASF142:
+ 2671 04ea 6F61506F 		.ascii	"oaPower\000"
+ 2671      77657200 
+ 2672              	.LASF88:
+ 2673 04f2 6770696F 		.ascii	"gpioPrtCfgInOffset\000"
+ 2673      50727443 
+ 2673      6667496E 
+ 2673      4F666673 
+ 2673      657400
+ 2674              	.LASF261:
+ 2675 0505 6E756D43 		.ascii	"numChannels\000"
+ 2675      68616E6E 
+ 2675      656C7300 
+ 2676              	.LASF111:
+ 2677 0511 43595F43 		.ascii	"CY_CTB_DEEPSLEEP_DISABLE\000"
+ 2677      54425F44 
+ 2677      45455053 
+ 2677      4C454550 
+ 2677      5F444953 
+ARM GAS  C:\Users\eduar\AppData\Local\Temp\ccN7CLzG.s 			page 52
+
+
+ 2678              	.LASF12:
+ 2679 052a 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 2679      206C6F6E 
+ 2679      6720756E 
+ 2679      7369676E 
+ 2679      65642069 
+ 2680              	.LASF85:
+ 2681 0541 70657269 		.ascii	"periDiv24_5CtlOffset\000"
+ 2681      44697632 
+ 2681      345F3543 
+ 2681      746C4F66 
+ 2681      66736574 
+ 2682              	.LASF90:
+ 2683 0556 6770696F 		.ascii	"gpioPrtCfgSioOffset\000"
+ 2683      50727443 
+ 2683      66675369 
+ 2683      6F4F6666 
+ 2683      73657400 
+ 2684              	.LASF44:
+ 2685 056a 63707573 		.ascii	"cpussIpc0Irq\000"
+ 2685      73497063 
+ 2685      30497271 
+ 2685      00
+ 2686              	.LASF169:
+ 2687 0577 43595F43 		.ascii	"CY_CTDAC_OUTPUT_VALUE\000"
+ 2687      54444143 
+ 2687      5F4F5554 
+ 2687      5055545F 
+ 2687      56414C55 
+ 2688              	.LASF274:
+ 2689 058d 74726961 		.ascii	"triangularWaveLUT\000"
+ 2689      6E67756C 
+ 2689      61725761 
+ 2689      76654C55 
+ 2689      5400
+ 2690              	.LASF113:
+ 2691 059f 63795F65 		.ascii	"cy_en_ctb_deep_sleep_t\000"
+ 2691      6E5F6374 
+ 2691      625F6465 
+ 2691      65705F73 
+ 2691      6C656570 
+ 2692              	.LASF197:
+ 2693 05b6 64697669 		.ascii	"dividerNum\000"
+ 2693      6465724E 
+ 2693      756D00
+ 2694              	.LASF210:
+ 2695 05c1 72616E67 		.ascii	"rangeThres\000"
+ 2695      65546872 
+ 2695      657300
+ 2696              	.LASF5:
+ 2697 05cc 5F5F7569 		.ascii	"__uint16_t\000"
+ 2697      6E743136 
+ 2697      5F7400
+ 2698              	.LASF202:
+ 2699 05d7 43595F53 		.ascii	"CY_SAR_RANGE_COND_INSIDE\000"
+ 2699      41525F52 
+ 2699      414E4745 
+ARM GAS  C:\Users\eduar\AppData\Local\Temp\ccN7CLzG.s 			page 53
+
+
+ 2699      5F434F4E 
+ 2699      445F494E 
+ 2700              	.LASF194:
+ 2701 05f0 656E6162 		.ascii	"enableInterrupt\000"
+ 2701      6C65496E 
+ 2701      74657272 
+ 2701      75707400 
+ 2702              	.LASF221:
+ 2703 0600 63795F73 		.ascii	"cy_stc_sar_config_t\000"
+ 2703      74635F73 
+ 2703      61725F63 
+ 2703      6F6E6669 
+ 2703      675F7400 
+ 2704              	.LASF206:
+ 2705 0614 6374726C 		.ascii	"ctrl\000"
+ 2705      00
+ 2706              	.LASF166:
+ 2707 0619 43595F43 		.ascii	"CY_CTDAC_DEEPSLEEP_ENABLE\000"
+ 2707      54444143 
+ 2707      5F444545 
+ 2707      50534C45 
+ 2707      45505F45 
+ 2708              	.LASF249:
+ 2709 0633 63617074 		.ascii	"captureInputMode\000"
+ 2709      75726549 
+ 2709      6E707574 
+ 2709      4D6F6465 
+ 2709      00
+ 2710              	.LASF192:
+ 2711 0644 76616C75 		.ascii	"value\000"
+ 2711      6500
+ 2712              	.LASF224:
+ 2713 064a 72785374 		.ascii	"rxStatus\000"
+ 2713      61747573 
+ 2713      00
+ 2714              	.LASF229:
+ 2715 0653 72784275 		.ascii	"rxBuf\000"
+ 2715      6600
+ 2716              	.LASF129:
+ 2717 0659 43595F43 		.ascii	"CY_CTB_COMP_EDGE_BOTH\000"
+ 2717      54425F43 
+ 2717      4F4D505F 
+ 2717      45444745 
+ 2717      5F424F54 
+ 2718              	.LASF66:
+ 2719 066f 666C6173 		.ascii	"flashCtlMainWs3Freq\000"
+ 2719      6843746C 
+ 2719      4D61696E 
+ 2719      57733346 
+ 2719      72657100 
+ 2720              	.LASF179:
+ 2721 0683 43595F43 		.ascii	"CY_CTDAC_REFSOURCE_EXTERNAL\000"
+ 2721      54444143 
+ 2721      5F524546 
+ 2721      534F5552 
+ 2721      43455F45 
+ 2722              	.LASF48:
+ARM GAS  C:\Users\eduar\AppData\Local\Temp\ccN7CLzG.s 			page 54
+
+
+ 2723 069f 73727373 		.ascii	"srssNumPll\000"
+ 2723      4E756D50 
+ 2723      6C6C00
+ 2724              	.LASF59:
+ 2725 06aa 666C6173 		.ascii	"flashPipeRequired\000"
+ 2725      68506970 
+ 2725      65526571 
+ 2725      75697265 
+ 2725      6400
+ 2726              	.LASF235:
+ 2727 06bc 63624576 		.ascii	"cbEvents\000"
+ 2727      656E7473 
+ 2727      00
+ 2728              	.LASF110:
+ 2729 06c5 646F7562 		.ascii	"double\000"
+ 2729      6C6500
+ 2730              	.LASF116:
+ 2731 06cc 43595F43 		.ascii	"CY_CTB_POWER_MEDIUM\000"
+ 2731      54425F50 
+ 2731      4F574552 
+ 2731      5F4D4544 
+ 2731      49554D00 
+ 2732              	.LASF140:
+ 2733 06e0 5F426F6F 		.ascii	"_Bool\000"
+ 2733      6C00
+ 2734              	.LASF157:
+ 2735 06e6 43595F43 		.ascii	"CY_CTDAC_UPDATE_BUFFERED_WRITE\000"
+ 2735      54444143 
+ 2735      5F555044 
+ 2735      4154455F 
+ 2735      42554646 
+ 2736              	.LASF175:
+ 2737 0705 43595F43 		.ascii	"CY_CTDAC_DEGLITCHMODE_UNBUFFERED\000"
+ 2737      54444143 
+ 2737      5F444547 
+ 2737      4C495443 
+ 2737      484D4F44 
+ 2738              	.LASF63:
+ 2739 0726 666C6173 		.ascii	"flashCtlMainWs0Freq\000"
+ 2739      6843746C 
+ 2739      4D61696E 
+ 2739      57733046 
+ 2739      72657100 
+ 2740              	.LASF73:
+ 2741 073a 64775374 		.ascii	"dwStatusChIdxMsk\000"
+ 2741      61747573 
+ 2741      43684964 
+ 2741      784D736B 
+ 2741      00
+ 2742              	.LASF27:
+ 2743 074b 6770696F 		.ascii	"gpioBase\000"
+ 2743      42617365 
+ 2743      00
+ 2744              	.LASF148:
+ 2745 0754 6F61436F 		.ascii	"oaCompHyst\000"
+ 2745      6D704879 
+ 2745      737400
+ARM GAS  C:\Users\eduar\AppData\Local\Temp\ccN7CLzG.s 			page 55
+
+
+ 2746              	.LASF158:
+ 2747 075f 43595F43 		.ascii	"CY_CTDAC_UPDATE_STROBE_EDGE_SYNC\000"
+ 2747      54444143 
+ 2747      5F555044 
+ 2747      4154455F 
+ 2747      5354524F 
+ 2748              	.LASF123:
+ 2749 0780 43595F43 		.ascii	"CY_CTB_PUMP_DISABLE\000"
+ 2749      54425F50 
+ 2749      554D505F 
+ 2749      44495341 
+ 2749      424C4500 
+ 2750              	.LASF137:
+ 2751 0794 43595F43 		.ascii	"CY_CTB_COMP_HYST_DISABLE\000"
+ 2751      54425F43 
+ 2751      4F4D505F 
+ 2751      48595354 
+ 2751      5F444953 
+ 2752              	.LASF98:
+ 2753 07ad 63707573 		.ascii	"cpussSysTickCtlOffset\000"
+ 2753      73537973 
+ 2753      5469636B 
+ 2753      43746C4F 
+ 2753      66667365 
+ 2754              	.LASF54:
+ 2755 07c3 75646250 		.ascii	"udbPresent\000"
+ 2755      72657365 
+ 2755      6E7400
+ 2756              	.LASF72:
+ 2757 07ce 64775374 		.ascii	"dwStatusChIdxPos\000"
+ 2757      61747573 
+ 2757      43684964 
+ 2757      78506F73 
+ 2757      00
+ 2758              	.LASF198:
+ 2759 07df 64697669 		.ascii	"dividerIntValue\000"
+ 2759      64657249 
+ 2759      6E745661 
+ 2759      6C756500 
+ 2760              	.LASF220:
+ 2761 07ef 76726566 		.ascii	"vrefMvValue\000"
+ 2761      4D765661 
+ 2761      6C756500 
+ 2762              	.LASF43:
+ 2763 07fb 63707573 		.ascii	"cpussFlashPaSize\000"
+ 2763      73466C61 
+ 2763      73685061 
+ 2763      53697A65 
+ 2763      00
+ 2764              	.LASF250:
+ 2765 080c 63617074 		.ascii	"captureInput\000"
+ 2765      75726549 
+ 2765      6E707574 
+ 2765      00
+ 2766              	.LASF133:
+ 2767 0819 63795F65 		.ascii	"cy_en_ctb_comp_level_t\000"
+ 2767      6E5F6374 
+ARM GAS  C:\Users\eduar\AppData\Local\Temp\ccN7CLzG.s 			page 56
+
+
+ 2767      625F636F 
+ 2767      6D705F6C 
+ 2767      6576656C 
+ 2768              	.LASF203:
+ 2769 0830 43595F53 		.ascii	"CY_SAR_RANGE_COND_ABOVE\000"
+ 2769      41525F52 
+ 2769      414E4745 
+ 2769      5F434F4E 
+ 2769      445F4142 
+ 2770              	.LASF108:
+ 2771 0848 63686172 		.ascii	"char\000"
+ 2771      00
+ 2772              	.LASF212:
+ 2773 084d 6368616E 		.ascii	"chanEn\000"
+ 2773      456E00
+ 2774              	.LASF228:
+ 2775 0854 72785269 		.ascii	"rxRingBufTail\000"
+ 2775      6E674275 
+ 2775      66546169 
+ 2775      6C00
+ 2776              	.LASF84:
+ 2777 0862 70657269 		.ascii	"periDiv16_5CtlOffset\000"
+ 2777      44697631 
+ 2777      365F3543 
+ 2777      746C4F66 
+ 2777      66736574 
+ 2778              	.LASF196:
+ 2779 0877 64697669 		.ascii	"dividerType\000"
+ 2779      64657254 
+ 2779      79706500 
+ 2780              	.LASF55:
+ 2781 0883 73797350 		.ascii	"sysPmSimoPresent\000"
+ 2781      6D53696D 
+ 2781      6F507265 
+ 2781      73656E74 
+ 2781      00
+ 2782              	.LASF271:
+ 2783 0894 4441435F 		.ascii	"DAC_ctdacConfig\000"
+ 2783      63746461 
+ 2783      63436F6E 
+ 2783      66696700 
+ 2784              	.LASF241:
+ 2785 08a4 636C6F63 		.ascii	"clockPrescaler\000"
+ 2785      6B507265 
+ 2785      7363616C 
+ 2785      657200
+ 2786              	.LASF231:
+ 2787 08b3 72784275 		.ascii	"rxBufIdx\000"
+ 2787      66496478 
+ 2787      00
+ 2788              	.LASF13:
+ 2789 08bc 756E7369 		.ascii	"unsigned int\000"
+ 2789      676E6564 
+ 2789      20696E74 
+ 2789      00
+ 2790              	.LASF236:
+ 2791 08c9 696E6974 		.ascii	"initKey\000"
+ARM GAS  C:\Users\eduar\AppData\Local\Temp\ccN7CLzG.s 			page 57
+
+
+ 2791      4B657900 
+ 2792              	.LASF165:
+ 2793 08d1 43595F43 		.ascii	"CY_CTDAC_DEEPSLEEP_DISABLE\000"
+ 2793      54444143 
+ 2793      5F444545 
+ 2793      50534C45 
+ 2793      45505F44 
+ 2794              	.LASF14:
+ 2795 08ec 75696E74 		.ascii	"uint8_t\000"
+ 2795      385F7400 
+ 2796              	.LASF162:
+ 2797 08f4 43595F43 		.ascii	"CY_CTDAC_FORMAT_UNSIGNED\000"
+ 2797      54444143 
+ 2797      5F464F52 
+ 2797      4D41545F 
+ 2797      554E5349 
+ 2798              	.LASF78:
+ 2799 090d 70657269 		.ascii	"periDivCmdDivSelMsk\000"
+ 2799      44697643 
+ 2799      6D644469 
+ 2799      7653656C 
+ 2799      4D736B00 
+ 2800              	.LASF117:
+ 2801 0921 43595F43 		.ascii	"CY_CTB_POWER_HIGH\000"
+ 2801      54425F50 
+ 2801      4F574552 
+ 2801      5F484947 
+ 2801      4800
+ 2802              	.LASF265:
+ 2803 0933 4144435F 		.ascii	"ADC_CONFIG_STRUCT\000"
+ 2803      434F4E46 
+ 2803      49475F53 
+ 2803      54525543 
+ 2803      5400
+ 2804              	.LASF218:
+ 2805 0945 6D757853 		.ascii	"muxSwitchSqCtrl\000"
+ 2805      77697463 
+ 2805      68537143 
+ 2805      74726C00 
+ 2806              	.LASF222:
+ 2807 0955 63795F63 		.ascii	"cy_cb_scb_uart_handle_events_t\000"
+ 2807      625F7363 
+ 2807      625F7561 
+ 2807      72745F68 
+ 2807      616E646C 
+ 2808              	.LASF211:
+ 2809 0974 72616E67 		.ascii	"rangeCond\000"
+ 2809      65436F6E 
+ 2809      6400
+ 2810              	.LASF102:
+ 2811 097e 63707573 		.ascii	"cpussRam0Ctl0\000"
+ 2811      7352616D 
+ 2811      3043746C 
+ 2811      3000
+ 2812              	.LASF119:
+ 2813 098c 43595F43 		.ascii	"CY_CTB_MODE_OPAMP1X\000"
+ 2813      54425F4D 
+ARM GAS  C:\Users\eduar\AppData\Local\Temp\ccN7CLzG.s 			page 58
+
+
+ 2813      4F44455F 
+ 2813      4F50414D 
+ 2813      50315800 
+ 2814              	.LASF11:
+ 2815 09a0 6C6F6E67 		.ascii	"long long int\000"
+ 2815      206C6F6E 
+ 2815      6720696E 
+ 2815      7400
+ 2816              	.LASF29:
+ 2817 09ae 69706342 		.ascii	"ipcBase\000"
+ 2817      61736500 
+ 2818              	.LASF70:
+ 2819 09b6 64774368 		.ascii	"dwChCtlPrioPos\000"
+ 2819      43746C50 
+ 2819      72696F50 
+ 2819      6F7300
+ 2820              	.LASF30:
+ 2821 09c5 63727970 		.ascii	"cryptoBase\000"
+ 2821      746F4261 
+ 2821      736500
+ 2822              	.LASF253:
+ 2823 09d0 73746172 		.ascii	"startInputMode\000"
+ 2823      74496E70 
+ 2823      75744D6F 
+ 2823      646500
+ 2824              	.LASF60:
+ 2825 09df 666C6173 		.ascii	"flashWriteDelay\000"
+ 2825      68577269 
+ 2825      74654465 
+ 2825      6C617900 
+ 2826              	.LASF135:
+ 2827 09ef 43595F43 		.ascii	"CY_CTB_COMP_BYPASS_NO_SYNC\000"
+ 2827      54425F43 
+ 2827      4F4D505F 
+ 2827      42595041 
+ 2827      53535F4E 
+ 2828              	.LASF4:
+ 2829 0a0a 5F5F696E 		.ascii	"__int16_t\000"
+ 2829      7431365F 
+ 2829      7400
+ 2830              	.LASF26:
+ 2831 0a14 6873696F 		.ascii	"hsiomBase\000"
+ 2831      6D426173 
+ 2831      6500
+ 2832              	.LASF76:
+ 2833 0a1e 70657269 		.ascii	"periTrGrOffset\000"
+ 2833      54724772 
+ 2833      4F666673 
+ 2833      657400
+ 2834              	.LASF46:
+ 2835 0a2d 63707573 		.ascii	"cpussNotConnectedIrq\000"
+ 2835      734E6F74 
+ 2835      436F6E6E 
+ 2835      65637465 
+ 2835      64497271 
+ 2836              	.LASF227:
+ 2837 0a42 72785269 		.ascii	"rxRingBufHead\000"
+ARM GAS  C:\Users\eduar\AppData\Local\Temp\ccN7CLzG.s 			page 59
+
+
+ 2837      6E674275 
+ 2837      66486561 
+ 2837      6400
+ 2838              	.LASF42:
+ 2839 0a50 63707573 		.ascii	"cpussDwChNr\000"
+ 2839      73447743 
+ 2839      684E7200 
+ 2840              	.LASF251:
+ 2841 0a5c 72656C6F 		.ascii	"reloadInputMode\000"
+ 2841      6164496E 
+ 2841      7075744D 
+ 2841      6F646500 
+ 2842              	.LASF122:
+ 2843 0a6c 63795F65 		.ascii	"cy_en_ctb_mode_t\000"
+ 2843      6E5F6374 
+ 2843      625F6D6F 
+ 2843      64655F74 
+ 2843      00
+ 2844              	.LASF276:
+ 2845 0a7d 70736F63 		.ascii	"psoc6_dut_src\\trainingData.c\000"
+ 2845      365F6475 
+ 2845      745F7372 
+ 2845      635C7472 
+ 2845      61696E69 
+ 2846              	.LASF233:
+ 2847 0a9a 74784275 		.ascii	"txBufSize\000"
+ 2847      6653697A 
+ 2847      6500
+ 2848              	.LASF40:
+ 2849 0aa4 63707573 		.ascii	"cpussIpcNr\000"
+ 2849      73497063 
+ 2849      4E7200
+ 2850              	.LASF93:
+ 2851 0aaf 63707573 		.ascii	"cpussCm4StatusOffset\000"
+ 2851      73436D34 
+ 2851      53746174 
+ 2851      75734F66 
+ 2851      66736574 
+ 2852              	.LASF180:
+ 2853 0ac4 43595F43 		.ascii	"CY_CTDAC_REFSOURCE_VDDA\000"
+ 2853      54444143 
+ 2853      5F524546 
+ 2853      534F5552 
+ 2853      43455F56 
+ 2854              	.LASF104:
+ 2855 0adc 63707573 		.ascii	"cpussRam2Ctl0\000"
+ 2855      7352616D 
+ 2855      3243746C 
+ 2855      3000
+ 2856              	.LASF130:
+ 2857 0aea 63795F65 		.ascii	"cy_en_ctb_comp_edge_t\000"
+ 2857      6E5F6374 
+ 2857      625F636F 
+ 2857      6D705F65 
+ 2857      6467655F 
+ 2858              	.LASF161:
+ 2859 0b00 63795F65 		.ascii	"cy_en_ctdac_update_t\000"
+ARM GAS  C:\Users\eduar\AppData\Local\Temp\ccN7CLzG.s 			page 60
+
+
+ 2859      6E5F6374 
+ 2859      6461635F 
+ 2859      75706461 
+ 2859      74655F74 
+ 2860              	.LASF232:
+ 2861 0b15 74784275 		.ascii	"txBuf\000"
+ 2861      6600
+ 2862              	.LASF153:
+ 2863 0b1b 43595F53 		.ascii	"CY_SYSCLK_DIV_16_5_BIT\000"
+ 2863      5953434C 
+ 2863      4B5F4449 
+ 2863      565F3136 
+ 2863      5F355F42 
+ 2864              	.LASF187:
+ 2865 0b32 75706461 		.ascii	"updateMode\000"
+ 2865      74654D6F 
+ 2865      646500
+ 2866              	.LASF147:
+ 2867 0b3d 6F61436F 		.ascii	"oaCompBypass\000"
+ 2867      6D704279 
+ 2867      70617373 
+ 2867      00
+ 2868              	.LASF83:
+ 2869 0b4a 70657269 		.ascii	"periDiv16CtlOffset\000"
+ 2869      44697631 
+ 2869      3643746C 
+ 2869      4F666673 
+ 2869      657400
+ 2870              	.LASF118:
+ 2871 0b5d 63795F65 		.ascii	"cy_en_ctb_power_t\000"
+ 2871      6E5F6374 
+ 2871      625F706F 
+ 2871      7765725F 
+ 2871      7400
+ 2872              	.LASF217:
+ 2873 0b6f 6D757853 		.ascii	"muxSwitch\000"
+ 2873      77697463 
+ 2873      6800
+ 2874              	.LASF6:
+ 2875 0b79 73686F72 		.ascii	"short unsigned int\000"
+ 2875      7420756E 
+ 2875      7369676E 
+ 2875      65642069 
+ 2875      6E7400
+ 2876              	.LASF225:
+ 2877 0b8c 72785269 		.ascii	"rxRingBuf\000"
+ 2877      6E674275 
+ 2877      6600
+ 2878              	.LASF20:
+ 2879 0b96 6C6F6E67 		.ascii	"long double\000"
+ 2879      20646F75 
+ 2879      626C6500 
+ 2880              	.LASF181:
+ 2881 0ba2 63795F65 		.ascii	"cy_en_ctdac_ref_source_t\000"
+ 2881      6E5F6374 
+ 2881      6461635F 
+ 2881      7265665F 
+ARM GAS  C:\Users\eduar\AppData\Local\Temp\ccN7CLzG.s 			page 61
+
+
+ 2881      736F7572 
+ 2882              	.LASF25:
+ 2883 0bbb 70726F74 		.ascii	"protBase\000"
+ 2883      42617365 
+ 2883      00
+ 2884              	.LASF242:
+ 2885 0bc4 72756E4D 		.ascii	"runMode\000"
+ 2885      6F646500 
+ 2886              	.LASF75:
+ 2887 0bcc 70657269 		.ascii	"periTrCmdGrSelMsk\000"
+ 2887      5472436D 
+ 2887      64477253 
+ 2887      656C4D73 
+ 2887      6B00
+ 2888              	.LASF208:
+ 2889 0bde 73616D70 		.ascii	"sampleTime01\000"
+ 2889      6C655469 
+ 2889      6D653031 
+ 2889      00
+ 2890              	.LASF9:
+ 2891 0beb 5F5F7569 		.ascii	"__uint32_t\000"
+ 2891      6E743332 
+ 2891      5F7400
+ 2892              	.LASF49:
+ 2893 0bf6 73727373 		.ascii	"srssNumHfroot\000"
+ 2893      4E756D48 
+ 2893      66726F6F 
+ 2893      7400
+ 2894              	.LASF259:
+ 2895 0c04 63795F73 		.ascii	"cy_stc_tcpwm_counter_config_t\000"
+ 2895      74635F74 
+ 2895      6370776D 
+ 2895      5F636F75 
+ 2895      6E746572 
+ 2896              	.LASF152:
+ 2897 0c22 43595F53 		.ascii	"CY_SYSCLK_DIV_16_BIT\000"
+ 2897      5953434C 
+ 2897      4B5F4449 
+ 2897      565F3136 
+ 2897      5F424954 
+ 2898              	.LASF33:
+ 2899 0c37 64775665 		.ascii	"dwVersion\000"
+ 2899      7273696F 
+ 2899      6E00
+ 2900              	.LASF65:
+ 2901 0c41 666C6173 		.ascii	"flashCtlMainWs2Freq\000"
+ 2901      6843746C 
+ 2901      4D61696E 
+ 2901      57733246 
+ 2901      72657100 
+ 2902              	.LASF74:
+ 2903 0c55 70657269 		.ascii	"periTrCmdOffset\000"
+ 2903      5472436D 
+ 2903      644F6666 
+ 2903      73657400 
+ 2904              	.LASF19:
+ 2905 0c65 73697A65 		.ascii	"sizetype\000"
+ARM GAS  C:\Users\eduar\AppData\Local\Temp\ccN7CLzG.s 			page 62
+
+
+ 2905      74797065 
+ 2905      00
+ 2906              	.LASF100:
+ 2907 0c6e 63707573 		.ascii	"cpussCm4NmiCtlOffset\000"
+ 2907      73436D34 
+ 2907      4E6D6943 
+ 2907      746C4F66 
+ 2907      66736574 
+ 2908              	.LASF244:
+ 2909 0c83 636F6D70 		.ascii	"compareOrCapture\000"
+ 2909      6172654F 
+ 2909      72436170 
+ 2909      74757265 
+ 2909      00
+ 2910              	.LASF82:
+ 2911 0c94 70657269 		.ascii	"periDiv8CtlOffset\000"
+ 2911      44697638 
+ 2911      43746C4F 
+ 2911      66667365 
+ 2911      7400
+ 2912              	.LASF0:
+ 2913 0ca6 73686F72 		.ascii	"short int\000"
+ 2913      7420696E 
+ 2913      7400
+ 2914              	.LASF270:
+ 2915 0cb0 4144435F 		.ascii	"ADC_allConfigs\000"
+ 2915      616C6C43 
+ 2915      6F6E6669 
+ 2915      677300
+ 2916              	.LASF176:
+ 2917 0cbf 43595F43 		.ascii	"CY_CTDAC_DEGLITCHMODE_BUFFERED\000"
+ 2917      54444143 
+ 2917      5F444547 
+ 2917      4C495443 
+ 2917      484D4F44 
+ 2918              	.LASF183:
+ 2919 0cde 43595F43 		.ascii	"CY_CTDAC_OUTPUT_UNBUFFERED\000"
+ 2919      54444143 
+ 2919      5F4F5554 
+ 2919      5055545F 
+ 2919      554E4255 
+ 2920              	.LASF247:
+ 2921 0cf9 656E6162 		.ascii	"enableCompareSwap\000"
+ 2921      6C65436F 
+ 2921      6D706172 
+ 2921      65537761 
+ 2921      7000
+ 2922              	.LASF150:
+ 2923 0d0b 63795F73 		.ascii	"cy_stc_ctb_opamp_config_t\000"
+ 2923      74635F63 
+ 2923      74625F6F 
+ 2923      70616D70 
+ 2923      5F636F6E 
+ 2924              	.LASF8:
+ 2925 0d25 6C6F6E67 		.ascii	"long int\000"
+ 2925      20696E74 
+ 2925      00
+ARM GAS  C:\Users\eduar\AppData\Local\Temp\ccN7CLzG.s 			page 63
+
+
+ 2926              	.LASF31:
+ 2927 0d2e 63707573 		.ascii	"cpussVersion\000"
+ 2927      73566572 
+ 2927      73696F6E 
+ 2927      00
+ 2928              	.LASF266:
+ 2929 0d3b 49544D5F 		.ascii	"ITM_RxBuffer\000"
+ 2929      52784275 
+ 2929      66666572 
+ 2929      00
+ 2930              	.LASF257:
+ 2931 0d48 636F756E 		.ascii	"countInputMode\000"
+ 2931      74496E70 
+ 2931      75744D6F 
+ 2931      646500
+ 2932              	.LASF35:
+ 2933 0d57 6770696F 		.ascii	"gpioVersion\000"
+ 2933      56657273 
+ 2933      696F6E00 
+ 2934              	.LASF144:
+ 2935 0d63 6F615075 		.ascii	"oaPump\000"
+ 2935      6D7000
+ 2936              	.LASF34:
+ 2937 0d6a 666C6173 		.ascii	"flashcVersion\000"
+ 2937      68635665 
+ 2937      7273696F 
+ 2937      6E00
+ 2938              	.LASF56:
+ 2939 0d78 70726F74 		.ascii	"protBusMasterMask\000"
+ 2939      4275734D 
+ 2939      61737465 
+ 2939      724D6173 
+ 2939      6B00
+ 2940              	.LASF243:
+ 2941 0d8a 636F756E 		.ascii	"countDirection\000"
+ 2941      74446972 
+ 2941      65637469 
+ 2941      6F6E00
+ 2942              	.LASF141:
+ 2943 0d99 64656570 		.ascii	"deepSleep\000"
+ 2943      536C6565 
+ 2943      7000
+ 2944              	.LASF112:
+ 2945 0da3 43595F43 		.ascii	"CY_CTB_DEEPSLEEP_ENABLE\000"
+ 2945      54425F44 
+ 2945      45455053 
+ 2945      4C454550 
+ 2945      5F454E41 
+ 2946              	.LASF149:
+ 2947 0dbb 6F61436F 		.ascii	"oaCompIntrEn\000"
+ 2947      6D70496E 
+ 2947      7472456E 
+ 2947      00
+ 2948              	.LASF234:
+ 2949 0dc8 74784C65 		.ascii	"txLeftToTransmit\000"
+ 2949      6674546F 
+ 2949      5472616E 
+ARM GAS  C:\Users\eduar\AppData\Local\Temp\ccN7CLzG.s 			page 64
+
+
+ 2949      736D6974 
+ 2949      00
+ 2950              	.LASF95:
+ 2951 0dd9 63707573 		.ascii	"cpussCm4PwrCtlOffset\000"
+ 2951      73436D34 
+ 2951      50777243 
+ 2951      746C4F66 
+ 2951      66736574 
+ 2952              	.LASF3:
+ 2953 0dee 5F5F7569 		.ascii	"__uint8_t\000"
+ 2953      6E74385F 
+ 2953      7400
+ 2954              	.LASF263:
+ 2955 0df8 6D697363 		.ascii	"miscConfig\000"
+ 2955      436F6E66 
+ 2955      696700
+ 2956              	.LASF86:
+ 2957 0e03 6770696F 		.ascii	"gpioPrtIntrCfgOffset\000"
+ 2957      50727449 
+ 2957      6E747243 
+ 2957      66674F66 
+ 2957      66736574 
+ 2958              	.LASF52:
+ 2959 0e18 70617373 		.ascii	"passSarChannels\000"
+ 2959      53617243 
+ 2959      68616E6E 
+ 2959      656C7300 
+ 2960              	.LASF136:
+ 2961 0e28 63795F65 		.ascii	"cy_en_ctb_comp_bypass_t\000"
+ 2961      6E5F6374 
+ 2961      625F636F 
+ 2961      6D705F62 
+ 2961      79706173 
+ 2962              	.LASF173:
+ 2963 0e40 63795F65 		.ascii	"cy_en_ctdac_output_mode_t\000"
+ 2963      6E5F6374 
+ 2963      6461635F 
+ 2963      6F757470 
+ 2963      75745F6D 
+ 2964              	.LASF92:
+ 2965 0e5a 63707573 		.ascii	"cpussCm4ClockCtlOffset\000"
+ 2965      73436D34 
+ 2965      436C6F63 
+ 2965      6B43746C 
+ 2965      4F666673 
+ 2966              	.LASF131:
+ 2967 0e71 43595F43 		.ascii	"CY_CTB_COMP_DSI_TRIGGER_OUT_PULSE\000"
+ 2967      54425F43 
+ 2967      4F4D505F 
+ 2967      4453495F 
+ 2967      54524947 
+ 2968              	.LASF97:
+ 2969 0e93 63707573 		.ascii	"cpussTrimRomCtlOffset\000"
+ 2969      73547269 
+ 2969      6D526F6D 
+ 2969      43746C4F 
+ 2969      66667365 
+ARM GAS  C:\Users\eduar\AppData\Local\Temp\ccN7CLzG.s 			page 65
+
+
+ 2970              	.LASF209:
+ 2971 0ea9 73616D70 		.ascii	"sampleTime23\000"
+ 2971      6C655469 
+ 2971      6D653233 
+ 2971      00
+ 2972              	.LASF36:
+ 2973 0eb6 6873696F 		.ascii	"hsiomVersion\000"
+ 2973      6D566572 
+ 2973      73696F6E 
+ 2973      00
+ 2974              	.LASF160:
+ 2975 0ec3 43595F43 		.ascii	"CY_CTDAC_UPDATE_STROBE_LEVEL\000"
+ 2975      54444143 
+ 2975      5F555044 
+ 2975      4154455F 
+ 2975      5354524F 
+ 2976              	.LASF10:
+ 2977 0ee0 6C6F6E67 		.ascii	"long unsigned int\000"
+ 2977      20756E73 
+ 2977      69676E65 
+ 2977      6420696E 
+ 2977      7400
+ 2978              	.LASF101:
+ 2979 0ef2 63707573 		.ascii	"cpussRomCtl\000"
+ 2979      73526F6D 
+ 2979      43746C00 
+ 2980              	.LASF17:
+ 2981 0efe 696E7433 		.ascii	"int32_t\000"
+ 2981      325F7400 
+ 2982              	.LASF124:
+ 2983 0f06 43595F43 		.ascii	"CY_CTB_PUMP_ENABLE\000"
+ 2983      54425F50 
+ 2983      554D505F 
+ 2983      454E4142 
+ 2983      4C4500
+ 2984              	.LASF188:
+ 2985 0f19 6465676C 		.ascii	"deglitchMode\000"
+ 2985      69746368 
+ 2985      4D6F6465 
+ 2985      00
+ 2986              	.LASF114:
+ 2987 0f26 43595F43 		.ascii	"CY_CTB_POWER_OFF\000"
+ 2987      54425F50 
+ 2987      4F574552 
+ 2987      5F4F4646 
+ 2987      00
+ 2988              	.LASF94:
+ 2989 0f37 63707573 		.ascii	"cpussCm0StatusOffset\000"
+ 2989      73436D30 
+ 2989      53746174 
+ 2989      75734F66 
+ 2989      66736574 
+ 2990              	.LASF207:
+ 2991 0f4c 73616D70 		.ascii	"sampleCtrl\000"
+ 2991      6C654374 
+ 2991      726C00
+ 2992              	.LASF16:
+ARM GAS  C:\Users\eduar\AppData\Local\Temp\ccN7CLzG.s 			page 66
+
+
+ 2993 0f57 75696E74 		.ascii	"uint16_t\000"
+ 2993      31365F74 
+ 2993      00
+ 2994              	.LASF2:
+ 2995 0f60 756E7369 		.ascii	"unsigned char\000"
+ 2995      676E6564 
+ 2995      20636861 
+ 2995      7200
+ 2996              	.LASF125:
+ 2997 0f6e 63795F65 		.ascii	"cy_en_ctb_pump_t\000"
+ 2997      6E5F6374 
+ 2997      625F7075 
+ 2997      6D705F74 
+ 2997      00
+ 2998              	.LASF190:
+ 2999 0f7f 6F757470 		.ascii	"outputBuffer\000"
+ 2999      75744275 
+ 2999      66666572 
+ 2999      00
+ 3000              	.LASF106:
+ 3001 0f8c 6970634C 		.ascii	"ipcLockStatusOffset\000"
+ 3001      6F636B53 
+ 3001      74617475 
+ 3001      734F6666 
+ 3001      73657400 
+ 3002              	.LASF258:
+ 3003 0fa0 636F756E 		.ascii	"countInput\000"
+ 3003      74496E70 
+ 3003      757400
+ 3004              	.LASF126:
+ 3005 0fab 43595F43 		.ascii	"CY_CTB_COMP_EDGE_DISABLE\000"
+ 3005      54425F43 
+ 3005      4F4D505F 
+ 3005      45444745 
+ 3005      5F444953 
+ 3006              	.LASF154:
+ 3007 0fc4 43595F53 		.ascii	"CY_SYSCLK_DIV_24_5_BIT\000"
+ 3007      5953434C 
+ 3007      4B5F4449 
+ 3007      565F3234 
+ 3007      5F355F42 
+ 3008              	.LASF156:
+ 3009 0fdb 43595F43 		.ascii	"CY_CTDAC_UPDATE_DIRECT_WRITE\000"
+ 3009      54444143 
+ 3009      5F555044 
+ 3009      4154455F 
+ 3009      44495245 
+ 3010              	.LASF172:
+ 3011 0ff8 43595F43 		.ascii	"CY_CTDAC_OUTPUT_VREF\000"
+ 3011      54444143 
+ 3011      5F4F5554 
+ 3011      5055545F 
+ 3011      56524546 
+ 3012              	.LASF62:
+ 3013 100d 666C6173 		.ascii	"flashEraseDelay\000"
+ 3013      68457261 
+ 3013      73654465 
+ARM GAS  C:\Users\eduar\AppData\Local\Temp\ccN7CLzG.s 			page 67
+
+
+ 3013      6C617900 
+ 3014              	.LASF120:
+ 3015 101d 43595F43 		.ascii	"CY_CTB_MODE_OPAMP10X\000"
+ 3015      54425F4D 
+ 3015      4F44455F 
+ 3015      4F50414D 
+ 3015      50313058 
+ 3016              	.LASF264:
+ 3017 1032 636C6B44 		.ascii	"clkDivider\000"
+ 3017      69766964 
+ 3017      657200
+ 3018              	.LASF277:
+ 3019 103d 433A5C55 		.ascii	"C:\\Users\\eduar\\Documents\\PSoC Creator\\error_de"
+ 3019      73657273 
+ 3019      5C656475 
+ 3019      61725C44 
+ 3019      6F63756D 
+ 3020 106b 74656374 		.ascii	"tection\\psoc6_dut.cydsn\000"
+ 3020      696F6E5C 
+ 3020      70736F63 
+ 3020      365F6475 
+ 3020      742E6379 
+ 3021              	.LASF155:
+ 3022 1083 63795F65 		.ascii	"cy_en_divider_types_t\000"
+ 3022      6E5F6469 
+ 3022      76696465 
+ 3022      725F7479 
+ 3022      7065735F 
+ 3023              	.LASF269:
+ 3024 1099 4144435F 		.ascii	"ADC_currentConfig\000"
+ 3024      63757272 
+ 3024      656E7443 
+ 3024      6F6E6669 
+ 3024      6700
+ 3025              	.LASF128:
+ 3026 10ab 43595F43 		.ascii	"CY_CTB_COMP_EDGE_FALLING\000"
+ 3026      54425F43 
+ 3026      4F4D505F 
+ 3026      45444745 
+ 3026      5F46414C 
+ 3027              	.LASF186:
+ 3028 10c4 666F726D 		.ascii	"formatMode\000"
+ 3028      61744D6F 
+ 3028      646500
+ 3029              	.LASF58:
+ 3030 10cf 666C6173 		.ascii	"flashRwwRequired\000"
+ 3030      68527777 
+ 3030      52657175 
+ 3030      69726564 
+ 3030      00
+ 3031              	.LASF145:
+ 3032 10e0 6F61436F 		.ascii	"oaCompEdge\000"
+ 3032      6D704564 
+ 3032      676500
+ 3033              	.LASF87:
+ 3034 10eb 6770696F 		.ascii	"gpioPrtCfgOffset\000"
+ 3034      50727443 
+ARM GAS  C:\Users\eduar\AppData\Local\Temp\ccN7CLzG.s 			page 68
+
+
+ 3034      66674F66 
+ 3034      66736574 
+ 3034      00
+ 3035              	.LASF200:
+ 3036 10fc 63795F73 		.ascii	"cy_stc_ctdac_config_t\000"
+ 3036      74635F63 
+ 3036      74646163 
+ 3036      5F636F6E 
+ 3036      6669675F 
+ 3037              	.LASF53:
+ 3038 1112 65704D6F 		.ascii	"epMonitorNr\000"
+ 3038      6E69746F 
+ 3038      724E7200 
+ 3039              	.LASF268:
+ 3040 111e 55415254 		.ascii	"UART_context\000"
+ 3040      5F636F6E 
+ 3040      74657874 
+ 3040      00
+ 3041              	.LASF174:
+ 3042 112b 43595F43 		.ascii	"CY_CTDAC_DEGLITCHMODE_NONE\000"
+ 3042      54444143 
+ 3042      5F444547 
+ 3042      4C495443 
+ 3042      484D4F44 
+ 3043              	.LASF1:
+ 3044 1146 7369676E 		.ascii	"signed char\000"
+ 3044      65642063 
+ 3044      68617200 
+ 3045              	.LASF240:
+ 3046 1152 70657269 		.ascii	"period\000"
+ 3046      6F6400
+ 3047              	.LASF68:
+ 3048 1159 64774368 		.ascii	"dwChOffset\000"
+ 3048      4F666673 
+ 3048      657400
+ 3049              	.LASF41:
+ 3050 1164 63707573 		.ascii	"cpussIpcIrqNr\000"
+ 3050      73497063 
+ 3050      4972714E 
+ 3050      7200
+ 3051              	.LASF239:
+ 3052 1172 63795F73 		.ascii	"cy_stc_tcpwm_counter_config\000"
+ 3052      74635F74 
+ 3052      6370776D 
+ 3052      5F636F75 
+ 3052      6E746572 
+ 3053              	.LASF71:
+ 3054 118e 64774368 		.ascii	"dwChCtlPreemptablePos\000"
+ 3054      43746C50 
+ 3054      7265656D 
+ 3054      70746162 
+ 3054      6C65506F 
+ 3055              	.LASF213:
+ 3056 11a4 6368616E 		.ascii	"chanConfig\000"
+ 3056      436F6E66 
+ 3056      696700
+ 3057              	.LASF177:
+ARM GAS  C:\Users\eduar\AppData\Local\Temp\ccN7CLzG.s 			page 69
+
+
+ 3058 11af 43595F43 		.ascii	"CY_CTDAC_DEGLITCHMODE_BOTH\000"
+ 3058      54444143 
+ 3058      5F444547 
+ 3058      4C495443 
+ 3058      484D4F44 
+ 3059              	.LASF164:
+ 3060 11ca 63795F65 		.ascii	"cy_en_ctdac_format_t\000"
+ 3060      6E5F6374 
+ 3060      6461635F 
+ 3060      666F726D 
+ 3060      61745F74 
+ 3061              	.LASF168:
+ 3062 11df 43595F43 		.ascii	"CY_CTDAC_OUTPUT_HIGHZ\000"
+ 3062      54444143 
+ 3062      5F4F5554 
+ 3062      5055545F 
+ 3062      48494748 
+ 3063              	.LASF38:
+ 3064 11f5 70657269 		.ascii	"periVersion\000"
+ 3064      56657273 
+ 3064      696F6E00 
+ 3065              	.LASF167:
+ 3066 1201 63795F65 		.ascii	"cy_en_ctdac_deep_sleep_t\000"
+ 3066      6E5F6374 
+ 3066      6461635F 
+ 3066      64656570 
+ 3066      5F736C65 
+ 3067              	.LASF219:
+ 3068 121a 636F6E66 		.ascii	"configRouting\000"
+ 3068      6967526F 
+ 3068      7574696E 
+ 3068      6700
+ 3069              	.LASF28:
+ 3070 1228 70617373 		.ascii	"passBase\000"
+ 3070      42617365 
+ 3070      00
+ 3071              	.LASF139:
+ 3072 1231 63795F65 		.ascii	"cy_en_ctb_comp_hyst_t\000"
+ 3072      6E5F6374 
+ 3072      625F636F 
+ 3072      6D705F68 
+ 3072      7973745F 
+ 3073              	.LASF47:
+ 3074 1247 73727373 		.ascii	"srssNumClkpath\000"
+ 3074      4E756D43 
+ 3074      6C6B7061 
+ 3074      746800
+ 3075              	.LASF67:
+ 3076 1256 666C6173 		.ascii	"flashCtlMainWs4Freq\000"
+ 3076      6843746C 
+ 3076      4D61696E 
+ 3076      57733446 
+ 3076      72657100 
+ 3077              	.LASF216:
+ 3078 126a 72616E67 		.ascii	"rangeIntrMask\000"
+ 3078      65496E74 
+ 3078      724D6173 
+ARM GAS  C:\Users\eduar\AppData\Local\Temp\ccN7CLzG.s 			page 70
+
+
+ 3078      6B00
+ 3079              	.LASF205:
+ 3080 1278 63795F65 		.ascii	"cy_en_sar_range_detect_condition_t\000"
+ 3080      6E5F7361 
+ 3080      725F7261 
+ 3080      6E67655F 
+ 3080      64657465 
+ 3081              	.LASF143:
+ 3082 129b 6F614D6F 		.ascii	"oaMode\000"
+ 3082      646500
+ 3083              	.LASF37:
+ 3084 12a2 69706356 		.ascii	"ipcVersion\000"
+ 3084      65727369 
+ 3084      6F6E00
+ 3085              	.LASF214:
+ 3086 12ad 696E7472 		.ascii	"intrMask\000"
+ 3086      4D61736B 
+ 3086      00
+ 3087              	.LASF132:
+ 3088 12b6 43595F43 		.ascii	"CY_CTB_COMP_DSI_TRIGGER_OUT_LEVEL\000"
+ 3088      54425F43 
+ 3088      4F4D505F 
+ 3088      4453495F 
+ 3088      54524947 
+ 3089              	.LASF230:
+ 3090 12d8 72784275 		.ascii	"rxBufSize\000"
+ 3090      6653697A 
+ 3090      6500
+ 3091              	.LASF252:
+ 3092 12e2 72656C6F 		.ascii	"reloadInput\000"
+ 3092      6164496E 
+ 3092      70757400 
+ 3093              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran

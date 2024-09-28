@@ -1,0 +1,66 @@
+ARM GAS  C:\Users\eduar\AppData\Local\Temp\ccv4ocWX.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m4
+   3              		.eabi_attribute 27, 1
+   4              		.fpu fpv4-sp-d16
+   5              		.eabi_attribute 20, 1
+   6              		.eabi_attribute 21, 1
+   7              		.eabi_attribute 23, 3
+   8              		.eabi_attribute 24, 1
+   9              		.eabi_attribute 25, 1
+  10              		.eabi_attribute 26, 1
+  11              		.eabi_attribute 30, 1
+  12              		.eabi_attribute 34, 1
+  13              		.eabi_attribute 18, 4
+  14              		.thumb
+  15              		.syntax unified
+  16              		.file	"fakeLUTgen.c"
+  17              		.text
+  18              	.Ltext0:
+  19              		.cfi_sections	.debug_frame
+  20              	.Letext0:
+  21              		.section	.debug_line,"",%progbits
+  22              	.Ldebug_line0:
+  23              		.section	.debug_str,"MS",%progbits,1
+  24              	.LASF0:
+  25 0000 66616B65 		.ascii	"fakeLUTgen.c\000"
+  25      4C555467 
+  25      656E2E63 
+  25      00
+  26              	.LASF1:
+  27 000d 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
+  27      43313120 
+  27      352E342E 
+  27      31203230 
+  27      31363036 
+  28 0040 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m4 -mfloat-abi=s"
+  28      20726576 
+  28      6973696F 
+  28      6E203233 
+  28      37373135 
+  29 0073 6F667466 		.ascii	"oftfp -mfpu=fpv4-sp-d16 -mthumb -g -Og -ffunction-s"
+  29      70202D6D 
+  29      6670753D 
+  29      66707634 
+  29      2D73702D 
+  30 00a6 65637469 		.ascii	"ections -ffat-lto-objects\000"
+  30      6F6E7320 
+  30      2D666661 
+  30      742D6C74 
+  30      6F2D6F62 
+  31              	.LASF2:
+  32 00c0 433A5C55 		.ascii	"C:\\Users\\eduar\\Documents\\PSoC Creator\\ic_eduar"
+  32      73657273 
+  32      5C656475 
+  32      61725C44 
+  32      6F63756D 
+  33 00ee 646F5C74 		.ascii	"do\\tests.cydsn\000"
+  33      65737473 
+ARM GAS  C:\Users\eduar\AppData\Local\Temp\ccv4ocWX.s 			page 2
+
+
+  33      2E637964 
+  33      736E00
+  34              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran

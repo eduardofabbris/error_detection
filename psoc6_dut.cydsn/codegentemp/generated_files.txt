@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="us-ascii"?>
+
+<fileSet version="1" anchorPath="C:\Users\eduar\Documents\PSoC Creator\error_detection\psoc6_dut.cydsn\codegentemp" xsi:schemaLocation="http://cypress.com/xsd/cypathdictionary cypathdictionary.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://cypress.com/xsd/cypathdictionary">
+  <file name="C:\Users\eduar\Documents\PSoC Creator\error_detection\psoc6_dut.cydsn\codegentemp\cyfitter_cfg.h" value="HEADER;;;;;" />
+  <file name="C:\Users\eduar\Documents\PSoC Creator\error_detection\psoc6_dut.cydsn\codegentemp\cyfitter_sysint_cfg.h" value="HEADER;;;;;Pins and Interrupts" />
+  <file name="C:\Users\eduar\Documents\PSoC Creator\error_detection\psoc6_dut.cydsn\codegentemp\cyfitter_sysint_cfg.c" value="SOURCE_C;CortexM0p,CortexM4;;;;Pins and Interrupts" />
+  <file name="C:\Users\eduar\Documents\PSoC Creator\error_detection\psoc6_dut.cydsn\codegentemp\cyfitter_cfg.c" value="SOURCE_C;CortexM0p;;;;" />
+  <file name="C:\Users\eduar\Documents\PSoC Creator\error_detection\psoc6_dut.cydsn\codegentemp\cymetadata.c" value="SOURCE_C;CortexM0p,CortexM4;;;;" />
+  <file name="C:\Users\eduar\Documents\PSoC Creator\error_detection\psoc6_dut.cydsn\codegentemp\cydevice_trm.h" value="HEADER;;;;;" />
+  <file name="C:\Users\eduar\Documents\PSoC Creator\error_detection\psoc6_dut.cydsn\codegentemp\cydevicegnu_trm.inc" value="HEADER;;;;;" />
+  <file name="C:\Users\eduar\Documents\PSoC Creator\error_detection\psoc6_dut.cydsn\codegentemp\cydevicerv_trm.inc" value="HEADER;;;;;" />
+  <file name="C:\Users\eduar\Documents\PSoC Creator\error_detection\psoc6_dut.cydsn\codegentemp\cydeviceiar_trm.inc" value="HEADER;;;;;" />
+  <file name="C:\Users\eduar\Documents\PSoC Creator\error_detection\psoc6_dut.cydsn\codegentemp\cyfitter.h" value="HEADER;;;;;" />
+  <file name="C:\Users\eduar\Documents\PSoC Creator\error_detection\psoc6_dut.cydsn\codegentemp\cyfitter_gpio.h" value="HEADER;;;;;Pins and Interrupts" />
+  <file name="C:\Users\eduar\Documents\PSoC Creator\error_detection\psoc6_dut.cydsn\codegentemp\cyfitter_sysint.h" value="HEADER;;;;;Pins and Interrupts" />
+  <file name="C:\Users\eduar\Documents\PSoC Creator\error_detection\psoc6_dut.cydsn\codegentemp\cydisabledsheets.h" value="HEADER;;;;;" />
+  <file name="C:\Users\eduar\Documents\PSoC Creator\error_detection\psoc6_dut.cydsn\codegentemp\UART.c" value="SOURCE_C;CortexM0p,CortexM4;;;;UART" />
+  <file name="C:\Users\eduar\Documents\PSoC Creator\error_detection\psoc6_dut.cydsn\codegentemp\UART.h" value="HEADER;;;;;UART" />
+  <file name="C:\Users\eduar\Documents\PSoC Creator\error_detection\psoc6_dut.cydsn\codegentemp\ADC.c" value="SOURCE_C;CortexM0p,CortexM4;;;;ADC" />
+  <file name="C:\Users\eduar\Documents\PSoC Creator\error_detection\psoc6_dut.cydsn\codegentemp\ADC.h" value="HEADER;;;;;ADC" />
+  <file name="C:\Users\eduar\Documents\PSoC Creator\error_detection\psoc6_dut.cydsn\codegentemp\ADC_INT.c" value="SOURCE_C;CortexM0p,CortexM4;;;;ADC" />
+  <file name="C:\Users\eduar\Documents\PSoC Creator\error_detection\psoc6_dut.cydsn\codegentemp\ADC_INIT.c" value="SOURCE_C;CortexM0p,CortexM4;;;;ADC" />
+  <file name="C:\Users\eduar\Documents\PSoC Creator\error_detection\psoc6_dut.cydsn\codegentemp\ADC_PM.c" value="SOURCE_C;CortexM0p,CortexM4;;;;ADC" />
+  <file name="C:\Users\eduar\Documents\PSoC Creator\error_detection\psoc6_dut.cydsn\codegentemp\DAC.c" value="SOURCE_C;CortexM0p,CortexM4;;;;DAC" />
+  <file name="C:\Users\eduar\Documents\PSoC Creator\error_detection\psoc6_dut.cydsn\codegentemp\DAC.h" value="HEADER;;;;;DAC" />
+  <file name="C:\Users\eduar\Documents\PSoC Creator\error_detection\psoc6_dut.cydsn\codegentemp\WD_reset_PDL.c" value="SOURCE_C;CortexM0p,CortexM4;;;;WD_reset" />
+  <file name="C:\Users\eduar\Documents\PSoC Creator\error_detection\psoc6_dut.cydsn\codegentemp\WD_reset_PDL.h" value="HEADER;;;;;WD_reset" />
+  <file name="C:\Users\eduar\Documents\PSoC Creator\error_detection\psoc6_dut.cydsn\codegentemp\Clock_DAC.h" value="HEADER;;;;;Clock_DAC" />
+  <file name="C:\Users\eduar\Documents\PSoC Creator\error_detection\psoc6_dut.cydsn\codegentemp\DMA1.c" value="SOURCE_C;CortexM0p,CortexM4;;;;DMA1" />
+  <file name="C:\Users\eduar\Documents\PSoC Creator\error_detection\psoc6_dut.cydsn\codegentemp\DMA1.h" value="HEADER;;;;;DMA1" />
+  <file name="C:\Users\eduar\Documents\PSoC Creator\error_detection\psoc6_dut.cydsn\codegentemp\Stopwatch.c" value="SOURCE_C;CortexM0p,CortexM4;;;;Stopwatch" />
+  <file name="C:\Users\eduar\Documents\PSoC Creator\error_detection\psoc6_dut.cydsn\codegentemp\Stopwatch.h" value="HEADER;;;;;Stopwatch" />
+  <file name="C:\Users\eduar\Documents\PSoC Creator\error_detection\psoc6_dut.cydsn\codegentemp\Clock_1.h" value="HEADER;;;;;Clock_1" />
+  <file name="C:\Users\eduar\Documents\PSoC Creator\error_detection\psoc6_dut.cydsn\codegentemp\UART_SCBCLK.h" value="HEADER;;;;;UART_SCBCLK" />
+  <file name="C:\Users\eduar\Documents\PSoC Creator\error_detection\psoc6_dut.cydsn\codegentemp\ADC_intSarClock.h" value="HEADER;;;;;ADC_intSarClock" />
+  <file name="C:\Users\eduar\Documents\PSoC Creator\error_detection\psoc6_dut.cydsn\codegentemp\project.h" value="OTHER;;;;;" />
+  <file name="C:\Users\eduar\Documents\PSoC Creator\error_detection\psoc6_dut.cydsn\codegentemp\cycodeshareimport.ld" value="OTHER;;;;;" />
+  <file name="C:\Users\eduar\Documents\PSoC Creator\error_detection\psoc6_dut.cydsn\codegentemp\cycodeshareexport.ld" value="OTHER;;;;;" />
+  <file name="C:\Users\eduar\Documents\PSoC Creator\error_detection\psoc6_dut.cydsn\codegentemp\cycodeshareimport.scat" value="OTHER;;;;;" />
+</fileSet>
