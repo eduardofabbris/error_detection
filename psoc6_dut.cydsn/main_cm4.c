@@ -1,4 +1,7 @@
-// Projeto iniciacao cientifica PSoc6 2023 - Eduardo Fabbris
+//+============================================================
+//| Projeto iniciacao cientifica PSoc6 2023 - Eduardo Fabbris
+//|
+//+============================================================
 
 //====================== INCLUDES =====================
 
@@ -18,7 +21,7 @@ extern uint32_t triangularWaveLUT;
 int main(void) {
     
     initDevices();
-#if PSOC_MONITOR_ON
+/*#if PSOC_MONITOR_ON
     //start warning led
     Cy_GPIO_Write(RED_LED_0_PORT, RED_LED_0_NUM, 0); //pull-up
     
@@ -43,12 +46,13 @@ int main(void) {
     while(!UART_IsTxComplete());
     Cy_GPIO_Write(RED_LED_0_PORT, RED_LED_0_NUM, 1);//pull-up
 #endif
-
+*/
+    Cy_GPIO_Write(GREEN_LED_0_PORT, GREEN_LED_0_NUM, 0); // Turn on green led (pull-up)
     buffer.cycleIndex = 0;
      
-    //bias
-    Stopwatch_TriggerStart(); //starts timer
-    ADC_StartConvert(); //starts adc conversion         
+    // Start bias
+    Stopwatch_TriggerStart(); // starts timer
+    ADC_StartConvert();       // starts ADC conversion         
     
 
     while(1);
@@ -80,7 +84,13 @@ void ADC_ISR_Callback(void)
             buffer.data[buffer.dataIndex].read =  ADC_GetResult16(0);      
 
             //gets time
-            buffer.data[buffer.dataIndex].dtime = Stopwatch_GetCounter();       
+            uint32_t aux = Stopwatch_GetCounter();
+            if (aux >= (1 << 16))
+            {
+                Cy_GPIO_Write(RED_LED_0_PORT, RED_LED_0_NUM, 0);                
+            }
+            
+            buffer.data[buffer.dataIndex].dtime = aux;       
  
             buffer.dataIndex++;
         }  
@@ -91,17 +101,20 @@ void ADC_ISR_Callback(void)
                 
     }  
     else {
-#if PSOC_MONITOR_ON
         //alive signal
-        Cy_GPIO_Write(ALIVE_SIGNAL_0_PORT, ALIVE_SIGNAL_0_NUM, 1);
+#if PSOC_MONITOR_ON
+        
+        //Cy_GPIO_Write(ALIVE_SIGNAL_0_PORT, ALIVE_SIGNAL_0_NUM, 1);
+        Cy_GPIO_Inv(ALIVE_SIGNAL_0_PORT, ALIVE_SIGNAL_0_NUM);
         
         //serial alive signal
-        if(UART_aliveSignalCounter < 2E3){
+        if(UART_aliveSignalCounter < 500){
             UART_aliveSignalCounter++;
         }
         else{
-            UART_PutString("MA");
-            while(!UART_IsTxComplete());
+            //while(!UART_IsTxComplete());
+            UART_PutString("DA");                           // UART DUT Alive
+            Cy_GPIO_Inv(GREEN_LED_0_PORT, GREEN_LED_0_NUM); // Visual Alive           
             UART_aliveSignalCounter = 0;   
         }
 #endif           
@@ -112,21 +125,22 @@ void ADC_ISR_Callback(void)
             #endif 
             reference.cycleIndex++;        
 
-
+        // If debug mode, only send first 5 buffers via UART
         } else if(buffer.cycleIndex < MAX_BUFFER_DATA_CYCLE || !DEBUG_CODE) {
 
             //if a error is found. -> i.e., sends all data only if a fault is detected to plot the curve
             if(verifyFaults() || DEBUG_CODE){
                 
-                UARTPrintData();
+                //UARTPrintData();
+                UART_send_buffer();
 
                 
                 // Reset visual warning    
-                for(int i=0; i <2*3; i++){
+                /*for(int i=0; i <2*3; i++){
                     Cy_GPIO_Inv(GREEN_LED_0_PORT, GREEN_LED_0_NUM);
                     CyDelay(250);   
                 }
-                    
+                */    
                 //reset kit with watchdog
                 WD_reset_Start();
 
@@ -139,7 +153,7 @@ void ADC_ISR_Callback(void)
         buffer.dataIndex = 0; 
         firstConv = true;
 #if PSOC_MONITOR_ON
-        Cy_GPIO_Write(ALIVE_SIGNAL_0_PORT, ALIVE_SIGNAL_0_NUM, 0);
+        //Cy_GPIO_Write(ALIVE_SIGNAL_0_PORT, ALIVE_SIGNAL_0_NUM, 0);
 #endif
     }
 
@@ -158,7 +172,8 @@ void ADC_ISR_Callback(void)
 
 void initDevices(){
 
-    __enable_irq(); // Enable global interrupts. 
+    // Enable global interrupts.
+    __enable_irq();
     
     //UART
     UART_Start();

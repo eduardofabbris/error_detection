@@ -7,5 +7,6 @@
 
 //============== FUNCTIONS PROTOTYPES =================
 void UARTPrintData(void);
+void UART_send_buffer(void);
 
 #endif
