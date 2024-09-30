@@ -8,11 +8,12 @@
 #include <stdlib.h>
 
 //====================== DEFINES ======================
-//#define PSOC_MONITOR_ON 1
+    
+// ---> DUT Options <---
     
 #define DEBUG_CODE 1
 #define DEBUG_LEVEL 1           // Lower the level, more messages are displayed
-#define FORCE_KIT_RESET 0       // Kit will reset after a buffer read, independent if a error was found
+#define FORCE_KIT_RESET 0       // Kit will reset after a buffer read, independent if an error was found
       
 #define FAULT_EMULATION_EN 1
 #define FIXED_SAMPLE_ERROR_EN 1

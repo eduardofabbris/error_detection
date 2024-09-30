@@ -189,9 +189,10 @@ void ADC_ISR_Callback(void)
         CTDAC0->CTDAC_VAL_NXT = fixed_sample;
         CTDAC0->CTDAC_VAL     = fixed_sample;
     }
+#else
+    while((nextValue != CTDAC0->CTDAC_VAL));  
 #endif 
-
-    while((nextValue != CTDAC0->CTDAC_VAL) && !FAULT_EMULATION_EN);
+    
     // Start another conversion
     ADC_StartConvert();
 
