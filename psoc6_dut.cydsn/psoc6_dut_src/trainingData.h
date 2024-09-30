@@ -4,6 +4,7 @@
 //====================== INCLUDES =====================
 #include "gheader.h"
 
-
+#define LUT_DATA_SIZE 500
+    
 #endif
 

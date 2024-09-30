@@ -139,6 +139,7 @@ void UART_send_buffer(void)
              pckt_len = 0,
              timeout_cnt = 0;
     
+    uint32_t timestamp = Timestamp_Timer_GetCounter();
     
     int fsm_st = FSM_IDLE_ST;
     
@@ -152,7 +153,7 @@ void UART_send_buffer(void)
                 timeout_cnt = 0;
                 if (sequence < MAX_BUFFER_DATA)
                 {
-                    pckt_len = UART_build_pckt(uart_pckt, sequence, 0);
+                    pckt_len = UART_build_pckt(uart_pckt, sequence, timestamp);
                     sequence += BUFFER_CHUNK_LEN;
                     fsm_st = FSM_SEND_CHUNK_ST; 
                 }
@@ -208,87 +209,96 @@ void UART_send_buffer(void)
 }
 //****************************************************************************************************
 
-
-void UARTPrintData(void) {
-/*    
-#if PSOC_MONITOR_ON
-
-    for(int i=0; i < MAX_BUFFER_DATA; i++){  
-        Cy_GPIO_Write(ALIVE_SIGNAL_0_PORT, ALIVE_SIGNAL_0_NUM, 1);
-        uint8_t aux = 0xFF & ~(buffer.data[i].WR_fault + (buffer.data[i].SR_fault << 1) );       
-
-        uint16_t writeBuffer[] = {
-            buffer.data[i].read,
-            buffer.data[i].dtime,
-            buffer.data[i].written,
-            aux //1byte only
-        };
-        
-        UART_PutString("MD");
-        while(!UART_IsTxComplete());
-        
-        UART_PutArrayBlocking(writeBuffer, sizeof(writeBuffer)); 
-        while(!UART_IsTxComplete());
-        
-        //Cy_GPIO_Inv(ALIVE_SIGNAL_0_PORT, ALIVE_SIGNAL_0_NUM)
-        Cy_GPIO_Write(ALIVE_SIGNAL_0_PORT, ALIVE_SIGNAL_0_NUM, 0);
-    }
-    
-    CyDelay(100);
-    
-    
-#else
+/**
+* @brief  Dump to serial port reference values
+* @retval : none
 */
-    char string[MAX_STRING_SIZE] = {0}; 
-    static bool printHeader = true;
+static void UART_print_ref(void)
+{
+    char string[MAX_STRING_SIZE] = {0};
     
+    sprintf
+    (
+        string, "ref: maxWR=%d, minWR=%d, maxslew=%d, minslew=%d\r\n",
+        reference.maxWRDiff,  
+        reference.minWRDiff, 
+        reference.maxSlewRate, 
+        reference.minSlewRate
+    );
 
-    //reference values
-    if(printHeader || DEBUG_CODE){
-        sprintf(string, "Param: maxWR=%i, minWR=%i, maxslew=%i, minslew=%i\r\n",
-                     reference.maxWRDiff,  
-                     reference.minWRDiff, 
-                     reference.maxSlewRate, 
-                     reference.minSlewRate);
-
-        UART_PutString(string);  
-        while(!UART_IsTxComplete());
-        
-        UART_PutString("ADC \t DAC \t deltaWR \t dt \t WRfault \t SRfault\r\n");
-        while(!UART_IsTxComplete());
-        
-        printHeader = false;
-    }
-
-    //buffer 
-    //sprintf(string, "Ciclo: %u\r\n", buffer.cycleIndex);
-    //UART_PutString(string);
-    //while(!UART_IsTxComplete());
-    
-    
-    sprintf(string, "Fault count: SR-%i \t WR-%i  \r\n",buffer.SRfaultIndex, buffer.WRfaultIndex);
-    UART_PutString(string);
+    UART_PutString(string);  
     while(!UART_IsTxComplete());
+}
+//****************************************************************************************************
 
-    
+/**
+* @brief  Dump to serial port buffer
+* @retval : none
+*/
+static void UART_print_buffer(void)
+{
+    char string[MAX_STRING_SIZE] = {0}; 
     
     for(int i=0; i < MAX_BUFFER_DATA; i++){  
-             
-        sprintf(string, "%i \t %i \t %i \t %u \t %d \t %d\r\n", 
-                     buffer.data[i].read, 
-                     buffer.data[i].written, 
-                     abs( buffer.data[i].read-buffer.data[i].written), 
-                     (uint16_t) buffer.data[i].dtime, 
-                     buffer.data[i].WR_fault, 
-                     buffer.data[i].SR_fault);
+         
+        /*sprintf
+        (
+            string, "%d \t %d \t %d \t %d \t %d\r\n",
+            buffer.data[i].dtime,
+            buffer.data[i].read, 
+            buffer.data[i].written, 
+            abs( buffer.data[i].read-buffer.data[i].written ),  
+            buffer.data[i].WR_fault + (buffer.data[i].SR_fault << 1)
+        );*/
+        sprintf
+        (
+            string, "%d,%d,%d,%d\r\n",
+            buffer.data[i].read, 
+            buffer.data[i].written, 
+            abs( buffer.data[i].read-buffer.data[i].written ),  
+            buffer.data[i].WR_fault + (buffer.data[i].SR_fault << 1)
+        );
 
         UART_PutString(string); 
         while(!UART_IsTxComplete());
     }
-    UART_PutString("\r\n");
-    while(!UART_IsTxComplete());
-    
-//#endif  
 }
+//****************************************************************************************************
 
-//****************************************************************************
+/**
+* @brief  Dump to serial port data
+* @param  print_header  : print header flag
+* @param  print_ref     : print reference values flag
+* @param  print_buffer  : print buffer flag
+* @retval : none
+*/
+void UART_print_data(uint8_t print_header, uint8_t print_ref, uint8_t print_buffer) 
+{
+
+    char string[MAX_STRING_SIZE] = {0}; 
+    
+    // reference
+    if(print_ref)
+    {
+        UART_print_ref();
+    }
+    
+    // header
+    if (print_header)
+    {
+        UART_PutString("dt \t ADC \t DAC \t deltaWR \t fault\r\n");
+        while(!UART_IsTxComplete()); 
+        
+        sprintf(string, "fault count: SR-%i \t WR-%i  \r\n",buffer.SRfaultIndex, buffer.WRfaultIndex);
+        UART_PutString(string);
+        while(!UART_IsTxComplete());
+    }   
+    
+    // buffer
+    if (print_buffer)
+    {
+        UART_print_buffer();   
+    }   
+
+}
+//****************************************************************************************************

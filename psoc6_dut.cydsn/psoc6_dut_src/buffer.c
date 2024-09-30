@@ -67,7 +67,8 @@ uint8_t getReferenceValues(void)
 //**************************************************************************
 
 //compares the values in buffer with the reference values obtained before
-uint16_t verifyFaults() {
+uint16_t verifyFaults() 
+{
       
     int16   aux = 0,
             SR_faultIndex = 0, 
@@ -100,16 +101,18 @@ uint16_t verifyFaults() {
 
     }
 
-    #if DEBUG_CODE
-        char string[MAX_STRING_SIZE] = {0};  
-        sprintf(string, "Ciclo: %d\r\n", buffer.cycleIndex);
+#if DEBUG_CODE && (DEBUG_LEVEL == 0)
+        char string[MAX_STRING_SIZE] = {0};
+        
+        sprintf(string, "cycle: %d\r\n", (uint16_t)buffer.cycleIndex);
         UART_PutString(string);
         
-        if(SR_faultIndex + WR_faultIndex > 0){
-            sprintf(string, "Fault count: SR-%i \t WR-%i  \r\n",SR_faultIndex, WR_faultIndex);
+        if(SR_faultIndex + WR_faultIndex > 0)
+        {
+            sprintf(string, "fault count: SR-%i, WR-%i\r\n",SR_faultIndex, WR_faultIndex);
             UART_PutString(string); 
         }
-    #endif
+#endif
     
     buffer.SRfaultIndex = SR_faultIndex;
     buffer.WRfaultIndex = WR_faultIndex;

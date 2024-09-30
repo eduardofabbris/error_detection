@@ -18,58 +18,19 @@ extern uint32_t triangularWaveLUT;
 
 //===================== FUNCTIONS =====================
 
-static void UART_print_ref(void)
-{
-    char string[MAX_STRING_SIZE] = {0};
-    
-    sprintf
-    (
-        string, "ref: maxWR=%d, minWR=%d, maxslew=%d, minslew=%d\r\n",
-        reference.maxWRDiff,  
-        reference.minWRDiff, 
-        reference.maxSlewRate, 
-        reference.minSlewRate
-    );
-
-    UART_PutString(string);  
-    while(!UART_IsTxComplete());
-}
-
 
 /**
 * @brief  Entry code
 * @retval : none
 */
-int main(void) {
+int main(void) 
+{
     
     initDevices();
-/*#if PSOC_MONITOR_ON
-    //start warning led
-    Cy_GPIO_Write(RED_LED_0_PORT, RED_LED_0_NUM, 0); //pull-up
+
+    // Turn on green led (pull-up)
+    Cy_GPIO_Write(GREEN_LED_0_PORT, GREEN_LED_0_NUM, 0);
     
-    uint8_t buff = 0, n=0;
-    do{
-        while(UART_Get() != 'H'){ //waits host message            
-            UART_PutString("MW"); //warns host that it's wating
-            while(!UART_IsTxComplete());
-            CyDelay(500);           
-        }
-        
-        n = buff = 0;
-        while( (buff = UART_Get() )!= 'S' && n < 10){
-            CyDelayUs(10);
-            n++;
-        }
-       
-    }while(buff != 'S'); //waits start signal
-    
-    CyDelay(1);
-    UART_PutString("MS"); //confirm start to host
-    while(!UART_IsTxComplete());
-    Cy_GPIO_Write(RED_LED_0_PORT, RED_LED_0_NUM, 1);//pull-up
-#endif
-*/
-    Cy_GPIO_Write(GREEN_LED_0_PORT, GREEN_LED_0_NUM, 0); // Turn on green led (pull-up)
     buffer.cycleIndex = 0;
     
     if (DYNAMIC_REF_VALUES_EN == 0)
@@ -129,7 +90,7 @@ void ADC_ISR_Callback(void)
         // Alive signal
         Cy_GPIO_Inv(ALIVE_SIGNAL_0_PORT, ALIVE_SIGNAL_0_NUM);
         
-#if !EVALUATE_REF_VALUES_EN              
+#if !EVALUATE_REF_VALUES_EN             
         // Serial alive message
         if(UART_aliveSignalCounter < 500)
         {
@@ -137,8 +98,10 @@ void ADC_ISR_Callback(void)
         }
         else
         {
+#if !DEBUG_CODE
             // UART DUT Alive
             UART_PutString("DA");   
+#endif
             // Visual Alive
             Cy_GPIO_Inv(GREEN_LED_0_PORT, GREEN_LED_0_NUM);            
             UART_aliveSignalCounter = 0;   
@@ -148,16 +111,13 @@ void ADC_ISR_Callback(void)
         if( (reference.cycleIndex < MAX_REFERENCE_VALUES_CYCLE) && DYNAMIC_REF_VALUES_EN ) 
         {          
             uint8_t updated_flag = getReferenceValues();
-#if DEBUG_CODE    
-                // Print buffer
-                UARTPrintData(); 
-#endif
+
             // Always check for new reference values
             if (EVALUATE_REF_VALUES_EN)
             {
                 if (updated_flag)
                 {
-                    UART_print_ref();
+                    UART_print_data(0, 1, 1);  
                 }
                 reference.cycleIndex = 1;
 
@@ -168,16 +128,17 @@ void ADC_ISR_Callback(void)
             }
         
         }
-        // If debug mode, only send first 5 buffers via UART
-        else if(buffer.cycleIndex < MAX_BUFFER_DATA_CYCLE || !DEBUG_CODE) 
+        // Verify buffer
+        else if(buffer.cycleIndex < MAX_BUFFER_DATA_CYCLE || EVALUATE_ALL_BUFFERS_EN) 
         {
+            // Stop timestamp timer
+            Timestamp_Timer_TriggerStop();
+                
             // If a error is found send all data
-            if(verifyFaults() || DEBUG_CODE)
+            if(verifyFaults() || FORCE_KIT_RESET)
             {
-                // Stop timestamp timer
-                Timestamp_Timer_TriggerStop();
 #if DEBUG_CODE   
-                UARTPrintData();                
+                UART_print_data(0, 0, 1);                 
                 // Reset visual warning    
                 for(int i=0; i <2*3; i++)
                 {
@@ -185,20 +146,20 @@ void ADC_ISR_Callback(void)
                     CyDelay(250);   
                 }
 #else
-
-                UART_print_ref();
                 UART_send_buffer();
 #endif
                 // Reset kit with watchdog
                 WD_reset_Start();
             }            
             buffer.cycleIndex++;
+            // Restarts timestamp timer
+            Timestamp_Timer_TriggerStart();
         }       
 
         buffer.dataIndex = 0; 
         firstConv = true;
+ 
         //Cy_GPIO_Write(ALIVE_SIGNAL_0_PORT, ALIVE_SIGNAL_0_NUM, 0);
-
     }
 
     //while(CTDAC0->CTDAC_VAL_NXT == nextValue);
@@ -210,16 +171,27 @@ void ADC_ISR_Callback(void)
     Stopwatch_TriggerStart();    
     
     // Store DAC's next value
-    nextValue = CTDAC0->CTDAC_VAL_NXT;
+    nextValue = CTDAC0->CTDAC_VAL_NXT;    
     
 #if FAULT_EMULATION_EN
-    if(!Cy_GPIO_Read(USER_BUTTON_PORT, USER_BUTTON_0_NUM))
+    static bool fault_latch = false;
+    static uint16_t fixed_sample = 0;
+    
+    if(!Cy_GPIO_Read(USER_BUTTON_PORT, USER_BUTTON_0_NUM) && !fault_latch)
     {
-        CTDAC0->CTDAC_VAL_NXT ^= (1 << 7);
+        fixed_sample = CTDAC0->CTDAC_VAL_NXT;
+        CTDAC0->CTDAC_VAL_NXT ^= (1 << 11);
+        fault_latch = true;       
+    }
+    
+    if (fault_latch && FIXED_SAMPLE_ERROR_EN)
+    {
+        CTDAC0->CTDAC_VAL_NXT = fixed_sample;
+        CTDAC0->CTDAC_VAL     = fixed_sample;
     }
 #endif 
 
-    while(nextValue != CTDAC0->CTDAC_VAL);
+    while((nextValue != CTDAC0->CTDAC_VAL) && !FAULT_EMULATION_EN);
     // Start another conversion
     ADC_StartConvert();
 
