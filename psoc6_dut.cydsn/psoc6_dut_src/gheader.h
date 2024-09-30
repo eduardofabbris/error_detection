@@ -10,9 +10,12 @@
 //====================== DEFINES ======================
 #define DEBUG_CODE 0
 #define LUT_DATA_SIZE 500
-#define PSOC_MONITOR_ON 1
+//#define PSOC_MONITOR_ON 1
+#define FAULT_EMULATION_EN 1
+    
 #define DYNAMIC_REF_VALUES_EN 0
-
+#define EVALUATE_REF_VALUES_EN 0
+    
 
 //============== FUNCTIONS PROTOTYPES =================
 void ADC_ISR_Callback(void);

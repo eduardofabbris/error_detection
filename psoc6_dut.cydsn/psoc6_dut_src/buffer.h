@@ -10,9 +10,17 @@
 #define MAX_REFERENCE_VALUES_CYCLE 5
 #define MAX_STRING_SIZE 100
 
+#define SR_MAX_DEFAULT_REF 140
+#define SR_MIN_DEFAULT_REF 0
+    
+#define WR_MAX_DEFAULT_REF 23
+#define WR_MIN_DEFAULT_REF 0
+    
+    
+    
 //TOLERANCES
-#define WR_TOL 20 //written and read tolerance
-#define SR_TOL 10 //slew rate rolerance
+#define WR_TOL 5 //written and read tolerance, 20
+#define SR_TOL 5 //slew rate rolerance, 10
 
 //===================== TYPEDEFS =======================
 //BUFFER
@@ -37,7 +45,7 @@ typedef struct {
 } REFERENCE_VALUES;
 
 //============== FUNCTIONS PROTOTYPES =================
-void getReferenceValues(void);
+uint8_t getReferenceValues(void); 
 uint16_t verifyFaults(void);
 
 #endif

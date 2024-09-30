@@ -8,12 +8,16 @@ extern REFERENCE_VALUES reference;
 //===================== FUNCTIONS =====================
 
 //determines the slew rate and dWR limit values 
-void getReferenceValues() {
+uint8_t getReferenceValues(void) 
+{
     int16 aux = 0;
+    uint8_t update_flag = 0;
 
-    //first time initial values
-    if(reference.cycleIndex == 0){
-
+    // First time initial values
+    if(reference.cycleIndex == 0)
+    {
+        update_flag = 1;
+        
         reference.maxSlewRate 
         = reference.minSlewRate 
         = abs( buffer.data[1].read - buffer.data[0].read);
@@ -29,25 +33,35 @@ void getReferenceValues() {
         if(i < MAX_BUFFER_DATA - 1){
             aux = abs(buffer.data[i+1].read - buffer.data[i].read);
             
-            if(aux > reference.maxSlewRate){
+            if(aux > reference.maxSlewRate)
+            {
+                update_flag = 1;
                 reference.maxSlewRate = aux;
             }
-            if(aux < reference.minSlewRate){
+            if(aux < reference.minSlewRate)
+            {
+                update_flag = 1;
                 reference.minSlewRate = aux;                    
             }                    
         }
 
-        //max and min written and read diff
+        // Max and min written and read diff
         aux = abs(buffer.data[i].written - buffer.data[i].read);
         
-        if(aux > reference.maxWRDiff){
+        if(aux > reference.maxWRDiff)
+        {
+            update_flag = 1;
             reference.maxWRDiff = aux;
         }
-        if(aux < reference.minWRDiff){
+        if(aux < reference.minWRDiff)
+        {
+            update_flag = 1;
             reference.minWRDiff = aux;                    
         }                
 
-    }   
+    }
+    
+    return update_flag;
 }
 
 //**************************************************************************
@@ -64,7 +78,7 @@ uint16_t verifyFaults() {
         //verify the slew rate
         if(i < MAX_BUFFER_DATA - 1){
             aux = abs(buffer.data[i+1].read - buffer.data[i].read); 
-            if(!(aux >= (reference.minSlewRate - SR_TOL) && aux <= (reference.maxSlewRate + SR_TOL)) ){
+            if(!(aux >= (int)(reference.minSlewRate - SR_TOL) && aux <= (int)(reference.maxSlewRate + SR_TOL)) ){
                 SR_faultIndex++;
                 buffer.data[i].SR_fault= true;
             } 
@@ -76,7 +90,7 @@ uint16_t verifyFaults() {
         
         //verify the difference between what was written and read "dWR"
         aux = abs(buffer.data[i].written - buffer.data[i].read);
-        if(!(aux >= (reference.minWRDiff - WR_TOL) && aux <= (reference.maxWRDiff + WR_TOL)) ){
+        if(!(aux >= (int)(reference.minWRDiff - WR_TOL) && aux <= (int)(reference.maxWRDiff + WR_TOL)) ){
             WR_faultIndex++;
             buffer.data[i].WR_fault = true;
         } 

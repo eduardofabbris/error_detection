@@ -18,6 +18,28 @@ extern uint32_t triangularWaveLUT;
 
 //===================== FUNCTIONS =====================
 
+static void UART_print_ref(void)
+{
+    char string[MAX_STRING_SIZE] = {0};
+    
+    sprintf
+    (
+        string, "ref: maxWR=%d, minWR=%d, maxslew=%d, minslew=%d\r\n",
+        reference.maxWRDiff,  
+        reference.minWRDiff, 
+        reference.maxSlewRate, 
+        reference.minSlewRate
+    );
+
+    UART_PutString(string);  
+    while(!UART_IsTxComplete());
+}
+
+
+/**
+* @brief  Entry code
+* @retval : none
+*/
 int main(void) {
     
     initDevices();
@@ -49,8 +71,18 @@ int main(void) {
 */
     Cy_GPIO_Write(GREEN_LED_0_PORT, GREEN_LED_0_NUM, 0); // Turn on green led (pull-up)
     buffer.cycleIndex = 0;
+    
+    if (DYNAMIC_REF_VALUES_EN == 0)
+    {
+        reference.maxSlewRate = SR_MAX_DEFAULT_REF;
+        reference.minSlewRate = SR_MIN_DEFAULT_REF;
+        
+        reference.maxWRDiff = WR_MAX_DEFAULT_REF;
+        reference.minWRDiff = WR_MIN_DEFAULT_REF;
+    }
      
     // Start bias
+    Timestamp_Timer_TriggerStart(); // Start timestamp timer
     Stopwatch_TriggerStart(); // starts timer
     ADC_StartConvert();       // starts ADC conversion         
     
@@ -58,118 +90,146 @@ int main(void) {
     while(1);
 }
 
-
-//interrupt -> the function is called every time it finishes a conversion
+/**
+* @brief  ADC interrupt. This function is called every time a new conversion is finished
+* @retval : none
+*/
 void ADC_ISR_Callback(void)
 {
-#if PSOC_MONITOR_ON
     static uint32_t UART_aliveSignalCounter = 0;
-#endif
     static uint16_t nextValue;
     static bool firstConv = true;
 
-    //stop stopwatch
+
+    // Stop stopwatch
     Stopwatch_TriggerStop();
-    
-    
-    //if buffer is not full yet
-    if(buffer.dataIndex < MAX_BUFFER_DATA) {
-
-        //first value is neglected 
-        if(!firstConv) {
-            //gets DAC value
-            buffer.data[buffer.dataIndex].written = nextValue;     
+      
+    // If buffer is not full yet
+    if(buffer.dataIndex < MAX_BUFFER_DATA)
+    {
+        // First value is neglected 
+        if(!firstConv) // TODO: verify implicantions    
+        {
+            // Get DAC value
+            buffer.data[buffer.dataIndex].written = nextValue;           
+            // Get ADC value
+            buffer.data[buffer.dataIndex].read =  ADC_GetResult16(0);
+            // Gets time            
+            buffer.data[buffer.dataIndex].dtime = Stopwatch_GetCounter();
             
-            //gets ADC value
-            buffer.data[buffer.dataIndex].read =  ADC_GetResult16(0);      
-
-            //gets time
-            uint32_t aux = Stopwatch_GetCounter();
-            if (aux >= (1 << 16))
-            {
-                Cy_GPIO_Write(RED_LED_0_PORT, RED_LED_0_NUM, 0);                
-            }
-            
-            buffer.data[buffer.dataIndex].dtime = aux;       
- 
             buffer.dataIndex++;
         }  
-        else {
-
+        else
+        {
             firstConv = false;    
         }
                 
     }  
     else {
-        //alive signal
-#if PSOC_MONITOR_ON
-        
-        //Cy_GPIO_Write(ALIVE_SIGNAL_0_PORT, ALIVE_SIGNAL_0_NUM, 1);
+        // Alive signal
         Cy_GPIO_Inv(ALIVE_SIGNAL_0_PORT, ALIVE_SIGNAL_0_NUM);
         
-        //serial alive signal
-        if(UART_aliveSignalCounter < 500){
+#if !EVALUATE_REF_VALUES_EN              
+        // Serial alive message
+        if(UART_aliveSignalCounter < 500)
+        {
             UART_aliveSignalCounter++;
         }
-        else{
-            //while(!UART_IsTxComplete());
-            UART_PutString("DA");                           // UART DUT Alive
-            Cy_GPIO_Inv(GREEN_LED_0_PORT, GREEN_LED_0_NUM); // Visual Alive           
+        else
+        {
+            // UART DUT Alive
+            UART_PutString("DA");   
+            // Visual Alive
+            Cy_GPIO_Inv(GREEN_LED_0_PORT, GREEN_LED_0_NUM);            
             UART_aliveSignalCounter = 0;   
         }
-#endif           
-        if(reference.cycleIndex < MAX_REFERENCE_VALUES_CYCLE) {          
-            getReferenceValues();
-            #if DEBUG_CODE    
-                UARTPrintData(); //print training data
-            #endif 
-            reference.cycleIndex++;        
+#endif      
+        // Reference values
+        if( (reference.cycleIndex < MAX_REFERENCE_VALUES_CYCLE) && DYNAMIC_REF_VALUES_EN ) 
+        {          
+            uint8_t updated_flag = getReferenceValues();
+#if DEBUG_CODE    
+                // Print buffer
+                UARTPrintData(); 
+#endif
+            // Always check for new reference values
+            if (EVALUATE_REF_VALUES_EN)
+            {
+                if (updated_flag)
+                {
+                    UART_print_ref();
+                }
+                reference.cycleIndex = 1;
 
+            }
+            else
+            {
+                reference.cycleIndex++;
+            }
+        
+        }
         // If debug mode, only send first 5 buffers via UART
-        } else if(buffer.cycleIndex < MAX_BUFFER_DATA_CYCLE || !DEBUG_CODE) {
-
-            //if a error is found. -> i.e., sends all data only if a fault is detected to plot the curve
-            if(verifyFaults() || DEBUG_CODE){
-                
-                //UARTPrintData();
-                UART_send_buffer();
-
-                
+        else if(buffer.cycleIndex < MAX_BUFFER_DATA_CYCLE || !DEBUG_CODE) 
+        {
+            // If a error is found send all data
+            if(verifyFaults() || DEBUG_CODE)
+            {
+                // Stop timestamp timer
+                Timestamp_Timer_TriggerStop();
+#if DEBUG_CODE   
+                UARTPrintData();                
                 // Reset visual warning    
-                /*for(int i=0; i <2*3; i++){
-                    Cy_GPIO_Inv(GREEN_LED_0_PORT, GREEN_LED_0_NUM);
+                for(int i=0; i <2*3; i++)
+                {
+                    Cy_GPIO_Inv(RED_LED_0_PORT, RED_LED_0_NUM);
                     CyDelay(250);   
                 }
-                */    
-                //reset kit with watchdog
-                WD_reset_Start();
+#else
 
-            } 
-            
+                UART_print_ref();
+                UART_send_buffer();
+#endif
+                // Reset kit with watchdog
+                WD_reset_Start();
+            }            
             buffer.cycleIndex++;
-          } 
-        
+        }       
 
         buffer.dataIndex = 0; 
         firstConv = true;
-#if PSOC_MONITOR_ON
         //Cy_GPIO_Write(ALIVE_SIGNAL_0_PORT, ALIVE_SIGNAL_0_NUM, 0);
-#endif
+
     }
 
-    //stopwatch
-    Stopwatch_TriggerReload();//reload 
-    Stopwatch_TriggerStart();//starts again     
+    //while(CTDAC0->CTDAC_VAL_NXT == nextValue);
     
-    //starts again another conversion
-    nextValue = CTDAC0->CTDAC_VAL_NXT; //stores the next value in DAC
+    // Reload stopwatch
+    Stopwatch_TriggerReload();
+       
+    // Start stopwatch
+    Stopwatch_TriggerStart();    
     
-    //if(Cy_GPIO_Read(Button_0_PORT, Button_0_NUM)) nextValue ^= (1 << 5);
+    // Store DAC's next value
+    nextValue = CTDAC0->CTDAC_VAL_NXT;
+    
+#if FAULT_EMULATION_EN
+    if(!Cy_GPIO_Read(USER_BUTTON_PORT, USER_BUTTON_0_NUM))
+    {
+        CTDAC0->CTDAC_VAL_NXT ^= (1 << 7);
+    }
+#endif 
+
+    while(nextValue != CTDAC0->CTDAC_VAL);
+    // Start another conversion
     ADC_StartConvert();
 
 }
+//**************************************************************************
 
-
+/**
+* @brief  Initialize peripherals
+* @retval : none
+*/
 void initDevices(){
 
     // Enable global interrupts.
@@ -178,9 +238,13 @@ void initDevices(){
     //UART
     UART_Start();
 
-    //Timer
+    // Timer
     Stopwatch_Init(&Stopwatch_config);
     Stopwatch_Enable();
+    
+    // Timestamp Timer
+    Timestamp_Timer_Init(&Timestamp_Timer_config);
+    Timestamp_Timer_Enable();
 
     //DMA
     DMA1_Start(&triangularWaveLUT, (uint32_t *)&(CTDAC0->CTDAC_VAL_NXT));
@@ -192,6 +256,7 @@ void initDevices(){
     ADC_Start();   
     ADC_IRQ_Enable();    
 }
+//**************************************************************************
 
 
 

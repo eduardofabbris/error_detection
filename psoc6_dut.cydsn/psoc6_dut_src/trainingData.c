@@ -1,4 +1,3 @@
-//====================== INCLUDES =====================
 #include "trainingData.h"
 
 //Look Up Table - LUT - 1K Hz

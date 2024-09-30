@@ -210,7 +210,7 @@ void UART_send_buffer(void)
 
 
 void UARTPrintData(void) {
-    
+/*    
 #if PSOC_MONITOR_ON
 
     for(int i=0; i < MAX_BUFFER_DATA; i++){  
@@ -238,6 +238,7 @@ void UARTPrintData(void) {
     
     
 #else
+*/
     char string[MAX_STRING_SIZE] = {0}; 
     static bool printHeader = true;
     
@@ -287,7 +288,7 @@ void UARTPrintData(void) {
     UART_PutString("\r\n");
     while(!UART_IsTxComplete());
     
-#endif  
+//#endif  
 }
 
 //****************************************************************************
