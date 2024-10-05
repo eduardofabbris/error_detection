@@ -15,11 +15,14 @@
 #define SR_MIN_DEFAULT_REF 0
     
 #define WR_MAX_DEFAULT_REF 23
-#define WR_MIN_DEFAULT_REF 0   
+#define WR_MIN_DEFAULT_REF 0
+    
+#define DTIME_DEFAULT_REF 12
     
 //TOLERANCES
 #define WR_TOL 5 //written and read tolerance, 20
 #define SR_TOL 5 //slew rate rolerance, 10
+#define DT_TOL 10
 
 //===================== TYPEDEFS =======================
 //BUFFER
@@ -27,8 +30,9 @@ typedef struct {
     struct {
         uint16_t dtime;
         uint16_t read, written; 
-        bool WR_fault;
-        bool SR_fault;
+        //bool WR_fault;
+        //bool SR_fault;
+        uint8_t fault_descriptor; // bit1 -> SR_fault, bit0 -> WR_fault
     } data[MAX_BUFFER_DATA];
     
     uint16_t dataIndex;
@@ -39,7 +43,7 @@ typedef struct {
 //REFERENCE VALUES
 typedef struct {
   uint16_t maxSlewRate, minSlewRate; 
-  uint16_t maxWRDiff, minWRDiff; // written and read difference 
+  uint16_t maxWRDiff, minWRDiff; // written and read difference
   uint16_t cycleIndex;  
 } REFERENCE_VALUES;
 

@@ -25,7 +25,7 @@
       <Data key="b1fc2797-cd53-48a8-b180-c6128dc52667" value="DAC_Interrupt" />
     </Group>
     <Group key="Pin">
-      <Data key="4cca878b-77b5-471d-8aeb-ad6925202455" value="Button" />
+      <Data key="4cca878b-77b5-471d-8aeb-ad6925202455" value="USER_BUTTON" />
       <Data key="6cf71be5-f63f-4ca9-9187-4a207a9e06dc" value="Pin_BlueLED" />
       <Data key="93a697c3-2434-415a-a3d0-78047eb81350/65f3af6c-759b-4ccb-8c66-5c95ba1f5f4f" value="UART_tx" />
       <Data key="93a697c3-2434-415a-a3d0-78047eb81350/b7e8018e-1ef7-49c0-b5a5-61641a03e31c" value="UART_rx" />
@@ -872,13 +872,14 @@
       </Group>
     </Group>
     <Group key="UnAssigned Pins" />
+    <Group key="Unlocked Pins" />
   </Group>
   <Group key="PlaceDir">
     <Data key="count" value="0" />
   </Group>
   <Group key="System3">
-    <Data key="CYDEV_CONFIG_UNUSED_IO" value="AllowButWarn" />
-    <Data key="CYDEV_CONFIGURATION_MODE" value="COMPRESSED" />
+    <Data key="CYDEV_CONFIG_UNUSED_IO" value="Disallowed" />
+    <Data key="CYDEV_CONFIGURATION_MODE" value="UNCOMPRESSED" />
     <Data key="CYDEV_CPUSS0_TRACE_CLOCK" value="P70" />
     <Data key="CYDEV_CPUSS0_TRACE_DATA0" value="P77" />
     <Data key="CYDEV_CPUSS0_TRACE_DATA1" value="P76" />

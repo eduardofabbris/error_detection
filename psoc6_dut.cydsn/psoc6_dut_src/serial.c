@@ -47,7 +47,8 @@ static uint16_t UART_build_pckt(uint8_t *pckt_ptr, uint16_t sequence, uint32_t t
     // Payload
     for(int i = 0; (i < BUFFER_CHUNK_LEN) && (i + sequence < MAX_BUFFER_DATA); i++)
     {      
-        pckt_ptr[byte_cnt++] = buffer.data[sequence + i].WR_fault + (buffer.data[sequence + i].SR_fault << 1);
+        //pckt_ptr[byte_cnt++] = buffer.data[sequence + i].WR_fault + (buffer.data[sequence + i].SR_fault << 1);
+        pckt_ptr[byte_cnt++] = buffer.data[sequence + i].fault_descriptor;
         byte_cnt += int2byte(pckt_ptr + byte_cnt, buffer.data[sequence + i].dtime, 2);
         byte_cnt += int2byte(pckt_ptr + byte_cnt, buffer.data[sequence + i].read, 2);
         byte_cnt += int2byte(pckt_ptr + byte_cnt, buffer.data[sequence + i].written, 2);
@@ -86,7 +87,7 @@ static uint8_t listen_host(void)
     static int fsm_st = FSM_IDLE_ST;
     uint8_t rx_byte = 0, ack_received = 0;
     
-    if ( UART_GetNumInRxFifo() > 0)
+    if ( UART_GetNumInRxFifo() > 0 )
     {
         rx_byte = UART_Get();
         switch(fsm_st)
@@ -237,26 +238,25 @@ static void UART_print_ref(void)
 */
 static void UART_print_buffer(void)
 {
-    char string[MAX_STRING_SIZE] = {0}; 
+    char string[MAX_STRING_SIZE] = {0};
+    int16_t aux = 0;
     
-    for(int i=0; i < MAX_BUFFER_DATA; i++){  
-         
-        /*sprintf
-        (
-            string, "%d \t %d \t %d \t %d \t %d\r\n",
-            buffer.data[i].dtime,
-            buffer.data[i].read, 
-            buffer.data[i].written, 
-            abs( buffer.data[i].read-buffer.data[i].written ),  
-            buffer.data[i].WR_fault + (buffer.data[i].SR_fault << 1)
-        );*/
+    for(int i=0; i < MAX_BUFFER_DATA; i++)
+    {
+        if (i < MAX_BUFFER_DATA - 1)
+        {
+            aux = abs(buffer.data[i+1].read - buffer.data[i].read);
+        }
         sprintf
         (
-            string, "%d,%d,%d,%d\r\n",
+            string, "%4d,%4d,%3d,%3d,%3d,\t%d\r\n",
             buffer.data[i].read, 
             buffer.data[i].written, 
-            abs( buffer.data[i].read-buffer.data[i].written ),  
-            buffer.data[i].WR_fault + (buffer.data[i].SR_fault << 1)
+            abs( buffer.data[i].read-buffer.data[i].written ),
+            aux,
+            buffer.data[i].dtime,
+            buffer.data[i].fault_descriptor
+            //buffer.data[i].WR_fault + (buffer.data[i].SR_fault << 1)
         );
 
         UART_PutString(string); 

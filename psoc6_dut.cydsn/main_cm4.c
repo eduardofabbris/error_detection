@@ -11,13 +11,90 @@
 #include "psoc6_dut_src\serial.h"
 
 //================= GLOBAL VARIABLES ==================
-BUFFER_DATA buffer;
+BUFFER_DATA buffer;             // Main buffer
+BUFFER_DATA bufferA, bufferB;   // Backup buffers
 REFERENCE_VALUES reference;
 extern uint32_t triangularWaveLUT;
 
 
+
 //===================== FUNCTIONS =====================
 
+#if FAULT_EMULATION_EN
+/**
+* @brief  Error injection for Debug
+* @retval : none
+*/
+static uint16_t fixed_sample = 0;
+static uint8_t trigger_fixed_smpl = 0,
+               trigger_single_smpl = 0,
+               trigger_hang = 0,
+               trigger_time = 0,
+               trigger_buf_mem = 0;
+
+static void error_injector_rx(void)
+{
+    enum error_injector_fsm_st
+    {
+      FSM_IDLE_ST,
+      FSM_ERROR_SEL_ST
+    };
+    static int fsm_st = FSM_IDLE_ST;
+    
+    uint8_t rx_byte = 0;
+    if ( UART_GetNumInRxFifo() > 0 )
+    {
+        rx_byte = UART_Get();
+        switch(fsm_st)
+        {
+            // Idle state
+            case FSM_IDLE_ST:
+                // Error Inject ID
+                if (rx_byte == 'E')
+                {
+                    fsm_st = FSM_ERROR_SEL_ST;
+                }        
+            break;
+              
+            // Error select state
+            case FSM_ERROR_SEL_ST:
+                // Time difference between samples 
+                if (rx_byte == 't')
+                {
+                    trigger_time = 1;
+                }
+                // Single sample
+                else if (rx_byte == 's')
+                {
+                    trigger_single_smpl = 1;
+                }
+                // Fixed sample
+                else if (rx_byte == 'a')
+                {
+                    fixed_sample = CTDAC0->CTDAC_VAL_NXT;
+                    trigger_fixed_smpl = 1;
+                }
+                // Core hang
+                else if (rx_byte == 'h')
+                {
+                    trigger_hang = 1;
+                }
+                // Memory buffer
+                else if (rx_byte == 'b')
+                {
+                    trigger_buf_mem = 1;
+                }
+                fsm_st = FSM_IDLE_ST;
+            break;
+                
+                // Invalid state
+            default:
+                fsm_st = FSM_IDLE_ST;
+            break;            
+        }             
+    }
+}
+#endif
 
 /**
 * @brief  Entry code
@@ -31,7 +108,9 @@ int main(void)
     // Turn on green led (pull-up)
     Cy_GPIO_Write(GREEN_LED_0_PORT, GREEN_LED_0_NUM, 0);
     
-    buffer.cycleIndex = 0;
+    buffer.cycleIndex  =
+    bufferA.cycleIndex =
+    bufferB.cycleIndex = 0;
     
     if (DYNAMIC_REF_VALUES_EN == 0)
     {
@@ -41,15 +120,22 @@ int main(void)
         reference.maxWRDiff = WR_MAX_DEFAULT_REF;
         reference.minWRDiff = WR_MIN_DEFAULT_REF;
     }
-     
+
     // Start bias
     Timestamp_Timer_TriggerStart(); // Start timestamp timer
-    Stopwatch_TriggerStart(); // starts timer
-    ADC_StartConvert();       // starts ADC conversion         
+    Stopwatch_TriggerStart();       // Starts stopwatchtimer
+    ADC_StartConvert();             // Start ADC conversion         
     
-
-    while(1);
+    while(1)
+    {
+#if FAULT_EMULATION_EN
+        error_injector_rx();
+        CyDelay(10);
+# endif
+    }
 }
+
+
 
 /**
 * @brief  ADC interrupt. This function is called every time a new conversion is finished
@@ -68,15 +154,21 @@ void ADC_ISR_Callback(void)
     // If buffer is not full yet
     if(buffer.dataIndex < MAX_BUFFER_DATA)
     {
-        // First value is neglected 
-        if(!firstConv) // TODO: verify implicantions    
+        // First value is neglected because we don't have nextValue variable yet
+        if(!firstConv)
         {
             // Get DAC value
-            buffer.data[buffer.dataIndex].written = nextValue;           
+            buffer.data[buffer.dataIndex].written  =
+            bufferA.data[buffer.dataIndex].written =
+            bufferB.data[buffer.dataIndex].written = nextValue;
             // Get ADC value
-            buffer.data[buffer.dataIndex].read =  ADC_GetResult16(0);
+            buffer.data[buffer.dataIndex].read  =
+            bufferA.data[buffer.dataIndex].read =
+            bufferB.data[buffer.dataIndex].read =  ADC_GetResult16(0);
             // Gets time            
-            buffer.data[buffer.dataIndex].dtime = Stopwatch_GetCounter();
+            buffer.data[buffer.dataIndex].dtime  =
+            bufferA.data[buffer.dataIndex].dtime =
+            bufferB.data[buffer.dataIndex].dtime = Stopwatch_GetCounter();
             
             buffer.dataIndex++;
         }  
@@ -108,7 +200,7 @@ void ADC_ISR_Callback(void)
         }
 #endif      
         // Reference values
-        if( (reference.cycleIndex < MAX_REFERENCE_VALUES_CYCLE) && DYNAMIC_REF_VALUES_EN ) 
+        if( DYNAMIC_REF_VALUES_EN && (reference.cycleIndex < MAX_REFERENCE_VALUES_CYCLE)) 
         {          
             uint8_t updated_flag = getReferenceValues();
 
@@ -129,11 +221,23 @@ void ADC_ISR_Callback(void)
         
         }
         // Verify buffer
-        else if(buffer.cycleIndex < MAX_BUFFER_DATA_CYCLE || EVALUATE_ALL_BUFFERS_EN) 
+        else if(EVALUATE_ALL_BUFFERS_EN || (buffer.cycleIndex < MAX_BUFFER_DATA_CYCLE)) 
         {
             // Stop timestamp timer
             Timestamp_Timer_TriggerStop();
-                
+            
+#if FAULT_EMULATION_EN            
+            if (trigger_buf_mem)
+            {
+                bufferA.data[3].written ^= (1 << 3);
+                bufferB.data[6].read ^= (1 << 6);
+                buffer.data[7].dtime ^= (1 << 2);
+            }
+            else if (trigger_hang)
+            {
+                while(1);
+            }
+#endif           
             // If a error is found send all data
             if(verifyFaults() || FORCE_KIT_RESET)
             {
@@ -157,12 +261,10 @@ void ADC_ISR_Callback(void)
         }       
 
         buffer.dataIndex = 0; 
-        firstConv = true;
+        //firstConv = true;
  
         //Cy_GPIO_Write(ALIVE_SIGNAL_0_PORT, ALIVE_SIGNAL_0_NUM, 0);
     }
-
-    //while(CTDAC0->CTDAC_VAL_NXT == nextValue);
     
     // Reload stopwatch
     Stopwatch_TriggerReload();
@@ -175,24 +277,27 @@ void ADC_ISR_Callback(void)
     
 #if FAULT_EMULATION_EN
     static bool fault_latch = false;
-    static uint16_t fixed_sample = 0;
-    
-    if(!Cy_GPIO_Read(USER_BUTTON_PORT, USER_BUTTON_0_NUM) && !fault_latch)
+    if (trigger_single_smpl && !fault_latch)
     {
-        fixed_sample = CTDAC0->CTDAC_VAL_NXT;
+        CTDAC0->CTDAC_VAL     ^= (1 << 11);
         CTDAC0->CTDAC_VAL_NXT ^= (1 << 11);
-        fault_latch = true;       
+        fault_latch = true;
     }
-    
-    if (fault_latch && FIXED_SAMPLE_ERROR_EN)
+    else if (trigger_fixed_smpl)
     {
-        CTDAC0->CTDAC_VAL_NXT = fixed_sample;
+        CTDAC0->CTDAC_VAL_NXT =
         CTDAC0->CTDAC_VAL     = fixed_sample;
+    } 
+    else if (trigger_time && !fault_latch)
+    {
+        CyDelayUs(10);
+        fault_latch = true;
     }
-#else
-    while((nextValue != CTDAC0->CTDAC_VAL));  
+ 
 #endif 
-    
+
+    //while((nextValue != CTDAC0->CTDAC_VAL));
+
     // Start another conversion
     ADC_StartConvert();
 
