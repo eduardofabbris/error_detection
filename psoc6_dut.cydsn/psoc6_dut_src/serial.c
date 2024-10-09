@@ -76,7 +76,7 @@ static uint16_t UART_build_pckt(uint8_t *pckt_ptr, uint16_t sequence, uint32_t t
 * @brief  Listen to host via UART
 * @retval : true if received acknowledge, 0 otherwise
 */
-static uint8_t listen_host(void)
+/*static uint8_t listen_host(void)
 {
     enum listen_fsm_st
     {
@@ -118,7 +118,7 @@ static uint8_t listen_host(void)
         }             
     }
     return ack_received;
-}
+}*/
 //****************************************************************************************************
 
 /**
@@ -137,8 +137,8 @@ void UART_send_buffer(void)
     uint8_t uart_pckt[1024] = {0};
     uint8_t exit_flag = 0;
     uint16_t sequence = 0,
-             pckt_len = 0,
-             timeout_cnt = 0;
+             pckt_len = 0;
+             //timeout_cnt = 0;
     
     uint32_t timestamp = Timestamp_Timer_GetCounter();
     
@@ -150,8 +150,8 @@ void UART_send_buffer(void)
         {
             // Idle state
             case FSM_IDLE_ST:
-                Stopwatch_TriggerStop();
-                timeout_cnt = 0;
+                //Stopwatch_TriggerStop();
+                //timeout_cnt = 0;
                 if (sequence < MAX_BUFFER_DATA)
                 {
                     pckt_len = UART_build_pckt(uart_pckt, sequence, timestamp);
@@ -171,13 +171,14 @@ void UART_send_buffer(void)
                 while(!UART_IsTxComplete());
                 
                 // Starts timeout counter
-                Stopwatch_TriggerReload();
-                Stopwatch_TriggerStart();
-                fsm_st = FSM_WAIT_ACK_ST;
+                //Stopwatch_TriggerReload();
+                //Stopwatch_TriggerStart();
+                //fsm_st = FSM_WAIT_ACK_ST;
+                fsm_st = FSM_IDLE_ST;
             break;
                 
             // Wait acknowledge packet
-            case FSM_WAIT_ACK_ST:
+            /*case FSM_WAIT_ACK_ST:
                 
                 // 250ms timeout
                 while (  Stopwatch_GetCounter() <= 250000UL )
@@ -200,7 +201,7 @@ void UART_send_buffer(void)
                     fsm_st = FSM_IDLE_ST;
                 }                
             break;
-            
+            */
             // Invalid state
             default:
                 fsm_st = FSM_IDLE_ST;
