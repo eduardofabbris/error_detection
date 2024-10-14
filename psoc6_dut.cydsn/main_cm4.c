@@ -30,7 +30,8 @@ static uint8_t trigger_fixed_smpl = 0,
                trigger_single_smpl = 0,
                trigger_hang = 0,
                trigger_time = 0,
-               trigger_buf_mem = 0;
+               trigger_buf_mem = 0,
+               trigger_stop_uart = 0;
 
 static void error_injector_rx(void)
 {
@@ -63,13 +64,13 @@ static void error_injector_rx(void)
                 {
                     trigger_time = 1;
                 }
-                // Single sample
-                else if (rx_byte == 's')
+                // Single sample or upset
+                else if (rx_byte == 'u')
                 {
                     trigger_single_smpl = 1;
                 }
-                // Fixed sample
-                else if (rx_byte == 'a')
+                // Fixed sample or latch-up
+                else if (rx_byte == 'l')
                 {
                     fixed_sample = CTDAC0->CTDAC_VAL_NXT;
                     trigger_fixed_smpl = 1;
@@ -80,9 +81,14 @@ static void error_injector_rx(void)
                     trigger_hang = 1;
                 }
                 // Memory buffer
-                else if (rx_byte == 'b')
+                else if (rx_byte == 'm')
                 {
                     trigger_buf_mem = 1;
+                }
+                // Stop serial port
+                else if (rx_byte == 's')
+                {
+                    trigger_stop_uart = 1;
                 }
                 fsm_st = FSM_IDLE_ST;
             break;
@@ -105,6 +111,9 @@ int main(void)
     
     initDevices();
 
+    // Initial UART DUT Alive
+    UART_PutString("DA");
+    
     // Turn on green led (pull-up)
     Cy_GPIO_Write(GREEN_LED_0_PORT, GREEN_LED_0_NUM, 0);
     
@@ -114,7 +123,15 @@ int main(void)
     
     if (DYNAMIC_REF_VALUES_EN == 0)
     {
+// It was observed that the logic added to enable 
+// this feature slightly changes the reference value of SR_MAX.
+// So, in order to be able to emulate fault injections without
+// unwanted buffers, we need to increase a little this value.
+#if FAULT_EMULATION_EN
+        reference.maxSlewRate = SR_MAX_DEFAULT_REF + 9;
+#else
         reference.maxSlewRate = SR_MAX_DEFAULT_REF;
+#endif
         reference.minSlewRate = SR_MIN_DEFAULT_REF;
         
         reference.maxWRDiff = WR_MAX_DEFAULT_REF;
@@ -191,14 +208,25 @@ void ADC_ISR_Callback(void)
         else
         {
 #if !DEBUG_CODE
+    
+#if FAULT_EMULATION_EN         
+            if (!trigger_stop_uart)
+            {
+                // UART DUT Alive
+                UART_PutString("DA"); 
+            }
+#else
             // UART DUT Alive
-            UART_PutString("DA");   
-#endif
+            UART_PutString("DA"); 
+#endif // FAULT_EMULATION_EN
+
+#endif // !DEBUG_CODE
             // Visual Alive
             Cy_GPIO_Inv(GREEN_LED_0_PORT, GREEN_LED_0_NUM);            
             UART_aliveSignalCounter = 0;   
         }
-#endif      
+#endif // !EVALUATE_REF_VALUES_EN  
+
         // Reference values
         if( DYNAMIC_REF_VALUES_EN && (reference.cycleIndex < MAX_REFERENCE_VALUES_CYCLE)) 
         {          
@@ -261,9 +289,7 @@ void ADC_ISR_Callback(void)
         }       
 
         buffer.dataIndex = 0; 
-        //firstConv = true;
- 
-        //Cy_GPIO_Write(ALIVE_SIGNAL_0_PORT, ALIVE_SIGNAL_0_NUM, 0);
+
     }
     
     // Reload stopwatch
@@ -295,8 +321,6 @@ void ADC_ISR_Callback(void)
     }
  
 #endif 
-
-    //while((nextValue != CTDAC0->CTDAC_VAL));
 
     // Start another conversion
     ADC_StartConvert();
@@ -335,10 +359,3 @@ void initDevices(){
     ADC_IRQ_Enable();    
 }
 //**************************************************************************
-
-
-
-
-
-
-
