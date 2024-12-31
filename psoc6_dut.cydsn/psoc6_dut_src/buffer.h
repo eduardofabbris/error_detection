@@ -15,6 +15,7 @@
 #define SR_MIN_DEFAULT_REF 0
     
 #define WR_MAX_DEFAULT_REF 23
+//#define WR_MAX_DEFAULT_REF 35
 #define WR_MIN_DEFAULT_REF 0
     
 #define DTIME_DEFAULT_REF 12

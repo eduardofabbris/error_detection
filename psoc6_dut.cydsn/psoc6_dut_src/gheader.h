@@ -15,7 +15,7 @@
 #define DEBUG_LEVEL 1           // Lower the level, more messages are displayed
 #define FORCE_KIT_RESET 0       // Kit will reset after a buffer read, independent if an error was found
      
-#define FAULT_EMULATION_EN 1
+#define FAULT_EMULATION_EN 0
 
 #define EVALUATE_ALL_BUFFERS_EN 1
 #define DYNAMIC_REF_VALUES_EN 0
