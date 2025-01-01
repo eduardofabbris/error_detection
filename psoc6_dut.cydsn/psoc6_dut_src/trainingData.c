@@ -1,7 +1,24 @@
+/*******************************************************************************
+* @filename : trainingData.c
+* @brief    : Look up table data for triangular wave
+*
+* MIT License
+*
+* Copyright (c) 2024 eduardofabbris
+* See the LICENSE file for details.
+********************************************************************************/
+
+/*********************************************************
+* Includes
+*********************************************************/
 #include "trainingData.h"
 
+/*********************************************************
+* Global Variables
+*********************************************************/
+
 //Look Up Table - LUT - 1K Hz
-const uint32_t triangularWaveLUT[] = { 
+const uint32_t triangularWaveLUT[] = {
     0x10,   0x20,   0x31,   0x41,   0x52,   0x62,   0x72,   0x83,   0x93,   0xA3,
     0xB4,   0xC4,   0xD5,   0xE5,   0xF5,   0x106,  0x116,  0x127,  0x137,  0x147,
     0x158,  0x168,  0x179,  0x189,  0x199,  0x1AA,  0x1BA,  0x1CB,  0x1DB,  0x1EB,
@@ -52,5 +69,3 @@ const uint32_t triangularWaveLUT[] = {
     0x1DB,  0x1CB,  0x1BA,  0x1AA,  0x199,  0x189,  0x179,  0x168,  0x158,  0x147,
     0x137,  0x127,  0x116,  0x106,  0xF5,   0xE5,   0xD5,   0xC4,   0xB4,   0xA3,
     0x93,   0x83,   0x72,   0x62,   0x51,   0x41,   0x31,   0x20,   0x10,   0x0 };
-
-

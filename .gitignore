@@ -60,3 +60,4 @@ dkms.conf
 *.svd
 *.html
 *.log
+psoc6_dut.cydsn/Generated_Source
