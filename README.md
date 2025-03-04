@@ -1,6 +1,6 @@
 # Error Detection (Device Under Test)
 
-This repository is part of my Graduation Project in Electrical Engineering, entitled ["Radiation Fault Detection System for SEE in a Mixed-signal Programmable SOC"](doc/graduation_thesis.pdf).
+This repository is part of my Graduation Project in Electrical Engineering, entitled ["Radiation Fault Detection System for SEE in a Mixed-signal Programmable SOC"](https://github.com/eduardofabbris/psoc_monitor/blob/main/doc/graduation_thesis.pdf).
 
 The hardware used for this part of the system is a PSoC 6 version mounted in the CY8CPROTO-063-BLE Infineon development kit.
 
