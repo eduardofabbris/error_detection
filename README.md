@@ -1,8 +1,8 @@
-# Error Detection System (Main device)
+# Error Detection (Device Under Test)
 
 This repository is part of my Graduation Project in Electrical Engineering, entitled ["Radiation Fault Detection System for SEE in a Mixed-signal Programmable SOC"](doc/graduation_thesis.pdf).
 
-The hardware used for this part of the system was a PSoC 6 version mounted in the CY8CPROTO-063-BLE Infineon development kit.
+The hardware used for this part of the system is a PSoC 6 version mounted in the CY8CPROTO-063-BLE Infineon development kit.
 
 Figure 1 summarizes the fault detection system configuration inside the main device.
 It illustrates the connections of the utilized peripherals and the data flow, starting from the left
@@ -43,7 +43,7 @@ A fully description of how the system works starts at page 47.
 
 **Figure 2. Monitoring system**
 
-![Monitoring system Menu](doc/imgs/monitoring_system.png)
+![Monitoring system Menu](imgs/monitoring_system.png)
 
 ## System repositories
 
